@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/cart/Cart.dart';
+import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
+// import 'package:flutter_dentist_app/cart/Cart.dart';
+// import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/feedback/rating_feedback.dart';
 import 'package:flutter_dentist_app/screens/promotion/promotion_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ServiceDetail extends StatelessWidget {
   final Clinic clinic;
@@ -12,9 +17,44 @@ class ServiceDetail extends StatelessWidget {
     required this.clinic,
     required this.service,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    Future<void> _showMyDialog(String title, String messageContent) async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              title,
+              style: TextStyle(
+                  color: Colors.redAccent, fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              messageContent,
+              style: TextStyle(),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Đồng ý'),
+                onPressed: () {
+                  cart.changeCartItem(clinic.id, service);
+                  Fluttertoast.showToast(msg: 'Thay đổi giỏ hàng thành công');
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: Text('Hủy bỏ'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -45,39 +85,11 @@ class ServiceDetail extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        clinic.image,
-                        fit: BoxFit.cover,
-                        height: 200,
-                        width: MediaQuery.of(context).size.width,
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        child: Container(
-                          color: Colors.redAccent,
-                          padding: EdgeInsets.only(
-                              top: 4, bottom: 4, left: 7, right: 7),
-                          child: Text(
-                            '-${service['discount']}%',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                Image.asset(
+                  service['image'],
+                  height: 240,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fill,
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 5, left: 5, right: 5),
@@ -268,9 +280,34 @@ class ServiceDetail extends StatelessWidget {
           child: InkWell(
             onTap: () => print('tap on close'),
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                var isDifferentID = cart.isDifferentID(clinic.id);
+                if (!isDifferentID) {
+                  var isExistService = cart.isExistService(service);
+                  if (isExistService)
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Bạn đã chọn dịch vụ này rồi"),
+                      action: SnackBarAction(
+                          label: 'Xem danh sách dịch vụ',
+                          onPressed: () => {},
+                          textColor: Colors.green),
+                    ));
+                  else {
+                    cart.addToCart(service);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PageBookingItem(cart: cart),
+                      ),
+                    );
+                  }
+                } else {
+                  _showMyDialog("Bạn đã chọn dịch vụ khác nha khoa!",
+                      "Bạn có muốn tạo mới danh sách dịch vụ đã chọn không?");
+                }
+              },
               child: Text(
-                "Đặt lịch",
+                "Chọn dịch vụ",
                 style: TextStyle(
                     color: Colors.cyan[600],
                     fontSize: 25,
@@ -299,97 +336,94 @@ class renderAnotherServices extends StatelessWidget {
           margin: EdgeInsets.symmetric(
             horizontal: 5.0,
           ),
-          // decoration: BoxDecoration(color: Colors.amber),
-          child: Expanded(
-            child: InkWell(
-              onTap: () => {},
-              splashColor: Colors.brown.withOpacity(0.5),
-              child: Stack(
-                alignment: Alignment.center,
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      service['image'],
-                      fit: BoxFit.cover,
-                      height: 280,
-                      width: MediaQuery.of(context).size.width * 0.7,
+          child: InkWell(
+            onTap: () => {},
+            splashColor: Colors.brown.withOpacity(0.5),
+            child: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    service['image'],
+                    fit: BoxFit.cover,
+                    height: 280,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      color: Colors.redAccent,
+                      padding:
+                          EdgeInsets.only(top: 4, bottom: 4, left: 7, right: 7),
+                      child: Text(
+                        '-${service['discount']}%',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      child: Container(
-                        color: Colors.redAccent,
-                        padding: EdgeInsets.only(
-                            top: 4, bottom: 4, left: 7, right: 7),
-                        child: Text(
-                          '-${service['discount']}%',
-                          style: TextStyle(
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    child: Container(
+                      color: Colors.black54,
+                      padding: EdgeInsets.all(7),
+                      child: Text(
+                        service['name'],
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    child: Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.all(3),
+                      child: Row(
+                        children: [
+                          Text(
+                            '💲${service['price'].toStringAsFixed(0)}',
+                            style: TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                              decorationColor: Colors.black,
+                              color: Colors.grey[600],
                               fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_right,
+                            size: 30,
+                          ),
+                          Text(
+                            '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      child: Container(
-                        color: Colors.black54,
-                        padding: EdgeInsets.all(7),
-                        child: Text(
-                          service['name'],
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      child: Container(
-                        color: Colors.white,
-                        padding: EdgeInsets.all(3),
-                        child: Row(
-                          children: [
-                            Text(
-                              '💲${service['price'].toStringAsFixed(0)}',
-                              style: TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                                decorationColor: Colors.black,
-                                color: Colors.grey[600],
-                                fontSize: 18,
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_right,
-                              size: 30,
-                            ),
-                            Text(
-                              '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

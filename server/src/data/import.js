@@ -76,7 +76,7 @@ const deleteDataService = async () => {
   process.exit();
 };
 // importDataUser();
-importDataClinic();
+// importDataClinic();
 // importDataService();
 // importDataVoucher();
 // importDataService();

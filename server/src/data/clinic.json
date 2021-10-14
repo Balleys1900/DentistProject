@@ -25,7 +25,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 1500,
         "discount": 25,
         "steps": [
@@ -38,7 +38,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 3200,
         "discount": 10,
         "steps": [
@@ -145,7 +145,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 2600,
         "discount": 20,
         "steps": [
@@ -158,7 +158,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 3700,
         "discount": 26,
         "steps": [
@@ -197,7 +197,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 3900,
         "discount": 15,
         "steps": [
@@ -210,7 +210,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 3500,
         "discount": 29,
         "steps": [
@@ -314,7 +314,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 2100,
         "discount": 30,
         "steps": [
@@ -327,7 +327,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 4650,
         "discount": 30,
         "steps": [
@@ -366,7 +366,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 1250,
         "discount": 28,
         "steps": [
@@ -379,7 +379,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 3680,
         "discount": 30,
         "steps": [
@@ -483,7 +483,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 1700,
         "discount": 15,
         "steps": [
@@ -496,7 +496,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 4000,
         "discount": 15,
         "steps": [
@@ -535,7 +535,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 6500,
         "discount": 15,
         "steps": [
@@ -548,7 +548,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 7000,
         "discount": 35,
         "steps": [
@@ -652,7 +652,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 5000,
         "discount": 15,
         "steps": [
@@ -665,7 +665,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 3300,
         "discount": 10,
         "steps": [
@@ -704,7 +704,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 3300,
         "discount": 12,
         "steps": [
@@ -717,7 +717,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 5600,
         "discount": 22,
         "steps": [
@@ -821,7 +821,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 2000,
         "discount": 10,
         "steps": [
@@ -834,7 +834,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 6500,
         "discount": 35,
         "steps": [
@@ -873,7 +873,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 4500,
         "discount": 25,
         "steps": [
@@ -886,7 +886,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 6000,
         "discount": 15,
         "steps": [
@@ -990,7 +990,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 2500,
         "discount": 15,
         "steps": [
@@ -1003,7 +1003,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 3000,
         "discount": 25,
         "steps": [
@@ -1042,7 +1042,7 @@
       },
       {
         "name": "Niềng răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageNiengRang.png",
         "price": 6000,
         "discount": 30,
         "steps": [
@@ -1055,7 +1055,7 @@
       },
       {
         "name": "Trám răng",
-        "image": "assets/images/service/imageTrongRang.png",
+        "image": "assets/images/service/imageTramRang.png",
         "price": 3000,
         "discount": 20,
         "steps": [
@@ -1159,7 +1159,7 @@
       },
       {
         "name": "Chữa nhức răng",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
         "price": 1500,
         "discount": 5,
         "steps": [
@@ -1172,7 +1172,7 @@
       },
       {
         "name": "Chữa hở lợi",
-        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
         "price": 2000,
         "discount": 10,
         "steps": [
