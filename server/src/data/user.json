@@ -1,0 +1,38 @@
+[
+  {
+    "username": "guest1",
+    "password": "123",
+    "role": "customer",
+    "name": "Randy Lee",
+    "avatar": "assets/images/user/user2.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+  },
+  {
+    "username": "guest2",
+    "password": "123",
+    "role": "customer",
+    "name": "Vo Van C",
+    "avatar": "assets/images/user/user3.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+  },
+  {
+    "username": "guest3",
+    "password": "123",
+    "role": "customer",
+    "name": "Tran Van B",
+    "avatar": "assets/images/user/user4.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+  },
+  {
+    "username": "guest5",
+    "password": "123",
+    "role": "customer",
+    "name": "David Tran",
+    "avatar": "assets/images/user/user5.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+  }
+]
