@@ -202,13 +202,15 @@ class ListClinic extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.3,
                   child: ElevatedButton(
                     onPressed: () => {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         ServiceDetail(clinic: clinic),
-                      //   ),
-                      // ),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ServiceDetail(
+                            clinic: clinic,
+                            service: service,
+                          ),
+                        ),
+                      )
                     },
                     child: Text('Xem thông tin'),
                   ),

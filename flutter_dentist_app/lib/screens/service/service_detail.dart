@@ -2,8 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
-// import 'package:flutter_dentist_app/cart/Cart.dart';
-// import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/feedback/rating_feedback.dart';
 import 'package:flutter_dentist_app/screens/promotion/promotion_widget.dart';
@@ -265,7 +263,8 @@ class ServiceDetail extends StatelessWidget {
                     ),
                     items: clinic.services
                         .map(
-                          (service) => renderAnotherServices(service: service),
+                          (service) => renderAnotherServices(
+                              service: service, clinic: clinic),
                         )
                         .toList(),
                   ),
@@ -322,10 +321,12 @@ class ServiceDetail extends StatelessWidget {
 }
 
 class renderAnotherServices extends StatelessWidget {
+  final Clinic clinic;
   final dynamic service;
   const renderAnotherServices({
     Key? key,
     required this.service,
+    required this.clinic,
   }) : super(key: key);
 
   @override
@@ -337,7 +338,15 @@ class renderAnotherServices extends StatelessWidget {
             horizontal: 5.0,
           ),
           child: InkWell(
-            onTap: () => {},
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ServiceDetail(
+                  clinic: clinic,
+                  service: service,
+                ),
+              ),
+            ),
             splashColor: Colors.brown.withOpacity(0.5),
             child: Stack(
               alignment: Alignment.center,
