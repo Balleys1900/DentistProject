@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
+import 'package:flutter_dentist_app/cart/Steps.dart';
 import 'package:flutter_dentist_app/cart/screens/item_cart.dart';
+import 'package:flutter_dentist_app/cart/screens/page_booking_calendar.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/clinic/clinic_page.dart';
 
-// ignore: must_be_immutable
 class PageBookingItem extends StatefulWidget {
-  Cart cart;
-  Clinic clinic;
-  double riceEachItem;
+  final Clinic clinic;
   PageBookingItem({
     Key? key,
-    required this.cart,
     required this.clinic,
-    required this.riceEachItem,
   }) : super(key: key);
 
   @override
@@ -21,15 +18,14 @@ class PageBookingItem extends StatefulWidget {
 }
 
 class _PageBookingItem extends State<PageBookingItem> {
-  late double totalPrice = 0;
   @override
   Widget build(BuildContext context) {
     // print(widget.itemService.name);
     return SafeArea(
       child: Scaffold(
-        appBar: buildAppbar(context, widget.cart),
+        appBar: buildAppbar(context, cart),
         body: Column(
-          children: [
+          children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 12),
               child: Center(
@@ -54,11 +50,11 @@ class _PageBookingItem extends State<PageBookingItem> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: ListView.builder(
-                  itemCount: widget.cart.cartService.length,
+                  itemCount: cart.cartService.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Dismissible(
-                      key: Key(widget.cart.cartService[index]['id'].toString()),
+                      key: UniqueKey(),
                       direction: DismissDirection.endToStart,
                       background: Container(
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -75,7 +71,10 @@ class _PageBookingItem extends State<PageBookingItem> {
                         ),
                       ),
                       onDismissed: (direction) {
-                        widget.cart.cartService.removeAt(index);
+                        setState(() {
+                          cart.cartService.removeAt(index);
+                          if (cart.cartService.length == 0) cart.resetCart();
+                        });
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -91,7 +90,11 @@ class _PageBookingItem extends State<PageBookingItem> {
                           ],
                         ),
                         child: ItemCardCart(
-                          service: widget.cart.cartService[index],
+                          service: cart.cartService[index],
+                          deleteItem: () => setState(() {
+                            cart.cartService.removeAt(index);
+                            if (cart.cartService.length == 0) cart.resetCart();
+                          }),
                         ),
                       ),
                     ),
@@ -101,97 +104,86 @@ class _PageBookingItem extends State<PageBookingItem> {
             ),
           ],
         ),
-        bottomNavigationBar: CheckoutCard(
-            clinic: widget.clinic,
-            priceAll: (totalPrice += widget.riceEachItem)),
-      ),
-    );
-  }
-}
-
-class CheckoutCard extends StatefulWidget {
-  final Clinic clinic;
-  final double priceAll;
-  const CheckoutCard({
-    Key? key,
-    required this.clinic,
-    required this.priceAll,
-  }) : super(key: key);
-
-  @override
-  State<CheckoutCard> createState() => _CheckoutCardState();
-}
-
-class _CheckoutCardState extends State<CheckoutCard> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 175,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, -15),
-            blurRadius: 20,
-            color: Color(0xFFDADADA).withOpacity(0.15),
-          )
-        ],
-      ),
-      child: Container(
-        margin: EdgeInsets.only(left: 20, right: 20, top: 30),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    Icons.document_scanner_rounded,
-                    size: 30,
-                  ),
-                  OutlinedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              ClinicPage(clinic: widget.clinic),
-                        ),
-                      );
-                    },
-                    child: Text('Thêm dịch vụ'),
-                  ),
-                ],
-              ),
+        bottomNavigationBar: Container(
+          height: 155,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, -15),
+                blurRadius: 20,
+                color: Color(0xFFDADADA).withOpacity(0.15),
+              )
+            ],
+          ),
+          child: Container(
+            margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+            child: Column(
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "Tổng tiền: \n",
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextSpan(
-                        text: "${widget.priceAll}",
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                      Icon(
+                        Icons.document_scanner_rounded,
+                        size: 30,
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ClinicPage(clinic: widget.clinic),
+                            ),
+                          );
+                        },
+                        child: Text('Thêm dịch vụ'),
                       ),
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Chọn thời gian'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        text: "Tổng tiền: \n",
+                        children: [
+                          TextSpan(
+                            text: "💲${cart.sumTotalPrice()}",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: cart.cartService.length != 0
+                          ? () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StepProgress(
+                                    clinic: widget.clinic,
+                                  ),
+                                ),
+                              )
+                          : null,
+                      child: cart.cartService.length != 0
+                          ? Text('Chọn thời gian')
+                          : Text('Vui lòng chọn dịch vụ'),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

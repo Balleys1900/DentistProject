@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/api/http_service_clinic.dart';
-import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/model/Service.dart';
 import 'package:flutter_dentist_app/screens/service/screens/item_card_service.dart';
 import 'package:flutter_dentist_app/screens/service/screens/list_clinic_service.dart';

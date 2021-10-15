@@ -8,7 +8,8 @@
       "name": "flutter_dentist_app",
       "cwd": "flutter_dentist_app",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "args": ["--no-sound-null-safety"]
     },
     {
       "name": "flutter_dentist_app (profile mode)",

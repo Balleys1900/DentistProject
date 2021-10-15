@@ -24,12 +24,16 @@ class Cart {
     this.cartService.add(service);
   }
 
-  // void removeToCart(dynamic removeService) {
-  //   this.cartService.removeWhere((service) => service == removeService);
-  // }
-
-  void removeAllItem() {
+  void resetCart() {
+    this.idClinic = '';
     this.cartService.clear();
+  }
+
+  double sumTotalPrice() {
+    return this.cartService.fold(
+        0,
+        (initial, service) =>
+            initial + (service['price'] * (1 - service['discount'] / 100)));
   }
 }
 

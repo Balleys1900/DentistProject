@@ -15,6 +15,7 @@ class ServiceDetail extends StatelessWidget {
     required this.clinic,
     required this.service,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Future<void> _showMyDialog(String title, String messageContent) async {
@@ -294,10 +295,7 @@ class ServiceDetail extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => PageBookingItem(
-                                        cart: cart,
                                         clinic: clinic,
-                                        riceEachItem: (service['price'] *
-                                            (1 - service['discount'] / 100)),
                                       ),
                                     ),
                                   ),
@@ -311,10 +309,7 @@ class ServiceDetail extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => PageBookingItem(
-                          cart: cart,
                           clinic: clinic,
-                          riceEachItem: (service['price'] *
-                              (1 - service['discount'] / 100)),
                         ),
                       ),
                     );
