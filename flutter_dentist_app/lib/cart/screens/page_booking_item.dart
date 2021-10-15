@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/screens/item_cart.dart';
+import 'package:flutter_dentist_app/model/Clinic.dart';
+import 'package:flutter_dentist_app/screens/clinic/clinic_page.dart';
 
 // ignore: must_be_immutable
 class PageBookingItem extends StatefulWidget {
   Cart cart;
-  PageBookingItem({Key? key, required this.cart}) : super(key: key);
+  Clinic clinic;
+  double riceEachItem;
+  PageBookingItem({
+    Key? key,
+    required this.cart,
+    required this.clinic,
+    required this.riceEachItem,
+  }) : super(key: key);
 
   @override
   State<PageBookingItem> createState() => _PageBookingItem();
 }
 
 class _PageBookingItem extends State<PageBookingItem> {
+  late double totalPrice = 0;
   @override
   Widget build(BuildContext context) {
     // print(widget.itemService.name);
@@ -20,13 +30,33 @@ class _PageBookingItem extends State<PageBookingItem> {
         appBar: buildAppbar(context, widget.cart),
         body: Column(
           children: [
+            Container(
+              margin: EdgeInsets.only(top: 12),
+              child: Center(
+                child: Text(
+                  widget.clinic.name,
+                  style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+              child: Divider(
+                thickness: 1,
+                color: Colors.black12,
+              ),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: ListView.builder(
                   itemCount: widget.cart.cartService.length,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 1),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Dismissible(
                       key: Key(widget.cart.cartService[index]['id'].toString()),
                       direction: DismissDirection.endToStart,
@@ -47,8 +77,22 @@ class _PageBookingItem extends State<PageBookingItem> {
                       onDismissed: (direction) {
                         widget.cart.cartService.removeAt(index);
                       },
-                      child: ItemCardCart(
-                        service: widget.cart.cartService[index],
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 10),
+                              color: Color(0x14000000),
+                              blurRadius: 15,
+                              spreadRadius: 0,
+                            )
+                          ],
+                        ),
+                        child: ItemCardCart(
+                          service: widget.cart.cartService[index],
+                        ),
                       ),
                     ),
                   ),
@@ -57,17 +101,28 @@ class _PageBookingItem extends State<PageBookingItem> {
             ),
           ],
         ),
-        bottomNavigationBar: CheckoutCard(),
+        bottomNavigationBar: CheckoutCard(
+            clinic: widget.clinic,
+            priceAll: (totalPrice += widget.riceEachItem)),
       ),
     );
   }
 }
 
-class CheckoutCard extends StatelessWidget {
+class CheckoutCard extends StatefulWidget {
+  final Clinic clinic;
+  final double priceAll;
   const CheckoutCard({
     Key? key,
+    required this.clinic,
+    required this.priceAll,
   }) : super(key: key);
 
+  @override
+  State<CheckoutCard> createState() => _CheckoutCardState();
+}
+
+class _CheckoutCardState extends State<CheckoutCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,7 +137,7 @@ class CheckoutCard extends StatelessWidget {
           BoxShadow(
             offset: Offset(0, -15),
             blurRadius: 20,
-            // color: Color(0xFFDADADA).withOpacity(0.15),
+            color: Color(0xFFDADADA).withOpacity(0.15),
           )
         ],
       ),
@@ -100,8 +155,16 @@ class CheckoutCard extends StatelessWidget {
                     size: 30,
                   ),
                   OutlinedButton(
-                    onPressed: () {},
-                    child: Text('Thêm mã giảm giá'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ClinicPage(clinic: widget.clinic),
+                        ),
+                      );
+                    },
+                    child: Text('Thêm dịch vụ'),
                   ),
                 ],
               ),
@@ -114,7 +177,7 @@ class CheckoutCard extends StatelessWidget {
                     text: "Tổng tiền: \n",
                     children: [
                       TextSpan(
-                        text: "\$1000",
+                        text: "${widget.priceAll}",
                         style: TextStyle(
                           fontSize: 16,
                         ),
@@ -124,7 +187,7 @@ class CheckoutCard extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Make an Appointment'),
+                  child: Text('Chọn thời gian'),
                 ),
               ],
             ),

@@ -284,19 +284,38 @@ class ServiceDetail extends StatelessWidget {
                 if (!isDifferentID) {
                   var isExistService = cart.isExistService(service);
                   if (isExistService)
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Bạn đã chọn dịch vụ này rồi"),
-                      action: SnackBarAction(
-                          label: 'Xem danh sách dịch vụ',
-                          onPressed: () => {},
-                          textColor: Colors.green),
-                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Bạn đã chọn dịch vụ này!!!"),
+                        action: SnackBarAction(
+                            label: 'Xem danh sách dịch vụ',
+                            onPressed: () => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PageBookingItem(
+                                        cart: cart,
+                                        clinic: clinic,
+                                        riceEachItem: (service['price'] *
+                                            (1 - service['discount'] / 100)),
+                                      ),
+                                    ),
+                                  ),
+                                },
+                            textColor: Colors.green),
+                      ),
+                    );
                   else {
                     cart.addToCart(service);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PageBookingItem(cart: cart),
+                        builder: (context) => PageBookingItem(
+                          cart: cart,
+                          clinic: clinic,
+                          riceEachItem: (service['price'] *
+                              (1 - service['discount'] / 100)),
+                        ),
                       ),
                     );
                   }
