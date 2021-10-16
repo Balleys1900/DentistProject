@@ -17,3 +17,5 @@ class Service {
     );
   }
 }
+
+List<Service> listServiceInstance = [];

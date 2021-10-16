@@ -38,3 +38,5 @@ class Clinic {
     );
   }
 }
+
+List<Clinic> listClinicsInstance = [];

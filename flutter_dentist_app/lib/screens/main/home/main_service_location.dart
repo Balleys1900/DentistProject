@@ -18,7 +18,7 @@ class MainServiceLocation extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(top: 15, left: 5, right: 15),
+          margin: EdgeInsets.only(left: 5, right: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

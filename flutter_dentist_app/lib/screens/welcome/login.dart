@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/api/http_service_clinic.dart';
 import 'package:flutter_dentist_app/api/http_service_service.dart';
 import 'package:flutter_dentist_app/api/http_service_user.dart';
+import 'package:flutter_dentist_app/cart/Cart.dart';
+import 'package:flutter_dentist_app/model/Clinic.dart';
+import 'package:flutter_dentist_app/model/Service.dart';
 import 'package:flutter_dentist_app/screens/main/main_widget.dart';
 import 'package:flutter_dentist_app/screens/welcome/register.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -104,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                           .login(username, password)
                           .then(
                             (value) => {
+                              cart.userID = value.id,
                               Fluttertoast.showToast(
                                 msg: 'Login Successful',
                                 toastLength: Toast.LENGTH_LONG,
@@ -112,20 +116,24 @@ class _LoginPageState extends State<LoginPage> {
                                 textColor: Colors.white,
                                 fontSize: 16.0,
                               ),
-                              HttpServiceClinic().getClinics().then((clinics) =>
-                                  {
-                                    HttpServiceListService().getServices().then(
-                                          (services) => Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => MainWidget(
-                                                clinics: clinics,
-                                                services: services,
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                  })
+                              HttpServiceClinic()
+                                  .getClinics()
+                                  .then((clinics) => {
+                                        listClinicsInstance = clinics,
+                                        HttpServiceListService()
+                                            .getServices()
+                                            .then((services) => {
+                                                  listServiceInstance =
+                                                      services,
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MainWidget(),
+                                                    ),
+                                                  ),
+                                                })
+                                      })
                             },
                           )
                           .catchError(

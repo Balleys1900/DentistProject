@@ -13,8 +13,7 @@ class PageBookingCalendar extends StatefulWidget {
 
 class _PageBookingCalendarState extends State<PageBookingCalendar> {
   CalendarController _calendarController = CalendarController();
-  InstanceTime instanceTime = InstanceTime();
-  bool isSelected = false;
+  InstanceTime instanceTime = InstanceTime(); //
   @override
   void dispose() {
     _calendarController.dispose();
@@ -33,6 +32,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
           child: Column(
             children: [
               TableCalendar(
+                startDay: DateTime.now(),
                 calendarController: _calendarController,
                 initialCalendarFormat: CalendarFormat.week,
                 startingDayOfWeek: StartingDayOfWeek.monday,
@@ -60,6 +60,8 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
                 daysOfWeekStyle: DaysOfWeekStyle(
                     weekendStyle: TextStyle(color: Colors.white),
                     weekdayStyle: TextStyle(color: Colors.white)),
+                onDaySelected: (day, events, holidays) =>
+                    {print(day.day), print(day.month), print(day.year)},
               ),
               SizedBox(
                 height: 5,
@@ -100,38 +102,6 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
             ],
           ),
         ),
-        // Expanded(
-        //   child: Container(
-        //     padding: EdgeInsets.all(20),
-        //     decoration: BoxDecoration(
-        //         borderRadius: BorderRadius.only(
-        //             topLeft: Radius.circular(40),
-        //             topRight: Radius.circular(40)),
-        //         color: Colors.white),
-        //     child: Container(
-        //       child: SingleChildScrollView(
-        //         child: Column(
-        //           children: [
-        //             Row(
-        //               children: [
-        //                 Text(
-        //                   "18 April 2020",
-        //                   style: TextStyle(color: Colors.grey),
-        //                 )
-        //               ],
-        //             ),
-        //             SizedBox(
-        //               height: 15,
-        //             ),
-        //             Column(
-        //               children: [],
-        //             )
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // )
       ],
     );
   }

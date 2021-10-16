@@ -1,4 +1,5 @@
 class Cart {
+  String userID = '';
   String idClinic = '';
   List<dynamic> cartService = [];
 

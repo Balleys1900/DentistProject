@@ -40,6 +40,14 @@ class ServiceDetail extends StatelessWidget {
                   cart.changeCartItem(clinic.id, service);
                   Fluttertoast.showToast(msg: 'Thay đổi giỏ hàng thành công');
                   Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PageBookingItem(
+                        clinic: clinic,
+                      ),
+                    ),
+                  );
                 },
               ),
               TextButton(

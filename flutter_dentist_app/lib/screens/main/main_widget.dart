@@ -7,10 +7,65 @@ import 'package:flutter_dentist_app/screens/main/home/main_service_location.dart
 import 'package:flutter_dentist_app/screens/main/home/main_service_promotion.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_service_rating.dart';
 
-class MainWidget extends StatelessWidget {
+class MainWidget extends StatefulWidget {
+  const MainWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _MainWidgetState createState() => _MainWidgetState();
+}
+
+class _MainWidgetState extends State<MainWidget> {
+  int _selectedIndex = 0;
+  List<Widget> _widgetOptions = <Widget>[
+    MainScreen(clinics: listClinicsInstance, services: listServiceInstance),
+    Text(
+      'Index 1: Business',
+    ),
+    Text(
+      'Index 2: School',
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: _widgetOptions[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: 'History',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.amber[800],
+          onTap: _onItemTapped,
+        ),
+      ),
+    );
+  }
+}
+
+class MainScreen extends StatelessWidget {
   final List<Clinic> clinics;
   final List<Service> services;
-  const MainWidget({
+  const MainScreen({
     Key? key,
     required this.clinics,
     required this.services,
@@ -18,97 +73,59 @@ class MainWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.only(left: 15),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      margin: EdgeInsets.only(left: 15),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Xin Chào, Dann',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.cyan[600],
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () => {},
-                      icon: Icon(
-                        Icons.account_circle,
-                        size: 40,
-                        color: Colors.cyan[600],
-                      ),
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_pin,
-                      size: 20,
-                      color: Colors.redAccent,
-                    ),
-                    Text(
-                      ' Biên Hòa, Việt Nam',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    )
-                  ],
-                ),
-                Divider(
-                  thickness: 1,
-                ),
-                PreferredSize(
-                  preferredSize: Size(0, 150),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 2, bottom: 2),
-                    padding: EdgeInsets.only(top: 1, bottom: 1),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey[300],
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Material(
-                        color: Colors.grey[300],
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Icon(Icons.search, color: Colors.grey),
-                            Expanded(
-                              child: TextField(
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                                decoration: InputDecoration.collapsed(
-                                  hintText: 'Tìm dịch vụ',
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                Text(
+                  'Xin Chào, Dann',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.cyan[600],
                   ),
                 ),
-                MainMenu(
-                  clinics: clinics,
-                  services: services,
-                ),
-                MainServicePromotion(clinics: clinics),
-                MainServiceLocation(clinics: clinics),
-                MainServiceRating(clinics: clinics),
+                IconButton(
+                  onPressed: () => {},
+                  icon: Icon(
+                    Icons.account_circle,
+                    size: 40,
+                    color: Colors.cyan[600],
+                  ),
+                )
               ],
             ),
-          ),
+            Row(
+              children: [
+                Icon(
+                  Icons.location_pin,
+                  size: 20,
+                  color: Colors.redAccent,
+                ),
+                Text(
+                  ' Biên Hòa, Việt Nam',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                )
+              ],
+            ),
+            Divider(
+              thickness: 1,
+            ),
+            MainMenu(
+              clinics: clinics,
+              services: services,
+            ),
+            MainServicePromotion(clinics: clinics),
+            MainServiceLocation(clinics: clinics),
+            MainServiceRating(clinics: clinics),
+          ],
         ),
       ),
     );
