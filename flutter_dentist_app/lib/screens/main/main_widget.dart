@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/model/Service.dart';
+import 'package:flutter_dentist_app/screens/history/historyBooking.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_menu.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_service_location.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_service_promotion.dart';
@@ -23,9 +24,7 @@ class _MainWidgetState extends State<MainWidget> {
     Text(
       'Index 1: Business',
     ),
-    Text(
-      'Index 2: School',
-    ),
+    HistoryBooking(),
   ];
 
   void _onItemTapped(int index) {

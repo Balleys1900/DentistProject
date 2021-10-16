@@ -109,9 +109,9 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
   clinicTiming(int ID, String time, String status) {
     if (status == 'default') {
       return new Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(top: 10, right: 8, left: 8),
         decoration: BoxDecoration(
-          color: Colors.black12,
+          color: Colors.cyan[100],
           borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
@@ -122,7 +122,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
               margin: EdgeInsets.only(right: 2),
               child: Icon(
                 Icons.access_time,
-                color: Colors.black,
+                color: Colors.black54,
                 // size: 18,
               ),
             ),
@@ -134,7 +134,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
                 child: Text(
                   time,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black54,
                     fontSize: 17,
                   ),
                 ),
@@ -145,7 +145,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
       );
     } else if (status == 'active') {
       return new Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(top: 10, right: 8, left: 8),
         decoration: BoxDecoration(
           color: Colors.cyan[600],
           borderRadius: BorderRadius.circular(5),
@@ -182,9 +182,9 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
       );
     }
     return new Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: 10, right: 8, left: 8),
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: Colors.black12,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Row(

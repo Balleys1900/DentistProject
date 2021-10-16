@@ -11,6 +11,7 @@ class InstanceTime {
     Time(ID: 7, time: '2:30 PM', status: 'default'),
     Time(ID: 8, time: '3:30 PM', status: 'default'),
     Time(ID: 9, time: '4:30 PM', status: 'default'),
+    Time(ID: 10, time: '5:30 PM', status: 'default'),
   ];
 
   void changeStatusActive(int id) {

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
+import 'package:flutter_dentist_app/cart/Steps.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/feedback/rating_feedback.dart';
