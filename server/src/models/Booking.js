@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const BookingSchema = new Schema({
-  userId: String,
+  user: {
+    username: String,
+    name: String,
+    address: String,
+    avatar: String,
+  },
   services: [
     {
       name: String,

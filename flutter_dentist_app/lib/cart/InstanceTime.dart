@@ -30,7 +30,7 @@ class InstanceTime {
 
   void changeStatusDay(DateTime seletedDate) {
     this.date = seletedDate;
-    if (seletedDate.difference(DateTime.now()).inDays == 0)
+    if (seletedDate.day - DateTime.now().day == 0)
       listTime.forEach((time) {
         if (time.hour <= DateTime.now().hour) time.status = "inactive";
       });
@@ -39,7 +39,6 @@ class InstanceTime {
   }
 
   void changeStatusInactive(List<String> timeBooking) {
-    print(timeBooking);
     if (timeBooking.length != 0)
       listTime.forEach((time) {
         if (timeBooking.contains(time.time)) time.status = "inactive";

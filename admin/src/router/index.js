@@ -46,6 +46,11 @@ const routes = [
         name: 'Setting',
         component: () => import('@/pages/dashboard/Setting.vue'),
       },
+      {
+        path: 'booking',
+        name: 'Booking',
+        component: () => import('@/pages/dashboard/Booking.vue'),
+      },
     ],
   },
 ];

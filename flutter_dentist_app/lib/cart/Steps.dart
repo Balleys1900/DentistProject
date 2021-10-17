@@ -83,9 +83,15 @@ class _StepProgressState extends State<StepProgress> {
                 'rating': widget.clinic.rating,
                 'address': widget.clinic.address,
               };
+              dynamic userBooking = {
+                'username': cart.user.username,
+                'name': cart.user.name,
+                'address': cart.user.address,
+                'avatar': cart.user.avatar,
+              };
               HttpServiceBooking()
                   .createNewBooking(
-                cart.userID,
+                userBooking,
                 clinicBooking,
                 cart.cartService,
                 new DateFormat('dd-MM-yyyy').format(DateTime.now()),

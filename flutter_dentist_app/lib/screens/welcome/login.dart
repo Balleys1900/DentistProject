@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                           .login(username, password)
                           .then(
                             (value) => {
-                              cart.userID = value.id,
+                              cart.user = value,
                               Fluttertoast.showToast(
                                 msg: 'Login Successful',
                                 toastLength: Toast.LENGTH_LONG,

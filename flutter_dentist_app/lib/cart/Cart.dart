@@ -1,5 +1,7 @@
+import 'package:flutter_dentist_app/model/User.dart';
+
 class Cart {
-  String userID = '';
+  late User user;
   String idClinic = '';
   List<dynamic> cartService = [];
 

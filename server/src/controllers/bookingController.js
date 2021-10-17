@@ -1,32 +1,31 @@
 const Booking = require('../models/Booking');
+const User = require('../models/User');
 
 exports.createNewBooking = async (req, res) => {
   const booking = req.body;
-  console.log(booking);
   const result = await Booking.findOne({
     timeAppointment: booking.timeAppointment,
     dateAppointment: booking.dateAppointment,
   }).exec();
-  console.log(result);
   if (!result) {
     const reception = await Booking.create({
       ...booking,
     });
-    console.log(reception);
     return res.status(201).json({ status: 'success', data: reception });
   } else res.status(400).json({ status: 'failed', message: 'Time Invalid' });
 };
 
 exports.getHistoryBooking = async (req, res) => {
-  const { userId } = req.params;
-  console.log(userId);
+  const { username } = req.params;
   const result = await Booking.find({
-    userId: userId,
+    'user.username': username,
   });
-  console.log(result);
-  if (!result) {
-    return res.status(201).json({ status: 'success', data: result });
-  } else res.status(400).json({ status: 'failed', message: 'Time Invalid' });
+  res.status(200).json({ status: 'success', data: result });
+};
+exports.getAllBooking = async (req, res) => {
+  const result = await Booking.find();
+
+  return res.status(201).json({ status: 'success', data: result });
 };
 
 exports.getTimeAvailable = async (req, res) => {

@@ -25,6 +25,7 @@ export default {
         { text: 'Home', icon: 'el-icon-s-home', path: '/dash-board' },
         { text: 'Clinic', icon: 'el-icon-school', path: '/dash-board/clinic' },
         { text: 'User', icon: 'el-icon-user-solid', path: '/dash-board/user' },
+        { text: 'Booking', icon: 'el-icon-shopping-cart-2', path: '/dash-board/booking' },
         { text: 'Setting', icon: 'el-icon-s-tools', path: '/dash-board/setting' },
       ],
     };
