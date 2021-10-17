@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/api/http_service_booking.dart';
+import 'package:flutter_dentist_app/cart/Cart.dart';
+import 'package:flutter_dentist_app/cart/InstanceTime.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_calendar.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_checkout.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
+import 'package:flutter_dentist_app/screens/main/main_widget.dart';
+import 'package:intl/intl.dart';
 
 class StepProgress extends StatefulWidget {
   final Clinic clinic;
@@ -31,7 +36,7 @@ class _StepProgressState extends State<StepProgress> {
           state: currentStep == 2 ? StepState.editing : StepState.complete,
           isActive: currentStep >= 2,
           title: Text("Thanh Toán"),
-          content: PageCheckout(),
+          content: PageCheckout(clinic: widget.clinic),
         ),
       ];
 
@@ -71,7 +76,32 @@ class _StepProgressState extends State<StepProgress> {
                 currentStep += 1;
               });
             } else {
-              print('Submited');
+              dynamic clinicBooking = {
+                'name': widget.clinic.name,
+                'image': widget.clinic.image,
+                'distance': widget.clinic.distance,
+                'rating': widget.clinic.rating,
+                'address': widget.clinic.address,
+              };
+              HttpServiceBooking()
+                  .createNewBooking(
+                cart.userID,
+                clinicBooking,
+                cart.cartService,
+                new DateFormat('dd-MM-yyyy').format(DateTime.now()),
+                instanceTime.timeSelect.time,
+                new DateFormat('dd-MM-yyyy').format(instanceTime.date),
+              )
+                  .then((value) {
+                cart.resetCart();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => MainWidget(),
+                    ),
+                    (route) => false);
+              }).catchError(
+                      (e) => print('Booking failed. please pick another time'));
             }
           },
           onStepCancel: () {
@@ -144,7 +174,7 @@ class _StepProgressState extends State<StepProgress> {
                                 ),
                               )
                             : const Text(
-                                'Thanh toán',
+                                'Tiếp Tục',
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.white,

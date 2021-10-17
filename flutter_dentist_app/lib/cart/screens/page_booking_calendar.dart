@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/api/http_service_booking.dart';
 import 'package:flutter_dentist_app/cart/InstanceTime.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:intl/intl.dart';
 
 class PageBookingCalendar extends StatefulWidget {
   PageBookingCalendar({
@@ -13,7 +15,18 @@ class PageBookingCalendar extends StatefulWidget {
 
 class _PageBookingCalendarState extends State<PageBookingCalendar> {
   CalendarController _calendarController = CalendarController();
-  InstanceTime instanceTime = InstanceTime(); //
+  @override
+  void initState() {
+    super.initState();
+    instanceTime.changeStatusDay(DateTime.now());
+    HttpServiceBooking()
+        .getTimeAvailable(
+            new DateFormat('dd-MM-yyyy').format(instanceTime.date))
+        .then((value) => setState(() {
+              instanceTime.changeStatusInactive(value);
+            }));
+  }
+
   @override
   void dispose() {
     _calendarController.dispose();
@@ -60,8 +73,17 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
                 daysOfWeekStyle: DaysOfWeekStyle(
                     weekendStyle: TextStyle(color: Colors.white),
                     weekdayStyle: TextStyle(color: Colors.white)),
-                onDaySelected: (day, events, holidays) =>
-                    {print(day.day), print(day.month), print(day.year)},
+                onDaySelected: (day, events, holidays) => {
+                  setState(() {
+                    instanceTime.changeStatusDay(day);
+                    HttpServiceBooking()
+                        .getTimeAvailable(new DateFormat('dd-MM-yyyy')
+                            .format(instanceTime.date))
+                        .then((value) => setState(() {
+                              instanceTime.changeStatusInactive(value);
+                            }));
+                  }),
+                },
               ),
               SizedBox(
                 height: 5,
@@ -97,7 +119,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
             childAspectRatio: 2.6,
             children: [
               ...instanceTime.listTime
-                  .map((e) => clinicTiming(e.ID, e.time, e.status))
+                  .map((time) => clinicTiming(time))
                   .toList(),
             ],
           ),
@@ -106,8 +128,8 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
     );
   }
 
-  clinicTiming(int ID, String time, String status) {
-    if (status == 'default') {
+  clinicTiming(time) {
+    if (time.status == 'default') {
       return new Container(
         margin: EdgeInsets.only(top: 10, right: 8, left: 8),
         decoration: BoxDecoration(
@@ -129,10 +151,11 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
             Container(
               child: TextButton(
                 onPressed: () => setState(() {
-                  instanceTime.changeStatusActive(ID);
+                  instanceTime.timeSelect = time;
+                  instanceTime.changeStatusActive(time.ID);
                 }),
                 child: Text(
-                  time,
+                  time.time,
                   style: TextStyle(
                     color: Colors.black54,
                     fontSize: 17,
@@ -143,7 +166,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
           ],
         ),
       );
-    } else if (status == 'active') {
+    } else if (time.status == 'active') {
       return new Container(
         margin: EdgeInsets.only(top: 10, right: 8, left: 8),
         decoration: BoxDecoration(
@@ -166,10 +189,10 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
               margin: EdgeInsets.only(right: 2),
               child: TextButton(
                 onPressed: () => setState(() {
-                  instanceTime.changeStatusDefault(ID);
+                  instanceTime.changeStatusDefault(time.ID);
                 }),
                 child: Text(
-                  time,
+                  time.time,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
@@ -204,7 +227,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
             child: TextButton(
               onPressed: () => null,
               child: Text(
-                time,
+                time.time,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
