@@ -41,147 +41,149 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
           ),
           backgroundColor: Colors.white,
         ),
-        body: Container(
-          margin: EdgeInsets.only(left: 13, right: 13),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 20),
-                color: Color(0x14000000),
-                // color: Colors.amber,
-                blurRadius: 15,
-                spreadRadius: 0,
-              )
-            ],
-          ),
-          child: Column(
-            children: [
-              Container(
-                  padding: new EdgeInsets.all(22.0),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 10,
-                      ),
-                      CheckboxListTile(
-                        title: const Text('Tôi có việc đột xuất'),
-                        value: this.valuefirst,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            this.valuefirst = value!;
-                          });
-                        },
-                      ),
-                      CheckboxListTile(
-                        controlAffinity: ListTileControlAffinity.trailing,
-                        title: const Text('Tôi tìm được nha khoa tốt hơn'),
-                        value: this.valuesecond,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            this.valuesecond = value!;
-                          });
-                        },
-                      ),
-                      CheckboxListTile(
-                        title: const Text('Tôi muốn dời lịch đặt'),
-                        value: this.valuethird,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            this.valuethird = value!;
-                          });
-                        },
-                      ),
-                      CheckboxListTile(
-                        title: const Text('Tôi không muốn đặt nữa'),
-                        value: this.valuefourth,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            this.valuefourth = value!;
-                          });
-                        },
-                      ),
-                      CheckboxListTile(
-                        title: const Text('Lí do khác'),
-                        value: this.valuefifth,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            this.valuefifth = value!;
-                          });
-                        },
-                      ),
-                      TextFormField(
-                        minLines:
-                            6, // any number you need (It works as the rows for the textarea)
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: 12, right: 12, top: 8, bottom: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              height: 50,
-                              width: 190,
-                              child: ElevatedButton(
-                                onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HistoryBooking(),
-                                  ),
-                                ),
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor: Colors.orange,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(8),
-                                    ),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Quay lại',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 50,
-                              width: 190,
-                              child: ElevatedButton(
-                                onPressed: () => {},
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor: Colors.orange,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(8),
-                                    ),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Xác nhận',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+        body: ListView(scrollDirection: Axis.vertical, children: [
+          Container(
+            margin: EdgeInsets.only(left: 13, right: 13),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 20),
+                  color: Color(0x14000000),
+                  // color: Colors.amber,
+                  blurRadius: 15,
+                  spreadRadius: 0,
+                )
+              ],
+            ),
+            child: Column(
+              children: [
+                Container(
+                    padding: new EdgeInsets.all(22.0),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 10,
                         ),
-                      ),
-                    ],
-                  )),
-            ],
+                        CheckboxListTile(
+                          title: const Text('Tôi có việc đột xuất'),
+                          value: this.valuefirst,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              this.valuefirst = value!;
+                            });
+                          },
+                        ),
+                        CheckboxListTile(
+                          controlAffinity: ListTileControlAffinity.trailing,
+                          title: const Text('Tôi tìm được nha khoa tốt hơn'),
+                          value: this.valuesecond,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              this.valuesecond = value!;
+                            });
+                          },
+                        ),
+                        CheckboxListTile(
+                          title: const Text('Tôi muốn dời lịch đặt'),
+                          value: this.valuethird,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              this.valuethird = value!;
+                            });
+                          },
+                        ),
+                        CheckboxListTile(
+                          title: const Text('Tôi không muốn đặt nữa'),
+                          value: this.valuefourth,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              this.valuefourth = value!;
+                            });
+                          },
+                        ),
+                        CheckboxListTile(
+                          title: const Text('Lí do khác'),
+                          value: this.valuefifth,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              this.valuefifth = value!;
+                            });
+                          },
+                        ),
+                        TextFormField(
+                          minLines:
+                              2, // any number you need (It works as the rows for the textarea)
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: 12, right: 12, top: 8, bottom: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                height: 50,
+                                width: 150,
+                                child: ElevatedButton(
+                                  onPressed: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => HistoryBooking(),
+                                    ),
+                                  ),
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor: Colors.orange,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Quay lại',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 50,
+                                width: 150,
+                                child: ElevatedButton(
+                                  onPressed: () => {},
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor: Colors.orange,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Xác nhận',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
+              ],
+            ),
           ),
-        ),
+        ]),
       ),
     );
   }
