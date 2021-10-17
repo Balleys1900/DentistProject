@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/screens/finalPage/cancel_Booking.dart';
 import 'package:flutter_dentist_app/screens/history/historyBooking.dart';
 
 class CancelHistoryService extends StatefulWidget {
@@ -13,7 +14,6 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
   bool valuesecond = false;
   bool valuethird = false;
   bool valuefourth = false;
-  bool valuefifth = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,12 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                           width: 10,
                         ),
                         CheckboxListTile(
-                          title: const Text('Tôi có việc đột xuất'),
+                          title: const Text(
+                            'Tôi có việc đột xuất',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
                           value: this.valuefirst,
                           onChanged: (bool? value) {
                             setState(() {
@@ -77,7 +82,12 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                         ),
                         CheckboxListTile(
                           controlAffinity: ListTileControlAffinity.trailing,
-                          title: const Text('Tôi tìm được nha khoa tốt hơn'),
+                          title: const Text(
+                            'Tôi tìm được nha khoa tốt hơn',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
                           value: this.valuesecond,
                           onChanged: (bool? value) {
                             setState(() {
@@ -86,7 +96,12 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                           },
                         ),
                         CheckboxListTile(
-                          title: const Text('Tôi muốn dời lịch đặt'),
+                          title: const Text(
+                            'Tôi muốn dời lịch đặt',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
                           value: this.valuethird,
                           onChanged: (bool? value) {
                             setState(() {
@@ -95,7 +110,12 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                           },
                         ),
                         CheckboxListTile(
-                          title: const Text('Tôi không muốn đặt nữa'),
+                          title: const Text(
+                            'Tôi không muốn đặt nữa',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
                           value: this.valuefourth,
                           onChanged: (bool? value) {
                             setState(() {
@@ -103,14 +123,14 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                             });
                           },
                         ),
-                        CheckboxListTile(
-                          title: const Text('Lí do khác'),
-                          value: this.valuefifth,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              this.valuefifth = value!;
-                            });
-                          },
+                        Container(
+                          margin: EdgeInsets.only(right: 220, top: 15),
+                          child: Text(
+                            'Lí do khác',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
                         ),
                         TextFormField(
                           minLines:
@@ -156,7 +176,12 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                                 height: 50,
                                 width: 150,
                                 child: ElevatedButton(
-                                  onPressed: () => {},
+                                  onPressed: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CancelBooking(),
+                                    ),
+                                  ),
                                   style: OutlinedButton.styleFrom(
                                     backgroundColor: Colors.orange,
                                     shape: const RoundedRectangleBorder(

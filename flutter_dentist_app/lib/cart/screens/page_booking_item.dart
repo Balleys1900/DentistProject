@@ -127,12 +127,8 @@ class _PageBookingItem extends State<PageBookingItem> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Icon(
-                        Icons.document_scanner_rounded,
-                        size: 30,
-                      ),
                       OutlinedButton(
                         onPressed: () {
                           Navigator.push(

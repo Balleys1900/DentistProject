@@ -4,9 +4,8 @@ import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/InstanceTime.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_calendar.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_checkout.dart';
-import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
-import 'package:flutter_dentist_app/screens/main/main_widget.dart';
+import 'package:flutter_dentist_app/screens/finalPage/success_Booking.dart';
 import 'package:intl/intl.dart';
 
 class StepProgress extends StatefulWidget {
@@ -103,7 +102,7 @@ class _StepProgressState extends State<StepProgress> {
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => MainWidget(),
+                      builder: (BuildContext context) => SuccessBooking(),
                     ),
                     (route) => false);
               }).catchError(

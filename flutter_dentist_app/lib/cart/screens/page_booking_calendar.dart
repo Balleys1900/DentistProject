@@ -22,9 +22,13 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
     HttpServiceBooking()
         .getTimeAvailable(
             new DateFormat('dd-MM-yyyy').format(instanceTime.date))
-        .then((value) => setState(() {
+        .then(
+          (value) => setState(
+            () {
               instanceTime.changeStatusInactive(value);
-            }));
+            },
+          ),
+        );
   }
 
   @override
@@ -103,7 +107,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
         Container(
           margin: EdgeInsets.only(top: 12),
           child: Text(
-            'Thời gian hợp lệ',
+            'Thời gian phù hợp',
             style: TextStyle(
               color: Color(0xff363636),
               fontSize: 25,

@@ -116,24 +116,25 @@ class _LoginPageState extends State<LoginPage> {
                                 textColor: Colors.white,
                                 fontSize: 16.0,
                               ),
-                              HttpServiceClinic()
-                                  .getClinics()
-                                  .then((clinics) => {
-                                        listClinicsInstance = clinics,
-                                        HttpServiceListService()
-                                            .getServices()
-                                            .then((services) => {
-                                                  listServiceInstance =
-                                                      services,
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          MainWidget(),
-                                                    ),
-                                                  ),
-                                                })
-                                      })
+                              HttpServiceClinic().getClinics().then(
+                                    (clinics) => {
+                                      listClinicsInstance = clinics,
+                                      HttpServiceListService()
+                                          .getServices()
+                                          .then(
+                                            (services) => {
+                                              listServiceInstance = services,
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      MainWidget(),
+                                                ),
+                                              ),
+                                            },
+                                          )
+                                    },
+                                  )
                             },
                           )
                           .catchError(

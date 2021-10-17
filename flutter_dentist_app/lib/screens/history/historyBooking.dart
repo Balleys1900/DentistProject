@@ -15,17 +15,19 @@ class HistoryBooking extends StatefulWidget {
 }
 
 class _HistoryBookingState extends State<HistoryBooking> {
-  bool isVisible = true;
+  bool isVisible = false;
   List<Booking> listBooking = [];
   @override
   void initState() {
     super.initState();
 
-    HttpServiceBooking()
-        .getAllBookingByUsername(cart.user.username)
-        .then((value) => setState(() {
+    HttpServiceBooking().getAllBookingByUsername(cart.user.username).then(
+          (value) => setState(
+            () {
               listBooking = value;
-            }));
+            },
+          ),
+        );
   }
 
   @override
