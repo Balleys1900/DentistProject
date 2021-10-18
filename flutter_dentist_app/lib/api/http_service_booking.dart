@@ -36,6 +36,27 @@ class HttpServiceBooking {
     return false;
   }
 
+  Future<bool> cancelBookingByID(
+    String id,
+    String message,
+  ) async {
+    Map data = {
+      'id': id,
+      'message': message,
+    };
+    Response res = await put(
+      Uri.parse("http://10.0.2.2:3000/api/v1/order"),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(data),
+    );
+    Map<String, dynamic> result = jsonDecode(res.body);
+    if (res.statusCode == 200) {
+      dynamic body = result["data"];
+      return true;
+    }
+    return false;
+  }
+
   Future<List<String>> getTimeAvailable(
     String date,
   ) async {

@@ -44,16 +44,16 @@ class _HistoryBookingState extends State<HistoryBooking> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          leading: IconButton(
-            onPressed: () => {
-              Navigator.pop(context),
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Colors.black,
-            ),
-          ),
+          // leading: IconButton(
+          //   onPressed: () => {
+          //     Navigator.pop(context),
+          //   },
+          //   icon: Icon(
+          //     Icons.arrow_back,
+          //     size: 30,
+          //     color: Colors.black,
+          //   ),
+          // ),
           backgroundColor: Colors.white,
         ),
         body: ListView(
@@ -245,13 +245,6 @@ class HistoryCartBooking extends StatelessWidget {
         ),
         ...booking.services.map((s) => ServiceBookingCart(service: s)).toList(),
         Container(
-          margin: EdgeInsets.only(top: 12, bottom: 5, left: 20, right: 20),
-          child: Divider(
-            color: Colors.black38,
-            height: 1,
-          ),
-        ),
-        Container(
           margin: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
           child: Divider(
             color: Colors.black38,
@@ -300,7 +293,8 @@ class HistoryCartBooking extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsHistoryBooked(),
+                  builder: (context) =>
+                      DetailsHistoryBooked(bookingId: booking.id),
                 ),
               ),
               style: OutlinedButton.styleFrom(
@@ -422,13 +416,6 @@ class HistoryCartBooked extends StatelessWidget {
           ),
         ),
         ...booking.services.map((s) => ServiceBookingCart(service: s)).toList(),
-        Container(
-          margin: EdgeInsets.only(top: 12, bottom: 5, left: 20, right: 20),
-          child: Divider(
-            color: Colors.black38,
-            height: 1,
-          ),
-        ),
         Container(
           margin: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
           child: Divider(

@@ -4,7 +4,11 @@ import 'package:flutter_dentist_app/screens/history/cancelHistoryService.dart';
 import 'package:flutter_dentist_app/screens/history/historyBooking.dart';
 
 class DetailsHistoryBooked extends StatelessWidget {
-  const DetailsHistoryBooked({Key? key}) : super(key: key);
+  final String bookingId;
+  const DetailsHistoryBooked({
+    Key? key,
+    required this.bookingId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

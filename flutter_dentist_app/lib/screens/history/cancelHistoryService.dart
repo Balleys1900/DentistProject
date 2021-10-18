@@ -10,10 +10,13 @@ class CancelHistoryService extends StatefulWidget {
 }
 
 class _CancelHistoryServiceState extends State<CancelHistoryService> {
-  bool valuefirst = false;
-  bool valuesecond = false;
-  bool valuethird = false;
-  bool valuefourth = false;
+  Map<String, bool> values = {
+    'Tôi có việc đột xuất': false,
+    'Tôi tìm được nha khoa tốt hơn': false,
+    'Tôi muốn dời lịch đặt': false,
+    'Tôi không muốn đặt lịch nữa': false,
+    'Lí do khác': false,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -41,174 +44,127 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
           ),
           backgroundColor: Colors.white,
         ),
-        body: ListView(scrollDirection: Axis.vertical, children: [
-          Container(
-            margin: EdgeInsets.only(left: 13, right: 13),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 20),
-                  color: Color(0x14000000),
-                  // color: Colors.amber,
-                  blurRadius: 15,
-                  spreadRadius: 0,
-                )
-              ],
-            ),
-            child: Column(
-              children: [
-                Container(
-                    padding: new EdgeInsets.all(22.0),
+        body: ListView(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 13, right: 13, top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 20),
+                          color: Color(0x14000000),
+                          // color: Colors.amber,
+                          blurRadius: 15,
+                          spreadRadius: 0,
+                        )
+                      ],
+                    ),
                     child: Column(
-                      children: <Widget>[
+                      children: [
+                        ListView(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          children: values.keys.map((String key) {
+                            return new CheckboxListTile(
+                              title: new Text(key),
+                              value: values[key],
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  values[key] = value!;
+                                });
+                              },
+                            );
+                          }).toList(),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: TextFormField(
+                            decoration:
+                                InputDecoration(hintText: 'Nhập lý do khác...'),
+                            minLines:
+                                6, // any number you need (It works as the rows for the textarea)
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: 12, right: 12, top: 8, bottom: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
                         SizedBox(
-                          width: 10,
-                        ),
-                        CheckboxListTile(
-                          title: const Text(
-                            'Tôi có việc đột xuất',
-                            style: TextStyle(
-                              fontSize: 18,
+                          height: 50,
+                          width: 150,
+                          child: ElevatedButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HistoryBooking(),
+                              ),
                             ),
-                          ),
-                          value: this.valuefirst,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              this.valuefirst = value!;
-                            });
-                          },
-                        ),
-                        CheckboxListTile(
-                          controlAffinity: ListTileControlAffinity.trailing,
-                          title: const Text(
-                            'Tôi tìm được nha khoa tốt hơn',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                          value: this.valuesecond,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              this.valuesecond = value!;
-                            });
-                          },
-                        ),
-                        CheckboxListTile(
-                          title: const Text(
-                            'Tôi muốn dời lịch đặt',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                          value: this.valuethird,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              this.valuethird = value!;
-                            });
-                          },
-                        ),
-                        CheckboxListTile(
-                          title: const Text(
-                            'Tôi không muốn đặt nữa',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                          value: this.valuefourth,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              this.valuefourth = value!;
-                            });
-                          },
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 220, top: 15),
-                          child: Text(
-                            'Lí do khác',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        TextFormField(
-                          minLines:
-                              2, // any number you need (It works as the rows for the textarea)
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: 12, right: 12, top: 8, bottom: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                height: 50,
-                                width: 150,
-                                child: ElevatedButton(
-                                  onPressed: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HistoryBooking(),
-                                    ),
-                                  ),
-                                  style: OutlinedButton.styleFrom(
-                                    backgroundColor: Colors.orange,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    'Quay lại',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(8),
                                 ),
                               ),
-                              SizedBox(
-                                height: 50,
-                                width: 150,
-                                child: ElevatedButton(
-                                  onPressed: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => CancelBooking(),
-                                    ),
-                                  ),
-                                  style: OutlinedButton.styleFrom(
-                                    backgroundColor: Colors.orange,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    'Xác nhận',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
+                            ),
+                            child: Text(
+                              'Quay lại',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50,
+                          width: 150,
+                          child: ElevatedButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CancelBooking(),
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(8),
                                 ),
                               ),
-                            ],
+                            ),
+                            child: Text(
+                              'Xác nhận',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ],
-                    )),
-              ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
