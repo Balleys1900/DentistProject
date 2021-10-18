@@ -91,12 +91,10 @@ class _HistoryBookingState extends State<HistoryBooking> {
                           DateTime dayAppointment = new DateFormat('dd-MM-yyyy')
                               .parse(element.dateAppointment);
 
-                          if (dayAppointment
-                                  .difference(DateTime.now())
-                                  .inDays ==
-                              0) {
+                          if (dayAppointment.day == DateTime.now().day) {
                             return element.hour > DateTime.now().hour;
                           }
+
                           return dayAppointment.isAfter(DateTime.now());
                         })
                         .map((b) => HistoryCartBooking(booking: b))
