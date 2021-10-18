@@ -5,6 +5,7 @@ import 'package:flutter_dentist_app/cart/InstanceTime.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_calendar.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_checkout.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
+import 'package:flutter_dentist_app/screens/finalPage/cancel_Booking.dart';
 import 'package:flutter_dentist_app/screens/finalPage/success_Booking.dart';
 import 'package:intl/intl.dart';
 
@@ -96,17 +97,27 @@ class _StepProgressState extends State<StepProgress> {
                 new DateFormat('dd-MM-yyyy').format(DateTime.now()),
                 instanceTime.timeSelect.time,
                 new DateFormat('dd-MM-yyyy').format(instanceTime.date),
+                instanceTime.timeSelect.hour,
               )
-                  .then((value) {
-                cart.resetCart();
-                Navigator.pushAndRemoveUntil(
+                  .then(
+                (value) {
+                  cart.resetCart();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => SuccessBooking(),
+                      ),
+                      (route) => false);
+                },
+              ).catchError(
+                // ignore: invalid_return_type_for_catch_error
+                (e) => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => SuccessBooking(),
+                      builder: (BuildContext context) => CancelBooking(),
                     ),
-                    (route) => false);
-              }).catchError(
-                      (e) => print('Booking failed. please pick another time'));
+                    (route) => false),
+              );
             }
           },
           onStepCancel: () {

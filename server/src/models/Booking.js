@@ -26,6 +26,7 @@ const BookingSchema = new Schema({
   dateRequest: String,
   dateAppointment: String,
   timeAppointment: String,
+  hour: Number,
   status: Boolean,
   message: String,
 });

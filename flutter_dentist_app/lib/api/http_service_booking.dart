@@ -10,6 +10,7 @@ class HttpServiceBooking {
     String dateRequest,
     String timeAppointment,
     String dateAppointment,
+    num hour,
   ) async {
     Map data = {
       'user': user,
@@ -18,6 +19,7 @@ class HttpServiceBooking {
       'dateRequest': dateRequest,
       'timeAppointment': timeAppointment,
       'dateAppointment': dateAppointment,
+      'hour': hour,
       'status': true,
       'message': 'Đặt lịch thành công',
     };
@@ -29,7 +31,6 @@ class HttpServiceBooking {
     Map<String, dynamic> result = jsonDecode(res.body);
     if (res.statusCode == 201) {
       dynamic body = result["data"];
-      print(body);
       return true;
     }
     return false;
@@ -60,7 +61,6 @@ class HttpServiceBooking {
       List<Booking> bookings =
           body.map((dynamic item) => Booking.fromJson(item)).toList();
 
-      print(bookings);
       return bookings;
     } else {
       throw "Cannot get Booking";

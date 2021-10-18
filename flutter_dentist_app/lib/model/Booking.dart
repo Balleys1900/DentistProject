@@ -5,7 +5,8 @@ class Booking {
   final dynamic clinic;
   final String dateRequest;
   final String dateAppointment;
-  final String timeAppoinment;
+  final String timeAppointment;
+  final num hour;
   final bool status;
   final String message;
 
@@ -16,7 +17,8 @@ class Booking {
     required this.clinic,
     required this.dateRequest,
     required this.dateAppointment,
-    required this.timeAppoinment,
+    required this.timeAppointment,
+    required this.hour,
     required this.status,
     required this.message,
   });
@@ -29,7 +31,8 @@ class Booking {
       clinic: json['clinic'],
       dateRequest: json['dateRequest'],
       dateAppointment: json['dateAppointment'],
-      timeAppoinment: json['timeAppoinment'],
+      timeAppointment: json['timeAppointment'],
+      hour: json['hour'],
       status: json['status'],
       message: json['message'],
     );

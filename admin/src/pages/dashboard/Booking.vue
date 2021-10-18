@@ -11,8 +11,8 @@
       </template>
     </el-table-column>
     <el-table-column prop="dateAppointment" label="Date" width="120"> </el-table-column>
-    <el-table-column prop="timeAppointment" label="Time" width="80"> </el-table-column>
-    <el-table-column prop="clinic" label="Address" width="350">
+    <el-table-column prop="timeAppointment" label="Time" width="100"> </el-table-column>
+    <el-table-column prop="clinic" label="Address" width="360">
       <template #default="scope">
         <p>{{ scope.row.clinic.address }}</p>
       </template>

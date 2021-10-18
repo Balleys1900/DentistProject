@@ -14,10 +14,11 @@ class SuccessBooking extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(top: 20, bottom: 30),
-              child: FittedBox(
-                child: Image.asset('assets/successImage.png'),
+              child: Image.asset(
+                'assets/successImage.png',
                 fit: BoxFit.fill,
               ),
+              // fit: BoxFit.fill,
             ),
             Container(
               margin: EdgeInsets.only(top: 50),
