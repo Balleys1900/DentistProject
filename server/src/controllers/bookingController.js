@@ -1,5 +1,4 @@
 const Booking = require('../models/Booking');
-const User = require('../models/User');
 
 exports.createNewBooking = async (req, res) => {
   const booking = req.body;
@@ -39,4 +38,14 @@ exports.getTimeAvailable = async (req, res) => {
     return res.status(200).json({ status: 'success', data: dates });
   }
   res.status(400).json({ status: 'failed', message: 'Time Invalid' });
+};
+
+exports.updateStatusBookingByID = async (req, res) => {
+  const booking = req.body;
+  const result = await Booking.findByIdAndUpdate(booking.id, {
+    $set: { status: false, message: booking.message },
+  });
+  console.log(result);
+
+  return res.status(200).json({ status: 'success', data: result });
 };

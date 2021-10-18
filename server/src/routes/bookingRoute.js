@@ -6,6 +6,10 @@ const route = express.Router();
 route.get('/time/:date', Booking.getTimeAvailable);
 route.get('/:username', Booking.getHistoryBooking);
 
-route.route('/').post(Booking.createNewBooking).get(Booking.getAllBooking);
+route
+  .route('/')
+  .post(Booking.createNewBooking)
+  .get(Booking.getAllBooking)
+  .put(Booking.updateStatusBookingByID);
 
 module.exports = route;
