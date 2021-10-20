@@ -182,7 +182,7 @@ class _StepProgressState extends State<StepProgress> {
                         ),
                         child: (isLastStep)
                             ? const Text(
-                                'Thanh toán',
+                                'Đặt lịch',
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.white,

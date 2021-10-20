@@ -6,6 +6,7 @@ import 'package:flutter_dentist_app/api/http_service_booking.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/model/Booking.dart';
 import 'package:flutter_dentist_app/screens/history/detailsHistoryBooked.dart';
+import 'package:flutter_dentist_app/screens/rate/rate.dart';
 import 'package:intl/intl.dart';
 
 class HistoryBooking extends StatefulWidget {
@@ -486,7 +487,12 @@ class HistoryCartBooked extends StatelessWidget {
                 height: 50,
                 width: 170,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RateScreen(),
+                    ),
+                  ),
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     shape: const RoundedRectangleBorder(

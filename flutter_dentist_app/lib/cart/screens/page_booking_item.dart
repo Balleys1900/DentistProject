@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/Steps.dart';
 import 'package:flutter_dentist_app/cart/screens/item_cart.dart';
-import 'package:flutter_dentist_app/cart/screens/page_booking_calendar.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/clinic/clinic_page.dart';
 
@@ -91,10 +90,13 @@ class _PageBookingItem extends State<PageBookingItem> {
                         ),
                         child: ItemCardCart(
                           service: cart.cartService[index],
-                          deleteItem: () => setState(() {
-                            cart.cartService.removeAt(index);
-                            if (cart.cartService.length == 0) cart.resetCart();
-                          }),
+                          deleteItem: () => setState(
+                            () {
+                              cart.cartService.removeAt(index);
+                              if (cart.cartService.length == 0)
+                                cart.resetCart();
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -152,7 +154,8 @@ class _PageBookingItem extends State<PageBookingItem> {
                         text: "Tổng tiền: \n",
                         children: [
                           TextSpan(
-                            text: "💲${cart.sumTotalPrice()}",
+                            text:
+                                "💲${cart.sumTotalPrice().toStringAsFixed(0)}",
                             style: TextStyle(
                               fontSize: 16,
                             ),

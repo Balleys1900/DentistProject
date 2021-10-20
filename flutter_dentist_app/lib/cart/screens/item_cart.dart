@@ -27,20 +27,32 @@ class ItemCardCart extends StatelessWidget {
           ),
         ),
         Container(
-          width: MediaQuery.of(context).size.width - 200,
+          width: MediaQuery.of(context).size.width - 175,
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    service['name'],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 2,
+                  Row(
+                    children: [
+                      Text(
+                        '${service["name"]} ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        maxLines: 2,
+                      ),
+                      Text(
+                        'x ${service["quantity"]}',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black45,
+                        ),
+                        maxLines: 2,
+                      ),
+                    ],
                   ),
                   IconButton(
                     onPressed: () => deleteItem(),
@@ -72,6 +84,12 @@ class ItemCardCart extends StatelessWidget {
                   ),
                 ],
               ),
+              // Text(
+              //   'SL: ${quantity}',
+              //   style: TextStyle(
+              //     fontSize: 18,
+              //   ),
+              // ),
             ],
           ),
         ),
