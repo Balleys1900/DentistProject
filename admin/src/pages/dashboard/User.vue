@@ -52,7 +52,7 @@ export default {
     ...mapActions({
       getUsers: 'user/getUsers',
     }),
-    handleClick(index, users) {
+    handleClick() {
       this.dialogVisible = true;
     },
     handleClose(done) {

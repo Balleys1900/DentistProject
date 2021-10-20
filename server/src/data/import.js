@@ -102,4 +102,4 @@ const deleteDataBooking = async () => {
 // importDataPeople();
 // deleteDataClinic();
 // deleteDataUser();
-deleteDataBooking();
+// deleteDataBooking();

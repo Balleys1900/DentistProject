@@ -14,7 +14,7 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 2500,
+        "price": 1500,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -27,7 +27,7 @@
       {
         "name": "Niềng răng",
         "image": "assets/images/service/imageNiengRang.png",
-        "price": 1500,
+        "price": 1100,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -40,7 +40,7 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 3200,
+        "price": 1200,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -53,7 +53,7 @@
       {
         "name": "Làm trắng răng",
         "image": "assets/images/service/imageLamTrangRang.png",
-        "price": 3500,
+        "price": 500,
         "discount": 20,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -66,7 +66,7 @@
       {
         "name": "Cạo vôi răng",
         "image": "assets/images/service/ImageCaoVoiRang.jpg",
-        "price": 4800,
+        "price": 1800,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -79,7 +79,7 @@
       {
         "name": "Trồng Implant",
         "image": "assets/images/service/imageTrongImplant.png",
-        "price": 2200,
+        "price": 800,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -92,7 +92,7 @@
       {
         "name": "Đính đá",
         "image": "assets/images/service/ImageDinhDaLenRang.jpg",
-        "price": 5000,
+        "price": 1000,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -105,7 +105,7 @@
       {
         "name": "Tháo lắp răng",
         "image": "assets/images/service/imageThaoLapRang.jpg",
-        "price": 3100,
+        "price": 1100,
         "discount": 18,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -118,7 +118,7 @@
       {
         "name": "Chữa nha chu",
         "image": "assets/images/service/imageChuaNhaChu.jpeg",
-        "price": 2000,
+        "price": 600,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -131,7 +131,7 @@
       {
         "name": "Bọc răng sứ",
         "image": "assets/images/service/imageBocRangSu.jpg",
-        "price": 1200,
+        "price": 600,
         "discount": 8,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -144,7 +144,7 @@
       {
         "name": "Chữa nhức răng",
         "image": "assets/images/service/imageChuaNhucRang.jpg",
-        "price": 2600,
+        "price": 1600,
         "discount": 20,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -157,7 +157,7 @@
       {
         "name": "Chữa hở lợi",
         "image": "assets/images/service/imageChuaHoLoi.jpg",
-        "price": 3700,
+        "price": 1700,
         "discount": 26,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -185,7 +185,7 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 2200,
+        "price": 1200,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -198,7 +198,7 @@
       {
         "name": "Niềng răng",
         "image": "assets/images/service/imageNiengRang.png",
-        "price": 3900,
+        "price": 1500,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -211,8 +211,8 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 3500,
-        "discount": 29,
+        "price": 2500,
+        "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
           "Bước 2: Sau khi xong bước 1",
@@ -224,7 +224,7 @@
       {
         "name": "Làm trắng răng",
         "image": "assets/images/service/imageLamTrangRang.png",
-        "price": 3700,
+        "price": 1700,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -237,7 +237,7 @@
       {
         "name": "Cạo vôi răng",
         "image": "assets/images/service/ImageCaoVoiRang.jpg",
-        "price": 1230,
+        "price": 300,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -250,8 +250,8 @@
       {
         "name": "Trồng Implant",
         "image": "assets/images/service/imageTrongImplant.png",
-        "price": 3450,
-        "discount": 23,
+        "price": 1400,
+        "discount": 20,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
           "Bước 2: Sau khi xong bước 1",
@@ -263,7 +263,7 @@
       {
         "name": "Đính đá",
         "image": "assets/images/service/ImageDinhDaLenRang.jpg",
-        "price": 3000,
+        "price": 1200,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -276,7 +276,7 @@
       {
         "name": "Tháo lắp răng",
         "image": "assets/images/service/imageThaoLapRang.jpg",
-        "price": 3400,
+        "price": 1400,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -289,7 +289,7 @@
       {
         "name": "Chữa nha chu",
         "image": "assets/images/service/imageChuaNhaChu.jpeg",
-        "price": 5100,
+        "price": 2000,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -302,7 +302,7 @@
       {
         "name": "Bọc răng sứ",
         "image": "assets/images/service/imageBocRangSu.jpg",
-        "price": 2450,
+        "price": 1100,
         "discount": 18,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -315,7 +315,7 @@
       {
         "name": "Chữa nhức răng",
         "image": "assets/images/service/imageChuaNhucRang.jpg",
-        "price": 2100,
+        "price": 2200,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -328,7 +328,7 @@
       {
         "name": "Chữa hở lợi",
         "image": "assets/images/service/imageChuaHoLoi.jpg",
-        "price": 4650,
+        "price": 2300,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -356,7 +356,7 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 2380,
+        "price": 1200,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -382,7 +382,7 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 3680,
+        "price": 2600,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -447,7 +447,7 @@
       {
         "name": "Tháo lắp răng",
         "image": "assets/images/service/imageThaoLapRang.jpg",
-        "price": 3250,
+        "price": 2250,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -460,7 +460,7 @@
       {
         "name": "Chữa nha chu",
         "image": "assets/images/service/imageChuaNhaChu.jpeg",
-        "price": 3200,
+        "price": 2200,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -473,7 +473,7 @@
       {
         "name": "Bọc răng sứ",
         "image": "assets/images/service/imageBocRangSu.jpg",
-        "price": 4200,
+        "price": 2200,
         "discount": 20,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -499,7 +499,7 @@
       {
         "name": "Chữa hở lợi",
         "image": "assets/images/service/imageChuaHoLoi.jpg",
-        "price": 4000,
+        "price": 1000,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -527,7 +527,7 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 3200,
+        "price": 1200,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -540,7 +540,7 @@
       {
         "name": "Niềng răng",
         "image": "assets/images/service/imageNiengRang.png",
-        "price": 6500,
+        "price": 1500,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -553,7 +553,7 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 7000,
+        "price": 3000,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -566,7 +566,7 @@
       {
         "name": "Làm trắng răng",
         "image": "assets/images/service/imageLamTrangRang.png",
-        "price": 5400,
+        "price": 1400,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -579,7 +579,7 @@
       {
         "name": "Cạo vôi răng",
         "image": "assets/images/service/ImageCaoVoiRang.jpg",
-        "price": 6200,
+        "price": 1200,
         "discount": 18,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -592,7 +592,7 @@
       {
         "name": "Trồng Implant",
         "image": "assets/images/service/imageTrongImplant.png",
-        "price": 3200,
+        "price": 900,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -605,7 +605,7 @@
       {
         "name": "Đính đá",
         "image": "assets/images/service/ImageDinhDaLenRang.jpg",
-        "price": 2400,
+        "price": 1000,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -618,7 +618,7 @@
       {
         "name": "Tháo lắp răng",
         "image": "assets/images/service/imageThaoLapRang.jpg",
-        "price": 3200,
+        "price": 1200,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -631,7 +631,7 @@
       {
         "name": "Chữa nha chu",
         "image": "assets/images/service/imageChuaNhaChu.jpeg",
-        "price": 8500,
+        "price": 4000,
         "discount": 45,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -644,7 +644,7 @@
       {
         "name": "Bọc răng sứ",
         "image": "assets/images/service/imageBocRangSu.jpg",
-        "price": 6000,
+        "price": 2000,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -657,7 +657,7 @@
       {
         "name": "Chữa nhức răng",
         "image": "assets/images/service/imageChuaNhucRang.jpg",
-        "price": 5000,
+        "price": 1000,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -670,7 +670,7 @@
       {
         "name": "Chữa hở lợi",
         "image": "assets/images/service/imageChuaHoLoi.jpg",
-        "price": 3300,
+        "price": 1300,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -698,8 +698,8 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 4400,
-        "discount": 13,
+        "price": 1000,
+        "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
           "Bước 2: Sau khi xong bước 1",
@@ -711,7 +711,7 @@
       {
         "name": "Niềng răng",
         "image": "assets/images/service/imageNiengRang.png",
-        "price": 3300,
+        "price": 700,
         "discount": 12,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -724,7 +724,7 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 5600,
+        "price": 1600,
         "discount": 22,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -737,7 +737,7 @@
       {
         "name": "Làm trắng răng",
         "image": "assets/images/service/imageLamTrangRang.png",
-        "price": 3500,
+        "price": 800,
         "discount": 8,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -750,7 +750,7 @@
       {
         "name": "Cạo vôi răng",
         "image": "assets/images/service/ImageCaoVoiRang.jpg",
-        "price": 4300,
+        "price": 1000,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -763,7 +763,7 @@
       {
         "name": "Trồng Implant",
         "image": "assets/images/service/imageTrongImplant.png",
-        "price": 5000,
+        "price": 1000,
         "discount": 12,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -776,7 +776,7 @@
       {
         "name": "Đính đá",
         "image": "assets/images/service/ImageDinhDaLenRang.jpg",
-        "price": 3000,
+        "price": 1000,
         "discount": 18,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -789,7 +789,7 @@
       {
         "name": "Tháo lắp răng",
         "image": "assets/images/service/imageThaoLapRang.jpg",
-        "price": 6300,
+        "price": 4000,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -815,7 +815,7 @@
       {
         "name": "Bọc răng sứ",
         "image": "assets/images/service/imageBocRangSu.jpg",
-        "price": 4600,
+        "price": 3600,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -841,7 +841,7 @@
       {
         "name": "Chữa hở lợi",
         "image": "assets/images/service/imageChuaHoLoi.jpg",
-        "price": 6500,
+        "price": 3500,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -869,7 +869,7 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 6000,
+        "price": 1200,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -882,7 +882,7 @@
       {
         "name": "Niềng răng",
         "image": "assets/images/service/imageNiengRang.png",
-        "price": 4500,
+        "price": 3500,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -895,7 +895,7 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 6000,
+        "price": 1000,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -908,8 +908,8 @@
       {
         "name": "Làm trắng răng",
         "image": "assets/images/service/imageLamTrangRang.png",
-        "price": 4300,
-        "discount": 20,
+        "price": 2500,
+        "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
           "Bước 2: Sau khi xong bước 1",
@@ -921,7 +921,7 @@
       {
         "name": "Cạo vôi răng",
         "image": "assets/images/service/ImageCaoVoiRang.jpg",
-        "price": 1800,
+        "price": 800,
         "discount": 5,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -934,7 +934,7 @@
       {
         "name": "Trồng Implant",
         "image": "assets/images/service/imageTrongImplant.png",
-        "price": 2200,
+        "price": 900,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -947,7 +947,7 @@
       {
         "name": "Đính đá",
         "image": "assets/images/service/ImageDinhDaLenRang.jpg",
-        "price": 3500,
+        "price": 1500,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -960,7 +960,7 @@
       {
         "name": "Tháo lắp răng",
         "image": "assets/images/service/imageThaoLapRang.jpg",
-        "price": 6000,
+        "price": 3000,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -973,7 +973,7 @@
       {
         "name": "Chữa nha chu",
         "image": "assets/images/service/imageChuaNhaChu.jpeg",
-        "price": 4500,
+        "price": 2500,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -999,7 +999,7 @@
       {
         "name": "Chữa nhức răng",
         "image": "assets/images/service/imageChuaNhucRang.jpg",
-        "price": 2500,
+        "price": 1000,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1012,7 +1012,7 @@
       {
         "name": "Chữa hở lợi",
         "image": "assets/images/service/imageChuaHoLoi.jpg",
-        "price": 3000,
+        "price": 1000,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1040,7 +1040,7 @@
       {
         "name": "Trồng răng",
         "image": "assets/images/service/imageTrongRang.png",
-        "price": 5000,
+        "price": 2000,
         "discount": 25,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1053,7 +1053,7 @@
       {
         "name": "Niềng răng",
         "image": "assets/images/service/imageNiengRang.png",
-        "price": 6000,
+        "price": 3000,
         "discount": 30,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1066,7 +1066,7 @@
       {
         "name": "Trám răng",
         "image": "assets/images/service/imageTramRang.png",
-        "price": 3000,
+        "price": 1000,
         "discount": 20,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1079,7 +1079,7 @@
       {
         "name": "Làm trắng răng",
         "image": "assets/images/service/imageLamTrangRang.png",
-        "price": 4000,
+        "price": 1000,
         "discount": 20,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1092,7 +1092,7 @@
       {
         "name": "Cạo vôi răng",
         "image": "assets/images/service/ImageCaoVoiRang.jpg",
-        "price": 2500,
+        "price": 700,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1105,7 +1105,7 @@
       {
         "name": "Trồng Implant",
         "image": "assets/images/service/imageTrongImplant.png",
-        "price": 1000,
+        "price": 400,
         "discount": 5,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1118,7 +1118,7 @@
       {
         "name": "Đính đá",
         "image": "assets/images/service/ImageDinhDaLenRang.jpg",
-        "price": 2000,
+        "price": 1000,
         "discount": 10,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1144,7 +1144,7 @@
       {
         "name": "Chữa nha chu",
         "image": "assets/images/service/imageChuaNhaChu.jpeg",
-        "price": 4000,
+        "price": 3000,
         "discount": 35,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1157,7 +1157,7 @@
       {
         "name": "Bọc răng sứ",
         "image": "assets/images/service/imageBocRangSu.jpg",
-        "price": 2500,
+        "price": 1200,
         "discount": 15,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
@@ -1170,7 +1170,7 @@
       {
         "name": "Chữa nhức răng",
         "image": "assets/images/service/imageChuaNhucRang.jpg",
-        "price": 1500,
+        "price": 600,
         "discount": 5,
         "steps": [
           "Bước 1: làm bước 1 đầu tiên",
