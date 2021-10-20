@@ -1,0 +1,26 @@
+[
+  {
+    "code": "AWS1555D",
+    "description": "Liên kết ví Momo",
+    "expiredDay": "10",
+    "expiredMonth": "FEB",
+    "discount": "30",
+    "isActive": false
+  },
+  {
+    "code": "ZALO321F",
+    "description": "Liên kết ví ZaloPay",
+    "expiredDay": "21",
+    "expiredMonth": "FEB",
+    "discount": "25",
+    "isActive": false
+  },
+  {
+    "code": "NEW0051F",
+    "description": "Lần đầu đặt lịch",
+    "expiredDay": "15",
+    "expiredMonth": "FEB",
+    "discount": "10",
+    "isActive": false
+  }
+]

@@ -1,0 +1,1199 @@
+[
+  {
+    "username": "clinic1",
+    "name": "Nha Khoa Việt Mỹ",
+    "image": "assets/images/clinic/nhakhoa-1.jpg",
+    "timeOpen": "7:30",
+    "timeClose": "19:30",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 1.5,
+    "rating": 4.9,
+    "address": "120, Lê Lai, Quận 1, TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 2500,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 1500,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 3200,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 3500,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 4800,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 2200,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 5000,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 3100,
+        "discount": 18,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 2000,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 1200,
+        "discount": 8,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 2600,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 3700,
+        "discount": 26,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  },
+  {
+    "username": "clinic2",
+    "name": "Nha Khoa Nguyễn Ánh",
+    "image": "assets/images/clinic/nhakhoa-2.jpg",
+    "timeOpen": "7:30",
+    "timeClose": "20:00",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 2.5,
+    "rating": 5,
+    "address": "Nguyễn Tri Phương, quận 10, TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 2200,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 3900,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 3500,
+        "discount": 29,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 3700,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 1230,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 3450,
+        "discount": 23,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 3000,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 3400,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 5100,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 2450,
+        "discount": 18,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 2100,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 4650,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  },
+  {
+    "username": "clinic3",
+    "name": "Nha Khoa Mỹ Nha",
+    "image": "assets/images/clinic/nhakhoa-3.jpg",
+    "timeOpen": "7:15",
+    "timeClose": "18:00",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 3,
+    "rating": 4.7,
+    "address": "Ngõ 8 Trương Định, quận 3, TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 2380,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 1250,
+        "discount": 28,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 3680,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 1000,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 1150,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 1550,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 1800,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 3250,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 3200,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 4200,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 1700,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 4000,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  },
+  {
+    "username": "clinic4",
+    "name": "Nha Khoa Thanh Tâm",
+    "image": "assets/images/clinic/nhakhoa-4.jpg",
+    "timeOpen": "7:30",
+    "timeClose": "17:00",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 4,
+    "rating": 4.4,
+    "address": "62 Trần Não, phường Bình An, quận 2, TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 3200,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 6500,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 7000,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 5400,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 6200,
+        "discount": 18,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 3200,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 2400,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 3200,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 8500,
+        "discount": 45,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 6000,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 5000,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 3300,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  },
+  {
+    "username": "clinic5",
+    "name": "Nha Khoa Hoàn mỹ",
+    "image": "assets/images/clinic/nhakhoa-5.jpg",
+    "timeOpen": "8:00",
+    "timeClose": "17:30",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 2.2,
+    "rating": 4.9,
+    "address": "01 Đồng Nai, quận 10, TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 4400,
+        "discount": 13,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 3300,
+        "discount": 12,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 5600,
+        "discount": 22,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 3500,
+        "discount": 8,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 4300,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 5000,
+        "discount": 12,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 3000,
+        "discount": 18,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 6300,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 1200,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 4600,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 2000,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 6500,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  },
+  {
+    "username": "clinic6",
+    "name": "Nha Khoa Sài Gòn",
+    "image": "assets/images/clinic/nhakhoa-6.jpg",
+    "timeOpen": "8:30",
+    "timeClose": "21:00",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 3.3,
+    "rating": 4.2,
+    "address": "Số 1 Đồng Nai, P.15, Q.10 TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 6000,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 4500,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 6000,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 4300,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 1800,
+        "discount": 5,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 2200,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 3500,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 6000,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 4500,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 5000,
+        "discount": 45,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 2500,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 3000,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  },
+  {
+    "username": "clinic7",
+    "name": "Nha Khoa Ánh Sáng",
+    "image": "assets/images/clinic/nhakhoa-7.jpg",
+    "timeOpen": "7:00",
+    "timeClose": "19:00",
+    "description": "Có hơn 30 năm kinh nghiệm trong việc làm răng, với đội ngũ dày dặn kinh nghiệm và cơ sở vật chất đạt chất lượng hạng A, Xin vui lòng được hân hàng quý khách",
+    "distance": 4.4,
+    "rating": 4.3,
+    "address": "36 phường Lê Lợi, Bến Nghé, quận 1, TP.HCM",
+    "isActive": true,
+    "services": [
+      {
+        "name": "Trồng răng",
+        "image": "assets/images/service/imageTrongRang.png",
+        "price": 5000,
+        "discount": 25,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Niềng răng",
+        "image": "assets/images/service/imageNiengRang.png",
+        "price": 6000,
+        "discount": 30,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trám răng",
+        "image": "assets/images/service/imageTramRang.png",
+        "price": 3000,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Làm trắng răng",
+        "image": "assets/images/service/imageLamTrangRang.png",
+        "price": 4000,
+        "discount": 20,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Cạo vôi răng",
+        "image": "assets/images/service/ImageCaoVoiRang.jpg",
+        "price": 2500,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Trồng Implant",
+        "image": "assets/images/service/imageTrongImplant.png",
+        "price": 1000,
+        "discount": 5,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Đính đá",
+        "image": "assets/images/service/ImageDinhDaLenRang.jpg",
+        "price": 2000,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Tháo lắp răng",
+        "image": "assets/images/service/imageThaoLapRang.jpg",
+        "price": 1500,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nha chu",
+        "image": "assets/images/service/imageChuaNhaChu.jpeg",
+        "price": 4000,
+        "discount": 35,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Bọc răng sứ",
+        "image": "assets/images/service/imageBocRangSu.jpg",
+        "price": 2500,
+        "discount": 15,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa nhức răng",
+        "image": "assets/images/service/imageChuaNhucRang.jpg",
+        "price": 1500,
+        "discount": 5,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      },
+      {
+        "name": "Chữa hở lợi",
+        "image": "assets/images/service/imageChuaHoLoi.jpg",
+        "price": 2000,
+        "discount": 10,
+        "steps": [
+          "Bước 1: làm bước 1 đầu tiên",
+          "Bước 2: Sau khi xong bước 1",
+          "Bước 3: Sau khi xong bước 2",
+          "Bước 4: Sau khi xong bước 3",
+          "Bước 5: Bước cuối cùng"
+        ]
+      }
+    ],
+    "status": "approve"
+  }
+]

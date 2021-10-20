@@ -1,0 +1,89 @@
+[
+  {
+    "username": "guest1",
+    "password": "123",
+    "role": "customer",
+    "name": "Randy Lee",
+    "address": "18 Biên Hòa, Đồng Nai",
+    "isActive": true
+  },
+  {
+    "username": "guest2",
+    "password": "123",
+    "role": "customer",
+    "name": "Brain Storm",
+    "address": "37 Liên Phường, Quận 9, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "guest3",
+    "password": "123",
+    "role": "customer",
+    "name": "David Dan",
+    "address": "22 Thanh Hóa, Biên Hòa, Đồng Nai",
+    "isActive": true
+  },
+  {
+    "username": "clinic1",
+    "password": "123",
+    "role": "clinic",
+    "name": "Johnny Nguyen",
+    "address": "100 Lê Lợi, Quận 1, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "clinic2",
+    "password": "123",
+    "role": "clinic",
+    "name": "Alex Dinh",
+    "address": "250 Lê Lai, Quận 1, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "clinic3",
+    "password": "123",
+    "role": "clinic",
+    "name": "Ivan Leo",
+    "address": "199  Nguyễn Cư Trinh, Quận 1, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "clinic4",
+    "password": "123",
+    "role": "clinic",
+    "name": "Jason Kevin",
+    "address": "97 Cộng Hòa, Phường 4, Tân Bình, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "clinic5",
+    "password": "123",
+    "role": "clinic",
+    "name": "Erik Dang",
+    "address": " 338 Tô Ngọc Vân, Tam Phú, Thủ Đức, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "clinic6",
+    "password": "123",
+    "role": "clinic",
+    "name": "Pedro Dave",
+    "address": "140 Lý Thái Tổ, Phường 2, Quận 3, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "clinic7",
+    "password": "123",
+    "role": "clinic",
+    "name": "Jose Ian",
+    "address": "565 Trần Hưng Đạo, Quận 1, TP.Hồ Chí Minh",
+    "isActive": true
+  },
+  {
+    "username": "admin",
+    "password": "admin",
+    "role": "admin",
+    "name": "Admin",
+    "address": "Admin"
+  }
+]
