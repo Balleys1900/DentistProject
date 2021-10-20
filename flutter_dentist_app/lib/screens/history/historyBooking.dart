@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_dentist_app/api/http_service_booking.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/model/Booking.dart';
-import 'package:flutter_dentist_app/screens/history/detailsHistoryBooked.dart';
+import 'package:flutter_dentist_app/screens/history/detailHistoryBooked.dart';
 import 'package:flutter_dentist_app/screens/rate/rate.dart';
 import 'package:intl/intl.dart';
 
@@ -45,16 +45,6 @@ class _HistoryBookingState extends State<HistoryBooking> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          // leading: IconButton(
-          //   onPressed: () => {
-          //     Navigator.pop(context),
-          //   },
-          //   icon: Icon(
-          //     Icons.arrow_back,
-          //     size: 30,
-          //     color: Colors.black,
-          //   ),
-          // ),
           backgroundColor: Colors.white,
         ),
         body: ListView(
@@ -93,17 +83,26 @@ class _HistoryBookingState extends State<HistoryBooking> {
                               .parse(element.dateAppointment);
 
                           if (dayAppointment.day == DateTime.now().day) {
-                            return element.hour > DateTime.now().hour;
+                            return element.hour > DateTime.now().hour &&
+                                element.status;
                           }
 
-                          return dayAppointment.isAfter(DateTime.now());
+                          return dayAppointment.isAfter(DateTime.now()) &&
+                              element.status;
                         })
                         .map((b) => HistoryCartBooking(booking: b))
                         .toList(),
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  color: Colors.green,
+                  thickness: 1,
+                ),
                 Container(
-                  margin: EdgeInsets.only(top: 25, bottom: 12, right: 200),
+                  margin: EdgeInsets.only(top: 15, bottom: 12, right: 200),
                   child: Text(
                     'Nha khoa đã đặt',
                     style: TextStyle(
@@ -136,6 +135,47 @@ class _HistoryBookingState extends State<HistoryBooking> {
                               element.hour <= DateTime.now().hour;
                         })
                         .map((b) => HistoryCartBooked(booking: b))
+                        .toList(),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  color: Colors.red,
+                  thickness: 1,
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 12, right: 200),
+                  child: Text(
+                    'Nha khoa đã hủy',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 13, right: 13),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0, 20),
+                        color: Color(0x14000000),
+                        // color: Colors.amber,
+                        blurRadius: 15,
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                  child: Column(
+                    children: listBooking
+                        .where((element) {
+                          return !element.status;
+                        })
+                        .map((b) => HistoryCartCancel(booking: b))
                         .toList(),
                   ),
                 ),
@@ -215,10 +255,9 @@ class HistoryCartBooking extends StatelessWidget {
                     color: Colors.yellow[600],
                   ),
                   Text(
-                    booking.dateAppointment,
+                    ' ${booking.dateAppointment}',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black54,
                     ),
                   ),
                 ],
@@ -231,10 +270,9 @@ class HistoryCartBooking extends StatelessWidget {
                     color: Colors.green[600],
                   ),
                   Text(
-                    booking.timeAppointment,
+                    ' ${booking.timeAppointment}',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black54,
                     ),
                   ),
                 ],
@@ -256,7 +294,7 @@ class HistoryCartBooking extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${booking.services.length} dịch vụ',
+                '${booking.services.fold(0, (previousValue, service) => service['quantity'] + previousValue)} dịch vụ',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.black54,
@@ -268,11 +306,11 @@ class HistoryCartBooking extends StatelessWidget {
                     'Tổng tiền: ',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * (1 - service['discount'] / 100)) + previousValue)}',
+                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -292,8 +330,7 @@ class HistoryCartBooking extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      DetailsHistoryBooked(bookingId: booking.id),
+                  builder: (context) => DetailHistoryBooked(booking: booking),
                 ),
               ),
               style: OutlinedButton.styleFrom(
@@ -440,11 +477,11 @@ class HistoryCartBooked extends StatelessWidget {
                     'Tổng tiền: ',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * (1 - service['discount'] / 100)) + previousValue)}',
+                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -519,6 +556,172 @@ class HistoryCartBooked extends StatelessWidget {
   }
 }
 
+class HistoryCartCancel extends StatelessWidget {
+  final Booking booking;
+  const HistoryCartCancel({
+    Key? key,
+    required this.booking,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 10, bottom: 8, left: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                booking.clinic['name'],
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '${booking.clinic['rating']}⭐',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black45,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 10),
+          child: Row(
+            children: [
+              Icon(
+                Icons.location_on_rounded,
+                size: 26,
+                color: Colors.red,
+              ),
+              Flexible(
+                child: Text(
+                  '${booking.clinic['address']} - (${booking.clinic['distance']}km)',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black54,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 5, bottom: 12, left: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.calendar_today,
+                    size: 26,
+                    color: Colors.yellow[600],
+                  ),
+                  Text(
+                    booking.dateAppointment,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.timelapse_sharp,
+                    size: 26,
+                    color: Colors.green[600],
+                  ),
+                  Text(
+                    booking.timeAppointment,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        ...booking.services.map((s) => ServiceBookingCart(service: s)).toList(),
+        Container(
+          margin: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+          child: Divider(
+            color: Colors.black38,
+            height: 1,
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 12, right: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '${booking.services.length} dịch vụ',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black54,
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    'Tổng tiền: ',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 5, left: 12, right: 12, bottom: 12),
+          child: SizedBox(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            child: ElevatedButton(
+              onPressed: () => {},
+              style: OutlinedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+              ),
+              child: Text(
+                'Đặt lại',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class ServiceBookingCart extends StatelessWidget {
   final dynamic service;
   const ServiceBookingCart({
@@ -534,9 +737,9 @@ class ServiceBookingCart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            service['name'],
+            '${service['name']} (x${service['quantity']})',
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),

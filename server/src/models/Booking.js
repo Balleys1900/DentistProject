@@ -13,6 +13,7 @@ const BookingSchema = new Schema({
       image: String,
       price: Number,
       discount: Number,
+      quantity: Number,
       steps: [Array],
     },
   ],

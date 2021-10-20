@@ -85,6 +85,15 @@ const deleteDataService = async () => {
   }
   process.exit();
 };
+const deleteDataBooking = async () => {
+  try {
+    await Booking.deleteMany();
+    console.log('Delete Data Booking successful');
+  } catch (error) {
+    console.log(error);
+  }
+  process.exit();
+};
 // importDataUser();
 // importDataClinic();
 // importDataService();
@@ -93,3 +102,4 @@ const deleteDataService = async () => {
 // importDataPeople();
 // deleteDataClinic();
 // deleteDataUser();
+deleteDataBooking();

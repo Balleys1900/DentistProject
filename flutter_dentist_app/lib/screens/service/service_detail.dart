@@ -199,7 +199,7 @@ class ServiceDetail extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'Khuyến mãi ${service['discount']}% dành cho khách hàng lần đầu',
+                              'Khuyến mãi ${service['discount']}% dành cho khách hàng',
                               style: TextStyle(fontSize: 15),
                             ),
                           ],
@@ -286,50 +286,32 @@ class ServiceDetail extends StatelessWidget {
         bottomNavigationBar: Container(
           height: 60,
           color: Colors.white,
-          child: InkWell(
-            onTap: () => print('tap on close'),
-            child: OutlinedButton(
-              onPressed: () => {
-                if (!cart.isDifferentID(clinic.id))
-                  {
-                    if (cart.isExistService(service))
-                      {
-                        cart.addToCart(service),
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PageBookingItem(
-                              clinic: clinic,
-                            ),
-                          ),
-                        ),
-                      }
-                    else
-                      {
-                        cart.addToCart(service),
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PageBookingItem(
-                              clinic: clinic,
-                            ),
-                          ),
-                        ),
-                      }
-                  }
-                else
-                  {
-                    _showMyDialog("Bạn đã chọn dịch vụ khác nha khoa!",
-                        "Bạn có muốn tạo mới danh sách dịch vụ đã chọn không?"),
-                  }
-              },
-              child: Text(
-                "Chọn dịch vụ",
-                style: TextStyle(
-                    color: Colors.cyan[600],
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
+          child: OutlinedButton(
+            onPressed: () => {
+              if (!cart.isDifferentID(clinic.id))
+                {
+                  cart.addToCart(service),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PageBookingItem(
+                        clinic: clinic,
+                      ),
+                    ),
+                  ),
+                }
+              else
+                {
+                  _showMyDialog("Bạn đã chọn dịch vụ khác nha khoa!",
+                      "Bạn có muốn tạo mới danh sách dịch vụ đã chọn không?"),
+                }
+            },
+            child: Text(
+              "Chọn dịch vụ",
+              style: TextStyle(
+                  color: Colors.cyan[600],
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),

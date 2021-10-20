@@ -5,8 +5,12 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
 class PageBookingCalendar extends StatefulWidget {
+  final VoidCallback selecte;
+  final VoidCallback unselect;
   PageBookingCalendar({
     Key? key,
+    required this.selecte,
+    required this.unselect,
   }) : super(key: key);
 
   @override
@@ -157,6 +161,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
                 onPressed: () => setState(() {
                   instanceTime.timeSelect = time;
                   instanceTime.changeStatusActive(time.ID);
+                  widget.selecte();
                 }),
                 child: Text(
                   time.time,
@@ -194,6 +199,7 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
               child: TextButton(
                 onPressed: () => setState(() {
                   instanceTime.changeStatusDefault(time.ID);
+                  widget.unselect();
                 }),
                 child: Text(
                   time.time,

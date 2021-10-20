@@ -44,6 +44,10 @@ class InstanceTime {
         if (timeBooking.contains(time.time)) time.status = "inactive";
       });
   }
+
+  bool checkTimeIsSelect() {
+    return !listTime.every((element) => element.status != 'active');
+  }
 }
 
 InstanceTime instanceTime = InstanceTime(); //

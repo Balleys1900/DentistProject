@@ -50,7 +50,6 @@ export default {
     handleSignOut() {
       localStorage.removeItem('user');
       this.$router.push({ name: 'LoginPage' });
-      console.log('work');
     },
   },
 };

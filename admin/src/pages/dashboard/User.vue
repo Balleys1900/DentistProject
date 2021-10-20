@@ -54,7 +54,6 @@ export default {
     }),
     handleClick(index, users) {
       this.dialogVisible = true;
-      console.log(users[index]);
     },
     handleClose(done) {
       this.$confirm('Are you sure to close this dialog?')

@@ -45,7 +45,6 @@ exports.updateStatusBookingByID = async (req, res) => {
   const result = await Booking.findByIdAndUpdate(booking.id, {
     $set: { status: false, message: booking.message },
   });
-  console.log(result);
 
   return res.status(200).json({ status: 'success', data: result });
 };

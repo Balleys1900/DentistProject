@@ -22,18 +22,16 @@ class Cart {
       dynamic ser =
           this.cartService.firstWhere((e) => e['id'] == service['id']);
       ser['quantity'] += 1;
-      print(ser);
     } else {
       service['quantity'] = 1;
       this.cartService.add(service);
-      print(service);
     }
   }
 
   void changeCartItem(String idClinic, dynamic service) {
     this.idClinic = idClinic;
     this.cartService.clear();
-    this.cartService.add(service);
+    addToCart(service);
   }
 
   void resetCart() {

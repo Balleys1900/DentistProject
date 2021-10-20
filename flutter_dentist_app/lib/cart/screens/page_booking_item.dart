@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/Steps.dart';
@@ -19,24 +20,40 @@ class PageBookingItem extends StatefulWidget {
 class _PageBookingItem extends State<PageBookingItem> {
   @override
   Widget build(BuildContext context) {
-    // print(widget.itemService.name);
     return SafeArea(
       child: Scaffold(
         appBar: buildAppbar(context, cart),
         body: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 12),
-              child: Center(
-                child: Text(
-                  widget.clinic.name,
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              margin: EdgeInsets.only(top: 12, left: 10, right: 10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.clinic.name,
+                      style: TextStyle(
+                        fontSize: 23,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ClinicPage(clinic: widget.clinic),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Thêm dịch vụ',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ]),
             ),
             Container(
               margin: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
@@ -97,6 +114,18 @@ class _PageBookingItem extends State<PageBookingItem> {
                                 cart.resetCart();
                             },
                           ),
+                          increaseQuantity: () => setState(
+                            () {
+                              cart.cartService[index]['quantity'] += 1;
+                            },
+                          ),
+                          decreaseQuantity: () => setState(
+                            () {
+                              if (cart.cartService[index]['quantity'] == 1)
+                                return null;
+                              cart.cartService[index]['quantity'] -= 1;
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -107,7 +136,7 @@ class _PageBookingItem extends State<PageBookingItem> {
           ],
         ),
         bottomNavigationBar: Container(
-          height: 155,
+          height: 90,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -129,56 +158,53 @@ class _PageBookingItem extends State<PageBookingItem> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ClinicPage(clinic: widget.clinic),
+                      Text.rich(
+                        TextSpan(
+                          text: "Tổng tiền: \n",
+                          style: TextStyle(fontSize: 18),
+                          children: [
+                            TextSpan(
+                              text:
+                                  "💲${cart.sumTotalPrice().toStringAsFixed(0)}",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          );
-                        },
-                        child: Text('Thêm dịch vụ'),
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: cart.cartService.length != 0
+                            ? () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => StepProgress(
+                                      clinic: widget.clinic,
+                                    ),
+                                  ),
+                                )
+                            : null,
+                        child: cart.cartService.length != 0
+                            ? Text(
+                                'Chọn thời gian',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                            : Text(
+                                'Vui lòng chọn dịch vụ',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                       ),
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text.rich(
-                      TextSpan(
-                        text: "Tổng tiền: \n",
-                        children: [
-                          TextSpan(
-                            text:
-                                "💲${cart.sumTotalPrice().toStringAsFixed(0)}",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: cart.cartService.length != 0
-                          ? () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => StepProgress(
-                                    clinic: widget.clinic,
-                                  ),
-                                ),
-                              )
-                          : null,
-                      child: cart.cartService.length != 0
-                          ? Text('Chọn thời gian')
-                          : Text('Vui lòng chọn dịch vụ'),
-                    ),
-                  ],
                 ),
               ],
             ),

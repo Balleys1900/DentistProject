@@ -19,6 +19,7 @@ class StepProgress extends StatefulWidget {
 
 class _StepProgressState extends State<StepProgress> {
   int currentStep = 1;
+  bool isSelected = false;
   List<Step> stepList() => [
         Step(
           state: StepState.complete,
@@ -30,12 +31,23 @@ class _StepProgressState extends State<StepProgress> {
           state: currentStep == 1 ? StepState.editing : StepState.complete,
           isActive: currentStep >= 1,
           title: Text("Thời gian"),
-          content: PageBookingCalendar(),
+          content: PageBookingCalendar(
+            selecte: () => setState(
+              () {
+                isSelected = true;
+              },
+            ),
+            unselect: () => setState(
+              () {
+                isSelected = true;
+              },
+            ),
+          ),
         ),
         Step(
           state: currentStep == 2 ? StepState.editing : StepState.complete,
           isActive: currentStep >= 2,
-          title: Text("Thanh Toán"),
+          title: Text("Đặt lịch"),
           content: PageCheckout(clinic: widget.clinic),
         ),
       ];
@@ -136,6 +148,7 @@ class _StepProgressState extends State<StepProgress> {
           },
           controlsBuilder: (context, {onStepContinue, onStepCancel}) {
             final isLastStep = currentStep == stepList().length - 1;
+
             return Container(
               margin: EdgeInsets.only(top: 15),
               child: Row(
@@ -172,9 +185,13 @@ class _StepProgressState extends State<StepProgress> {
                     child: SizedBox(
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: onStepContinue,
+                        onPressed: instanceTime.checkTimeIsSelect()
+                            ? onStepContinue
+                            : null,
                         style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.orange,
+                          backgroundColor: instanceTime.checkTimeIsSelect()
+                              ? Colors.orange
+                              : Colors.grey,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(8),

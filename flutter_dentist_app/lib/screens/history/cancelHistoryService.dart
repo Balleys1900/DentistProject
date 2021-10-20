@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/api/http_service_booking.dart';
 import 'package:flutter_dentist_app/screens/finalPage/cancel_Booking.dart';
 import 'package:flutter_dentist_app/screens/history/historyBooking.dart';
 
 class CancelHistoryService extends StatefulWidget {
-  CancelHistoryService({Key? key}) : super(key: key);
+  final String bookingId;
+  CancelHistoryService({
+    Key? key,
+    required this.bookingId,
+  }) : super(key: key);
 
   @override
   _CancelHistoryServiceState createState() => _CancelHistoryServiceState();
 }
 
 class _CancelHistoryServiceState extends State<CancelHistoryService> {
+  String message = '';
   Map<String, bool> values = {
     'Tôi có việc đột xuất': false,
     'Tôi tìm được nha khoa tốt hơn': false,
@@ -76,6 +82,8 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                               onChanged: (bool? value) {
                                 setState(() {
                                   values[key] = value!;
+                                  print(values);
+                                  if (value) message = key;
                                 });
                               },
                             );
@@ -84,8 +92,9 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                         Container(
                           margin: EdgeInsets.only(left: 20, right: 20),
                           child: TextFormField(
-                            decoration:
-                                InputDecoration(hintText: 'Nhập lý do khác...'),
+                            decoration: InputDecoration(
+                              hintText: 'Nhập lý do khác...',
+                            ),
                             minLines:
                                 6, // any number you need (It works as the rows for the textarea)
                             keyboardType: TextInputType.multiline,
@@ -105,12 +114,7 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                           height: 50,
                           width: 150,
                           child: ElevatedButton(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HistoryBooking(),
-                              ),
-                            ),
+                            onPressed: () => Navigator.pop(context),
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.orange,
                               shape: const RoundedRectangleBorder(
@@ -133,12 +137,19 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                           height: 50,
                           width: 150,
                           child: ElevatedButton(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CancelBooking(),
-                              ),
-                            ),
+                            onPressed: () => {
+                              HttpServiceBooking()
+                                  .cancelBookingByID(widget.bookingId, message)
+                                  .then(
+                                    (value) => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => CancelBooking(),
+                                      ),
+                                    ),
+                                  )
+                                  .catchError((onError) => print(onError)),
+                            },
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.orange,
                               shape: const RoundedRectangleBorder(

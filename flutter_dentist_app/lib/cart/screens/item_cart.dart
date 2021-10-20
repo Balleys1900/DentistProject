@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class ItemCardCart extends StatelessWidget {
   final dynamic service;
   final VoidCallback deleteItem;
-
+  final VoidCallback increaseQuantity;
+  final VoidCallback decreaseQuantity;
   const ItemCardCart({
     Key? key,
     required this.service,
     required this.deleteItem,
+    required this.increaseQuantity,
+    required this.decreaseQuantity,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class ItemCardCart extends StatelessWidget {
             child: Image.asset(
               service['image'],
               fit: BoxFit.cover,
-              height: 100,
+              height: 120,
               width: 140,
             ),
           ),
@@ -84,12 +87,55 @@ class ItemCardCart extends StatelessWidget {
                   ),
                 ],
               ),
-              // Text(
-              //   'SL: ${quantity}',
-              //   style: TextStyle(
-              //     fontSize: 18,
-              //   ),
-              // ),
+              Row(
+                children: [
+                  Container(
+                    width: 22.0,
+                    height: 20.0,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    child: IconButton(
+                      onPressed: () => decreaseQuantity(),
+                      padding: EdgeInsets.only(top: 0),
+                      icon: Icon(
+                        Icons.remove,
+                        color: Colors.white,
+                        size: 15.0,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    child: Text(
+                      '${service['quantity']}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 22.0,
+                    height: 20.0,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    child: IconButton(
+                      onPressed: () => increaseQuantity(),
+                      padding: EdgeInsets.only(top: 0),
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 15.0,
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
