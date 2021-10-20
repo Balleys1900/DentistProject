@@ -18,7 +18,16 @@ class Cart {
   }
 
   void addToCart(dynamic service) {
-    this.cartService.add(service);
+    if (isExistService(service)) {
+      dynamic ser =
+          this.cartService.firstWhere((e) => e['id'] == service['id']);
+      ser['quantity'] += 1;
+      print(ser);
+    } else {
+      service['quantity'] = 1;
+      this.cartService.add(service);
+      print(service);
+    }
   }
 
   void changeCartItem(String idClinic, dynamic service) {
@@ -34,9 +43,13 @@ class Cart {
 
   double sumTotalPrice() {
     return this.cartService.fold(
-        0,
-        (initial, service) =>
-            initial + (service['price'] * (1 - service['discount'] / 100)));
+          0,
+          (initial, service) =>
+              initial +
+              (service['price'] *
+                  service['quantity'] *
+                  (1 - service['discount'] / 100)),
+        );
   }
 }
 

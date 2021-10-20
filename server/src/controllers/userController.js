@@ -10,6 +10,7 @@ exports.checkLoginAdmin = async (req, res) => {
   if (result) return res.status(200).json({ status: 'success', data: result });
   else res.status(403).json({ status: 'failed', message: 'unauthenticated' });
 };
+<<<<<<< HEAD
 exports.checkLoginClinic = async (req, res) => {
   const user = req.body;
   const result = await User.findOne({
@@ -20,6 +21,8 @@ exports.checkLoginClinic = async (req, res) => {
   if (result) return res.status(200).json({ status: 'success', data: result });
   else res.status(403).json({ status: 'failed', message: 'unauthenticated' });
 };
+=======
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
 exports.checkLoginUser = async (req, res) => {
   const user = req.body;
   const result = await User.findOne({
@@ -31,7 +34,11 @@ exports.checkLoginUser = async (req, res) => {
   else res.status(403).json({ status: 'failed', message: 'unauthenticated' });
 };
 
+<<<<<<< HEAD
 exports.createNewAccount = async (req, res) => {
+=======
+exports.createNewAccountCustomer = async (req, res) => {
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
   const userCreate = req.body;
   const result = await User.findOne({
     username: userCreate.username,

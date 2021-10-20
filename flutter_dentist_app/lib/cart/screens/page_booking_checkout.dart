@@ -122,7 +122,7 @@ class PageCheckout extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            e['name'],
+                            '${e['name']} x ${e['quantity']}',
                             style: TextStyle(
                               color: Colors.black54,
                               fontSize: 16,
@@ -171,7 +171,7 @@ class PageCheckout extends StatelessWidget {
                           color: Colors.orange,
                         ),
                         Text(
-                          '${cart.sumTotalPrice()}',
+                          '${cart.sumTotalPrice().toStringAsFixed(0)}',
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 16,

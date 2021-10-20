@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
-import 'package:flutter_dentist_app/cart/Steps.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_item.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/feedback/rating_feedback.dart';
@@ -63,6 +62,7 @@ class ServiceDetail extends StatelessWidget {
       );
     }
 
+    int quantity = 1;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -289,44 +289,39 @@ class ServiceDetail extends StatelessWidget {
           child: InkWell(
             onTap: () => print('tap on close'),
             child: OutlinedButton(
-              onPressed: () {
-                var isDifferentID = cart.isDifferentID(clinic.id);
-                if (!isDifferentID) {
-                  var isExistService = cart.isExistService(service);
-                  if (isExistService)
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Bạn đã chọn dịch vụ này!!!"),
-                        action: SnackBarAction(
-                            label: 'Xem danh sách dịch vụ',
-                            onPressed: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PageBookingItem(
-                                        clinic: clinic,
-                                      ),
-                                    ),
-                                  ),
-                                },
-                            textColor: Colors.green),
-                      ),
-                    );
-                  else {
-                    cart.addToCart(service);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PageBookingItem(
-                          clinic: clinic,
+              onPressed: () => {
+                if (!cart.isDifferentID(clinic.id))
+                  {
+                    if (cart.isExistService(service))
+                      {
+                        cart.addToCart(service),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PageBookingItem(
+                              clinic: clinic,
+                            ),
+                          ),
                         ),
-                      ),
-                    );
+                      }
+                    else
+                      {
+                        cart.addToCart(service),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PageBookingItem(
+                              clinic: clinic,
+                            ),
+                          ),
+                        ),
+                      }
                   }
-                } else {
-                  _showMyDialog("Bạn đã chọn dịch vụ khác nha khoa!",
-                      "Bạn có muốn tạo mới danh sách dịch vụ đã chọn không?");
-                }
+                else
+                  {
+                    _showMyDialog("Bạn đã chọn dịch vụ khác nha khoa!",
+                        "Bạn có muốn tạo mới danh sách dịch vụ đã chọn không?"),
+                  }
               },
               child: Text(
                 "Chọn dịch vụ",

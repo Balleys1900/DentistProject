@@ -4,21 +4,35 @@
     "password": "123",
     "role": "customer",
     "name": "Randy Lee",
+<<<<<<< HEAD
     "address": "18 Biên Hòa, Đồng Nai",
     "isActive": true
+=======
+    "avatar": "assets/images/user/user2.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
   },
   {
     "username": "guest2",
     "password": "123",
     "role": "customer",
+<<<<<<< HEAD
     "name": "Brain Storm",
     "address": "37 Liên Phường, Quận 9, TP.Hồ Chí Minh",
     "isActive": true
+=======
+    "name": "Vo Van C",
+    "avatar": "assets/images/user/user3.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
   },
   {
     "username": "guest3",
     "password": "123",
     "role": "customer",
+<<<<<<< HEAD
     "name": "David Dan",
     "address": "22 Thanh Hóa, Biên Hòa, Đồng Nai",
     "isActive": true
@@ -85,5 +99,20 @@
     "role": "admin",
     "name": "Admin",
     "address": "Admin"
+=======
+    "name": "Tran Van B",
+    "avatar": "assets/images/user/user4.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+  },
+  {
+    "username": "guest5",
+    "password": "123",
+    "role": "customer",
+    "name": "David Tran",
+    "avatar": "assets/images/user/user5.jpg",
+    "address": "Biên Hòa, Đồng Nai",
+    "isActive": false
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
   }
 ]

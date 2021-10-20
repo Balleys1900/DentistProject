@@ -39,6 +39,9 @@ dependencies:
   objectid: ^2.0.0
   fluttertoast: ^8.0.8
   table_calendar: ^2.2.3
+  # google_fonts: ^1.1.0 # this will help us to include google fonts
+  smooth_star_rating: ^1.1.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

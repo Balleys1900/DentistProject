@@ -16,7 +16,11 @@ const password = 'bNuK37SbjxMSXLJD';
 })().catch(err => console.log(err));
 
 const importDataClinic = async () => {
+<<<<<<< HEAD
   const clinics = JSON.parse(fs.readFileSync(`${__dirname}/clinics.json`, 'utf-8'));
+=======
+  const clinics = JSON.parse(fs.readFileSync(`${__dirname}/clinic.json`, 'utf-8'));
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
   try {
     await Clinic.insertMany(clinics);
     console.log('Import Data Success');
@@ -66,6 +70,7 @@ const deleteDataClinic = async () => {
   }
   process.exit();
 };
+<<<<<<< HEAD
 
 const deleteDataUser = async () => {
   try {
@@ -76,6 +81,8 @@ const deleteDataUser = async () => {
   }
   process.exit();
 };
+=======
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
 const deleteDataService = async () => {
   try {
     await Service.deleteMany();
@@ -92,4 +99,7 @@ const deleteDataService = async () => {
 // importDataService();
 // importDataPeople();
 // deleteDataClinic();
+<<<<<<< HEAD
 // deleteDataUser();
+=======
+>>>>>>> c1ddf2c494ef02052f3fb30b44426b8cfa049d17
