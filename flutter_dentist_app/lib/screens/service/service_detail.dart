@@ -62,7 +62,6 @@ class ServiceDetail extends StatelessWidget {
       );
     }
 
-    int quantity = 1;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

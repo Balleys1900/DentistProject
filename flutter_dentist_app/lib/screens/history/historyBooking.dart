@@ -131,8 +131,11 @@ class _HistoryBookingState extends State<HistoryBooking> {
                         .where((element) {
                           DateTime dayAppointment = new DateFormat('dd-MM-yyyy')
                               .parse(element.dateAppointment);
+                          if (dayAppointment.day == DateTime.now().day) {
+                            return element.hour <= DateTime.now().hour &&
+                                element.status;
+                          }
                           return dayAppointment.isBefore(DateTime.now()) &&
-                              element.hour <= DateTime.now().hour &&
                               element.status;
                         })
                         .map((b) => HistoryCartBooked(booking: b))
@@ -213,7 +216,7 @@ class HistoryCartBooking extends StatelessWidget {
                 ),
               ),
               Text(
-                '${booking.clinic['rating']}⭐',
+                '${booking.clinic['rating']} ⭐',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black45,
@@ -233,7 +236,7 @@ class HistoryCartBooking extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  '${booking.clinic['address']} - (${booking.clinic['distance']}km)',
+                  ' ${booking.clinic['address']} - (${booking.clinic['distance']}km)',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black54,
@@ -345,7 +348,7 @@ class HistoryCartBooking extends StatelessWidget {
               child: Text(
                 'Chi tiết',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -382,7 +385,7 @@ class HistoryCartBooked extends StatelessWidget {
                 ),
               ),
               Text(
-                '${booking.clinic['rating']}⭐',
+                '${booking.clinic['rating']} ⭐',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black45,
@@ -402,7 +405,7 @@ class HistoryCartBooked extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  '${booking.clinic['address']} - (${booking.clinic['distance']}km)',
+                  ' ${booking.clinic['address']} - (${booking.clinic['distance']}km)',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black54,
@@ -425,7 +428,7 @@ class HistoryCartBooked extends StatelessWidget {
                     color: Colors.yellow[600],
                   ),
                   Text(
-                    booking.dateAppointment,
+                    ' ${booking.dateAppointment}',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black54,
@@ -441,7 +444,7 @@ class HistoryCartBooked extends StatelessWidget {
                     color: Colors.green[600],
                   ),
                   Text(
-                    booking.timeAppointment,
+                    ' ${booking.timeAppointment}',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black54,
@@ -466,7 +469,7 @@ class HistoryCartBooked extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${booking.services.length} dịch vụ',
+                '${booking.services.fold(0, (previousValue, service) => service['quantity'] + previousValue)} dịch vụ',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.black54,
@@ -514,7 +517,7 @@ class HistoryCartBooked extends StatelessWidget {
                   child: Text(
                     'Đặt lại',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -542,7 +545,7 @@ class HistoryCartBooked extends StatelessWidget {
                   child: Text(
                     'Đánh giá',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -581,7 +584,7 @@ class HistoryCartCancel extends StatelessWidget {
                 ),
               ),
               Text(
-                '${booking.clinic['rating']}⭐',
+                '${booking.clinic['rating']} ⭐',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black45,
@@ -601,7 +604,7 @@ class HistoryCartCancel extends StatelessWidget {
               ),
               Flexible(
                 child: Text(
-                  '${booking.clinic['address']} - (${booking.clinic['distance']}km)',
+                  ' ${booking.clinic['address']} - (${booking.clinic['distance']}km)',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black54,
@@ -624,7 +627,7 @@ class HistoryCartCancel extends StatelessWidget {
                     color: Colors.yellow[600],
                   ),
                   Text(
-                    booking.dateAppointment,
+                    ' ${booking.dateAppointment}',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black54,
@@ -640,7 +643,7 @@ class HistoryCartCancel extends StatelessWidget {
                     color: Colors.green[600],
                   ),
                   Text(
-                    booking.timeAppointment,
+                    ' ${booking.timeAppointment}',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black54,
@@ -665,7 +668,7 @@ class HistoryCartCancel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${booking.services.length} dịch vụ',
+                '${booking.services.fold(0, (previousValue, service) => service['quantity'] + previousValue)} dịch vụ',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.black54,
@@ -710,7 +713,7 @@ class HistoryCartCancel extends StatelessWidget {
               child: Text(
                 'Đặt lại',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

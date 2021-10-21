@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/Steps.dart';
 import 'package:flutter_dentist_app/cart/screens/item_cart.dart';
@@ -38,19 +39,22 @@ class _PageBookingItem extends State<PageBookingItem> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                ClinicPage(clinic: widget.clinic),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Thêm dịch vụ',
-                        style: TextStyle(fontSize: 15),
+                    SizedBox(
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ClinicPage(clinic: widget.clinic),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Thêm dịch vụ',
+                          style: TextStyle(fontSize: 17),
+                        ),
                       ),
                     ),
                   ]),
@@ -163,45 +167,49 @@ class _PageBookingItem extends State<PageBookingItem> {
                       Text.rich(
                         TextSpan(
                           text: "Tổng tiền: \n",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
                           children: [
                             TextSpan(
                               text:
                                   "💲${cart.sumTotalPrice().toStringAsFixed(0)}",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: cart.cartService.length != 0
-                            ? () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => StepProgress(
-                                      clinic: widget.clinic,
+                      SizedBox(
+                        height: 40,
+                        child: ElevatedButton(
+                          onPressed: cart.cartService.length != 0
+                              ? () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => StepProgress(
+                                        clinic: widget.clinic,
+                                      ),
                                     ),
+                                  )
+                              : null,
+                          child: cart.cartService.length != 0
+                              ? Text(
+                                  'Chọn thời gian',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 )
-                            : null,
-                        child: cart.cartService.length != 0
-                            ? Text(
-                                'Chọn thời gian',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
+                              : Text(
+                                  'Vui lòng chọn dịch vụ',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              )
-                            : Text(
-                                'Vui lòng chọn dịch vụ',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                        ),
                       ),
                     ],
                   ),
@@ -228,7 +236,7 @@ AppBar buildAppbar(BuildContext context, Cart cart) {
           ),
         ),
         Text(
-          "${cart.cartService.length} services",
+          "${cart.cartService.length} dịch vụ",
           style: TextStyle(
             color: Colors.black38,
             fontSize: 15,

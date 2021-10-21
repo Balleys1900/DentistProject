@@ -14,75 +14,83 @@ class RateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            AppHeader(),
-            Positioned(
-              top: -380,
-              left: -187,
-              child: Opacity(
-                opacity: 0.9,
-                child: Image.asset('assets/bg.png'),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              AppHeader(),
+              Positioned(
+                top: -380,
+                left: -187,
+                child: Opacity(
+                  opacity: 0.9,
+                  child: Image.asset('assets/bg.png'),
+                ),
               ),
-            ),
-            SafeArea(
-                child: Padding(
-              padding: EdgeInsets.all(kDefaultPadding * 2),
-              child: Column(
-                children: [
-                  CustomAppBar(),
-                  SizedBox(height: kDefaultPadding * 2),
-                  Image.asset(
-                    'assets/images/clinic/nhakhoa-2.jpg',
-                    width: getScreenPropotionWidth(200, size),
-                  ),
-                  SizedBox(height: kDefaultPadding),
-                  Text(
-                    '',
-                    style: TextStyle(color: kTextLightColor, fontSize: 14),
-                  ),
-                  Text(
-                    'Các dịch vụ tại Nha Khoa Mỹ Nha',
-                    style: TextStyle(
-                        color: kTextColor,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: kDefaultPadding),
-                  Divider(
-                    color: kTextLightColor,
-                  ),
-                  SizedBox(height: kDefaultPadding),
-                  // RideStats(),
-                  SizedBox(height: kDefaultPadding),
-                  SizedBox(height: kDefaultPadding),
-                  Text(
-                    'Hãy cho chúng tôi biết cảm nhận của bạn!',
-                    style: TextStyle(
-                      color: kTextColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+              SafeArea(
+                  child: Padding(
+                padding: EdgeInsets.all(kDefaultPadding * 2),
+                child: Column(
+                  children: [
+                    CustomAppBar(),
+                    SizedBox(height: kDefaultPadding * 2),
+                    ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(10.0), //add border radius
+                      child: Image.asset(
+                        "assets/images/clinic/nhakhoa-2.jpg",
+                        height: 180,
+                        width: 350,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: kDefaultPadding),
-                  SmoothStarRating(
-                    allowHalfRating: false,
-                    onRated: (v) {},
-                    starCount: 5,
-                    size: 45,
-                    isReadOnly: false,
-                    spacing: kDefaultPadding,
-                  ),
-                  SizedBox(height: kDefaultPadding),
-                  MultilineInput(),
-                  SizedBox(height: kDefaultPadding),
-                  MainButton()
-                ],
-              ),
-            ))
-          ],
+                    SizedBox(height: kDefaultPadding),
+                    Text(
+                      '',
+                      style: TextStyle(color: kTextLightColor, fontSize: 14),
+                    ),
+                    Text(
+                      'Các dịch vụ tại Nha Khoa Mỹ Nha',
+                      style: TextStyle(
+                          color: kTextColor,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: kDefaultPadding),
+                    Divider(
+                      color: kTextLightColor,
+                    ),
+                    SizedBox(height: kDefaultPadding),
+                    // RideStats(),
+                    SizedBox(height: kDefaultPadding),
+                    SizedBox(height: kDefaultPadding),
+                    Text(
+                      'Hãy cho chúng tôi biết cảm nhận của bạn!',
+                      style: TextStyle(
+                        color: kTextColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(height: kDefaultPadding),
+                    SmoothStarRating(
+                      allowHalfRating: false,
+                      onRated: (v) {},
+                      starCount: 5,
+                      size: 45,
+                      isReadOnly: false,
+                      spacing: kDefaultPadding,
+                    ),
+                    SizedBox(height: kDefaultPadding),
+                    MultilineInput(),
+                    SizedBox(height: kDefaultPadding),
+                    MainButton()
+                  ],
+                ),
+              ))
+            ],
+          ),
         ),
       ),
     );

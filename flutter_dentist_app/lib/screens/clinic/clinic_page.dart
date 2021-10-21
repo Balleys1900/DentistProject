@@ -112,7 +112,7 @@ class ClinicPage extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(10),
                   child: GridView.builder(
                     itemCount: clinic.services.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

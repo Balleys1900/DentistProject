@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                             (value) => {
                               cart.user = value,
                               Fluttertoast.showToast(
-                                msg: 'Login Successful',
+                                msg: 'Đăng nhập thành công',
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.green,
@@ -124,12 +124,13 @@ class _LoginPageState extends State<LoginPage> {
                                           .then(
                                             (services) => {
                                               listServiceInstance = services,
-                                              Navigator.push(
+                                              Navigator.pushAndRemoveUntil(
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       MainWidget(),
                                                 ),
+                                                (route) => false,
                                               ),
                                             },
                                           )
@@ -143,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                               FocusScope.of(context)
                                   .requestFocus(new FocusNode()),
                               Fluttertoast.showToast(
-                                msg: e,
+                                msg: "Tài khoản hoặc mật khẩu không đúng",
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.red.shade800,
