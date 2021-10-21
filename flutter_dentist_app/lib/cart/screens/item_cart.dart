@@ -88,13 +88,14 @@ class ItemCardCart extends StatelessWidget {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
                     width: 22.0,
                     height: 20.0,
                     decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(4.0),
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(50),
                     ),
                     child: IconButton(
                       onPressed: () => decreaseQuantity(),
@@ -118,11 +119,12 @@ class ItemCardCart extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(right: 15),
                     width: 22.0,
                     height: 20.0,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(4.0),
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: IconButton(
                       onPressed: () => increaseQuantity(),

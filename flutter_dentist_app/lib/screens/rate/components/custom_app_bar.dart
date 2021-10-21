@@ -17,12 +17,7 @@ class CustomAppBar extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           iconColor: kPrimaryColor,
           bgColor: Colors.white,
-          tap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HistoryBooking(),
-            ),
-          ),
+          tap: () => Navigator.pop(context),
         ),
         SizedBox(width: kDefaultPadding),
         Text(
