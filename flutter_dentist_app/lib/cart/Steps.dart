@@ -39,7 +39,7 @@ class _StepProgressState extends State<StepProgress> {
             ),
             unselect: () => setState(
               () {
-                isSelected = true;
+                isSelected = false;
               },
             ),
           ),
@@ -139,6 +139,12 @@ class _StepProgressState extends State<StepProgress> {
             });
             if (currentStep == 0) {
               Navigator.pop(context);
+            } else if (currentStep == 1) {
+              setState(
+                () {
+                  isSelected = false;
+                },
+              );
             }
           },
           onStepTapped: (int index) {
@@ -185,13 +191,10 @@ class _StepProgressState extends State<StepProgress> {
                     child: SizedBox(
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: instanceTime.checkTimeIsSelect()
-                            ? onStepContinue
-                            : null,
+                        onPressed: isSelected ? onStepContinue : null,
                         style: OutlinedButton.styleFrom(
-                          backgroundColor: instanceTime.checkTimeIsSelect()
-                              ? Colors.orange
-                              : Colors.grey,
+                          backgroundColor:
+                              isSelected ? Colors.orange : Colors.grey,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(8),

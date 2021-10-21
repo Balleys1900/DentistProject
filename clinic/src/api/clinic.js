@@ -6,24 +6,17 @@ export function getClinic(username) {
     method: 'GET',
   });
 }
-export function updateClinicService(data) {
+export function updateClinic(data) {
   return request({
-    url: '/clinics/services',
+    url: '/clinics',
     method: 'PUT',
     data,
   });
 }
-export function addClinicService(data) {
+export function addClinic(data) {
   return request({
-    url: '/clinics/services',
+    url: '/clinics',
     method: 'POST',
-    data,
-  });
-}
-export function deleteClinicService(data) {
-  return request({
-    url: '/clinics/services',
-    method: 'DELETE',
     data,
   });
 }

@@ -45,7 +45,7 @@ exports.createNewAccount = async (req, res) => {
 };
 
 exports.getAllCustomerUser = async (req, res) => {
-  const result = await User.find({ role: 'customer' }).exec();
+  const result = await User.find({ role: { $ne: 'admin' } }).exec();
   if (result.length > 0) return res.status(200).json({ status: 'success', data: result });
   else res.status(404).json({ status: 'failed', message: 'Not found' });
 };

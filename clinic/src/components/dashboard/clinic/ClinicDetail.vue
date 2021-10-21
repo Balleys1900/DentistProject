@@ -9,7 +9,16 @@
       </el-col>
       <el-col :span="16">
         <el-form-item label="Request Status: ">
-          <el-tag type="primary" effect="dark">{{ clinic.status }}</el-tag>
+          <el-tag type="primary" effect="dark" v-if="clinic.status === 'approve'">{{
+            clinic.status
+          }}</el-tag>
+          <el-tag type="danger" effect="dark" v-else-if="clinic.status === 'reject'">{{
+            clinic.status
+          }}</el-tag>
+          <el-tag type="warning" effect="dark" v-else-if="clinic.status === 'pending'">{{
+            clinic.status
+          }}</el-tag>
+          <el-tag type="info" effect="dark" v-else>Not Created</el-tag>
         </el-form-item>
       </el-col>
     </el-row>
@@ -51,11 +60,19 @@
     </el-row>
     <el-row>
       <el-col>
-        <el-button type="primary" style="width: 100%" v-if="clinic.status === 'unregistered'">
-          Register
+        <el-button type="warning" style="width: 100%" v-if="clinic.status === 'pending'" disabled>
+          Pending
         </el-button>
-        <el-button type="primary" style="width: 100%" v-else>
+        <el-button
+          type="primary"
+          style="width: 100%"
+          @click="handleUpdate(clinic)"
+          v-else-if="clinic.status === 'approve'"
+        >
           Updated
+        </el-button>
+        <el-button type="primary" style="width: 100%" @click="handleRegister(clinic)" v-else>
+          Register
         </el-button>
       </el-col>
     </el-row>
@@ -65,6 +82,14 @@
 <script>
 export default {
   props: ['clinic'],
+  methods: {
+    handleRegister(clinic) {
+      this.$emit('registerClinic', clinic);
+    },
+    handleUpdate(clinic) {
+      this.$emit('updateClinic', clinic);
+    },
+  },
 };
 </script>
 

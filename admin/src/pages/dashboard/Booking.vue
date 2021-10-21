@@ -1,36 +1,68 @@
 <template>
-  <el-table :data="bookings" border style="width: 100%">
-    <el-table-column prop="user" label="Name" width="150">
-      <template #default="scope">
-        <p>{{ scope.row.user.name }}</p>
-      </template>
-    </el-table-column>
-    <el-table-column prop="clinic" label="Clinic Name" width="180">
-      <template #default="scope">
-        <p>{{ scope.row.clinic.name }}</p>
-      </template>
-    </el-table-column>
-    <el-table-column prop="dateAppointment" label="Date" width="120"> </el-table-column>
-    <el-table-column prop="timeAppointment" label="Time" width="100"> </el-table-column>
-    <el-table-column prop="clinic" label="Address" width="360">
-      <template #default="scope">
-        <p>{{ scope.row.clinic.address }}</p>
-      </template>
-    </el-table-column>
-    <el-table-column prop="services" label="Amount">
-      <template #default="scope">
-        <p>{{ `\$${scope.row.services.reduce((acc, val) => acc + val.price, 0)}` }}</p>
-      </template>
-    </el-table-column>
-    <el-table-column prop="status" label="Status">
-      <template #default="scope">
-        <el-tag type="primary" effect="dark" v-if="scope.row.status" disable-transitions>
-          Success</el-tag
-        >
-        <el-tag type="danger" effect="dark" v-else disable-transitions>Cancel</el-tag>
-      </template>
-    </el-table-column>
-  </el-table>
+  <div v-if="bookings">
+    <el-table :data="bookings" border style="width: 100%">
+      <el-table-column prop="user" label="Name" width="200">
+        <template #default="scope">
+          <p>{{ scope.row.user.name }}</p>
+        </template>
+      </el-table-column>
+      <el-table-column prop="clinic" label="Clinic Name" width="220">
+        <template #default="scope">
+          <p>{{ scope.row.clinic.name }}</p>
+        </template>
+      </el-table-column>
+      <el-table-column label="Date Appointment" width="240">
+        <template slot-scope="scope">
+          {{ scope.row.dateAppointment }} - {{ scope.row.timeAppointment }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Total Price" width="120">
+        <template slot-scope="scope">
+          {{
+            `💲${scope.row.services.reduce((acc, value) => acc + value.price * value.quantity, 0)}`
+          }}
+        </template>
+      </el-table-column>
+      <el-table-column label="Status">
+        <template slot-scope="scope">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            :content="scope.row.status ? scope.row.message : scope.row.message"
+            placement="top-start"
+          >
+            <el-tag v-if="scope.row.status" type="primary" effect="dark">
+              SUCCESS
+            </el-tag>
+            <el-tag v-else type="danger" effect="dark">
+              CANCEL
+            </el-tag>
+          </el-tooltip>
+        </template>
+      </el-table-column>
+      <el-table-column label="Operations">
+        <template slot-scope="scope">
+          <el-button
+            @click.native.prevent="handleClick(scope.$index, bookings)"
+            type="primary"
+            size="medium"
+            >Detail</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-dialog title="Details" :visible.sync="dialogVisible" width="60%" v-if="booking">
+      <el-table border :data="booking.services">
+        <el-table-column property="name" label="Name Service"></el-table-column>
+        <el-table-column property="discount" label="Discount(%)" width="150"></el-table-column>
+        <el-table-column label="Unit Price" width="200">
+          <template slot-scope="scope"> 💲{{ scope.row.price }} </template>
+        </el-table-column>
+        <el-table-column property="quantity" label="Quantity"></el-table-column>
+      </el-table>
+    </el-dialog>
+  </div>
 </template>
 
 <script>
@@ -39,11 +71,18 @@ export default {
   data() {
     return {
       bookings: null,
+      booking: null,
+      dialogVisible: false,
     };
   },
   methods: {
     ...mapActions({
       getBookings: 'booking/getBookings',
+
+      handleClick(_, index) {
+        this.dialogVisible = true;
+        this.booking = this.bookings[index];
+      },
     }),
   },
   async created() {

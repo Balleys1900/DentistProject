@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/screens/history/historyBooking.dart';
 import 'package:flutter_dentist_app/screens/rate/components/rounded_button.dart';
 
-import '../../../constants.dart';
+import '../constants.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({

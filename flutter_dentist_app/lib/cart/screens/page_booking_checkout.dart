@@ -182,7 +182,7 @@ class PageCheckout extends StatelessWidget {
                           color: Colors.orange,
                         ),
                         Text(
-                          '${cart.sumTotalPrice().toStringAsFixed(0)}',
+                          '${cart.sumTotalPrice().toStringAsFixed(1)}',
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 16,

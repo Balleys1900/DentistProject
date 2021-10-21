@@ -1,7 +1,7 @@
 <template>
   <el-col :span="24">
     <el-menu
-      :default-active="$route.matched[1].path"
+      :default-active="$route.path"
       class="el-menu-vertical-demo"
       background-color="#545c64"
       text-color="#fff"
@@ -31,7 +31,9 @@ export default {
     };
   },
 
-  methods: {},
+  created() {
+    console.log(this.$route);
+  },
 };
 </script>
 

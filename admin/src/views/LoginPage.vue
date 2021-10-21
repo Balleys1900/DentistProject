@@ -30,6 +30,7 @@ export default {
           message: 'Congrats, Login Successful.',
           type: 'success',
         });
+
         this.$router.push({ path: '/dash-board' });
       } else this.$message.error('Login Failed, Incorrect username or password');
     },

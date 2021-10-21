@@ -12,6 +12,11 @@ export default new Vuex.Store({
       state.clinic = payload;
     },
   },
+  getters: {
+    clinic(state) {
+      return state.clinic;
+    },
+  },
   actions: {},
   modules: {},
 });

@@ -6,13 +6,21 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Login',
+    name: 'LoginPage',
     component: () => import('@/views/LoginPage.vue'),
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('user')) next({ name: 'Dashboard' });
+      else next();
+    },
   },
   {
     path: '/dash-board',
     name: 'Dashboard',
     component: () => import('@/views/Dashboard.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!localStorage.getItem('user')) next({ name: 'LoginPage' });
+      else next();
+    },
     children: [
       {
         path: '',

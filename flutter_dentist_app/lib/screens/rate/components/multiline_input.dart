@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dentist_app/constants.dart';
+import 'package:flutter_dentist_app/screens/rate/constants.dart';
 
 class MultilineInput extends StatelessWidget {
   const MultilineInput({

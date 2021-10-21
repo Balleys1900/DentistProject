@@ -38,6 +38,10 @@ class InstanceTime {
       listTime.forEach((time) => time.status = "default");
   }
 
+  void changeAllStatusToDefault() {
+    listTime.forEach((time) => time.status = 'default');
+  }
+
   void changeStatusInactive(List<String> timeBooking) {
     if (timeBooking.length != 0)
       listTime.forEach((time) {

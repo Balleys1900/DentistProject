@@ -22,13 +22,16 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
   @override
   void initState() {
     super.initState();
+    instanceTime.changeAllStatusToDefault();
     instanceTime.changeStatusDay(DateTime.now());
+
     HttpServiceBooking()
         .getTimeAvailable(
             new DateFormat('dd-MM-yyyy').format(instanceTime.date))
         .then(
           (value) => setState(
             () {
+              // check lại logic ngày hệ thống(realtime)
               instanceTime.changeStatusInactive(value);
             },
           ),

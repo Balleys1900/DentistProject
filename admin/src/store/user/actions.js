@@ -5,6 +5,7 @@ export default {
       const res = await checkLogin({ user: payload });
       if (res.status === 200) {
         commit('SET_USER', res.data.data);
+        localStorage.setItem('user', JSON.stringify(res.data.data));
         return true;
       }
     } catch (error) {

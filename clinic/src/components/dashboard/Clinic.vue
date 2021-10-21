@@ -2,7 +2,11 @@
   <el-tabs type="border-card">
     <el-tab-pane>
       <span slot="label"><i class="el-icon-s-flag"></i> Clinic</span>
-      <ClinicDetail :clinic="clinic" />
+      <ClinicDetail
+        :clinic="clinic"
+        @registerClinic="handleRegisterClinic"
+        @updateClinic="handleUpdateClinic"
+      />
     </el-tab-pane>
     <el-tab-pane>
       <span slot="label"><i class="el-icon-s-fold"></i> Service</span>
@@ -19,14 +23,10 @@
 <script>
 import ClinicDetail from './clinic/ClinicDetail.vue';
 import ServiceClinic from './clinic/ServiceClinic.vue';
-import { mapMutations } from 'vuex';
-import {
-  getClinic,
-  updateClinicService,
-  addClinicService,
-  deleteClinicService,
-} from '@/api/clinic.js';
+import { mapGetters } from 'vuex';
+// import { updateClinicService, addClinicService, deleteClinicService } from '@/api/clinic.js';
 const initClinic = {
+  username: JSON.parse(localStorage.getItem('user')).username,
   name: '',
   image: '',
   timeOpen: '',
@@ -45,59 +45,41 @@ export default {
     return { clinic: initClinic };
   },
   methods: {
-    ...mapMutations({
-      setClinic: 'SET_CLINIC',
-    }),
-    async handleAddNewService(newService) {
-      this.clinic.services.push(newService);
-      try {
-        const res = await addClinicService({
-          idClinic: this.clinic._id,
-          service: newService,
-        });
-        if (res.status === 200)
-          this.$message({
-            message: 'Add successful',
-            type: 'success',
-          });
-      } catch (error) {
-        this.$message.error('Add Failed');
-      }
+    async handleRegisterClinic(clinic) {
+      console.log(clinic);
+      clinic.status = 'pending';
     },
-    async handleUpdateService(serviceInstance) {
+    async handleUpdateClinic(clinic) {
+      console.log(clinic);
+    },
+
+    handleAddNewService(newService) {
+      this.clinic.services.push(newService);
+      this.$message({
+        message: 'Add successful',
+        type: 'success',
+      });
+    },
+    handleUpdateService(serviceInstance) {
       const index = this.clinic.services.findIndex(service => service._id === serviceInstance._id);
       this.$set(this.clinic.services, index, serviceInstance);
-      try {
-        const res = await updateClinicService({
-          idClinic: this.clinic._id,
-          service: serviceInstance,
-        });
-        if (res.status === 200)
-          this.$message({
-            message: 'Update successful',
-            type: 'success',
-          });
-      } catch (error) {
-        this.$message.error('Update Failed');
-      }
+      this.$message({
+        message: 'Update successful',
+        type: 'success',
+      });
     },
-    async handleDeleteService(index) {
+    handleDeleteService(index) {
       this.$confirm('This will delete service. Continue?', {
         confirmButtonText: 'OK',
         cancelButtonText: 'Cancel',
         type: 'warning',
       })
-        .then(async () => {
-          const res = await deleteClinicService({
-            idClinic: this.clinic._id,
-            idService: this.clinic.services[index]._id,
-          });
-          if (res.status === 204)
-            this.$message({
-              type: 'success',
-              message: 'Delete completed',
-            });
+        .then(() => {
           this.clinic.services.splice(index, 1);
+          this.$message({
+            type: 'success',
+            message: 'Delete completed',
+          });
         })
         .catch(() => {
           this.$message({
@@ -107,13 +89,14 @@ export default {
         });
     },
   },
-  async created() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const res = await getClinic(user.username);
-    if (res.status === 200) {
-      const clinic = res.data.data;
-      this.setClinic(clinic);
-      this.clinic = clinic;
+  computed: {
+    ...mapGetters({
+      getClinic: 'clinic',
+    }),
+  },
+  mounted() {
+    if (Object.keys(this.getClinic).length > 0) {
+      this.clinic = this.getClinic;
     }
   },
 };

@@ -2,7 +2,7 @@ const Clinic = require('../models/Clinic');
 
 exports.getAllClinic = async (req, res) => {
   try {
-    const clinics = await Clinic.find();
+    const clinics = await Clinic.find({ status: 'approve' });
     res.status(200).json({ status: 'success', data: clinics });
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error });
@@ -73,68 +73,68 @@ exports.getClinicByUsername = async (req, res) => {
   if (clinic) {
     return res.status(200).json({ status: 'success', data: clinic });
   }
-  res.status(401).json({ status: 'fail', message: 'Not Found' });
+  res.status(200).json({ status: 'fail', data: {} });
 };
 
-exports.addServiceIntoClinic = async (req, res) => {
-  const { idClinic, service } = req.body;
+// exports.addServiceIntoClinic = async (req, res) => {
+//   const { idClinic, service } = req.body;
 
-  const result = await Clinic.findOneAndUpdate(
-    { _id: idClinic },
-    {
-      $push: { services: service },
-    }
-  );
-  if (result)
-    return res.status(200).json({
-      status: 'success',
-      data: result,
-    });
+//   const result = await Clinic.findOneAndUpdate(
+//     { _id: idClinic },
+//     {
+//       $push: { services: service },
+//     }
+//   );
+//   if (result)
+//     return res.status(200).json({
+//       status: 'success',
+//       data: result,
+//     });
 
-  res.status(400).json({
-    status: 'failed',
-    message: 'Bad Request',
-  });
-};
+//   res.status(400).json({
+//     status: 'failed',
+//     message: 'Bad Request',
+//   });
+// };
 
-exports.updateServiceInClinic = async (req, res) => {
-  const { idClinic, service } = req.body;
-  const result = await Clinic.findOneAndUpdate(
-    { _id: idClinic, 'services._id': service._id },
-    {
-      $set: {
-        'services.$': service,
-      },
-    }
-  );
-  if (result) {
-    return res.status(200).json({
-      status: 'success',
-      data: result,
-    });
-  }
-  res.status(400).json({
-    status: 'failed',
-    message: 'Update Failed',
-  });
-};
-exports.deleteServiceInClinic = async (req, res) => {
-  const { idClinic, idService } = req.body;
-  const result = await Clinic.findOneAndUpdate(
-    { _id: idClinic },
-    {
-      $pull: {
-        services: { _id: idService },
-      },
-    }
-  );
-  if (result) {
-    return res.status(204).json({
-      status: 'success',
-    });
-  }
-  res.status(400).json({
-    status: 'failed',
-    message: 'Delete Failed',
-  });
-};
+// exports.updateServiceInClinic = async (req, res) => {
+//   const { idClinic, service } = req.body;
+//   const result = await Clinic.findOneAndUpdate(
+//     { _id: idClinic, 'services._id': service._id },
+//     {
+//       $set: {
+//         'services.$': service,
+//       },
+//     }
+//   );
+//   if (result) {
+//     return res.status(200).json({
+//       status: 'success',
+//       data: result,
+//     });
+//   }
+//   res.status(400).json({
+//     status: 'failed',
+//     message: 'Update Failed',
+//   });
+// };
+// exports.deleteServiceInClinic = async (req, res) => {
+//   const { idClinic, idService } = req.body;
+//   const result = await Clinic.findOneAndUpdate(
+//     { _id: idClinic },
+//     {
+//       $pull: {
+//         services: { _id: idService },
+//       },
+//     }
+//   );
+//   if (result) {
+//     return res.status(204).json({
+//       status: 'success',
+//     });
+//   }
+//   res.status(400).json({
+//     status: 'failed',
+//     message: 'Delete Failed',
+//   });
+// };

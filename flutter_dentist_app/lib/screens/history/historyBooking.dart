@@ -132,7 +132,8 @@ class _HistoryBookingState extends State<HistoryBooking> {
                           DateTime dayAppointment = new DateFormat('dd-MM-yyyy')
                               .parse(element.dateAppointment);
                           return dayAppointment.isBefore(DateTime.now()) &&
-                              element.hour <= DateTime.now().hour;
+                              element.hour <= DateTime.now().hour &&
+                              element.status;
                         })
                         .map((b) => HistoryCartBooked(booking: b))
                         .toList(),
@@ -310,7 +311,7 @@ class HistoryCartBooking extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
+                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -481,7 +482,7 @@ class HistoryCartBooked extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
+                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -680,7 +681,7 @@ class HistoryCartCancel extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
+                    '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

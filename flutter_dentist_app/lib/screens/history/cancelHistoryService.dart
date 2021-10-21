@@ -15,7 +15,7 @@ class CancelHistoryService extends StatefulWidget {
 }
 
 class _CancelHistoryServiceState extends State<CancelHistoryService> {
-  String message = '';
+  String message = 'Lí do khác';
   Map<String, bool> values = {
     'Tôi có việc đột xuất': false,
     'Tôi tìm được nha khoa tốt hơn': false,
@@ -82,7 +82,6 @@ class _CancelHistoryServiceState extends State<CancelHistoryService> {
                               onChanged: (bool? value) {
                                 setState(() {
                                   values[key] = value!;
-                                  print(values);
                                   if (value) message = key;
                                 });
                               },

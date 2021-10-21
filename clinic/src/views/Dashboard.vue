@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container v-if="clinic">
     <el-aside>
       <Aside />
     </el-aside>
@@ -41,16 +41,36 @@
 
 <script>
 import Aside from '../components/Aside.vue';
+import { mapMutations, mapGetters } from 'vuex';
+import { getClinic } from '@/api/clinic.js';
 export default {
   components: { Aside },
   data() {
     return { user: JSON.parse(localStorage.getItem('user')) };
   },
+  computed: {
+    ...mapGetters({
+      clinic: 'clinic',
+    }),
+  },
   methods: {
+    ...mapMutations({
+      setClinic: 'SET_CLINIC',
+    }),
     handleSignOut() {
       localStorage.removeItem('user');
       this.$router.push({ name: 'LoginPage' });
     },
+  },
+  async created() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    try {
+      const res = await getClinic(user.username);
+      const clinic = res.data.data;
+      this.setClinic(clinic);
+    } catch (error) {
+      this.setClinic([]);
+    }
   },
 };
 </script>

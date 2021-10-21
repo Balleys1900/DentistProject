@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dentist_app/constants.dart';
-import 'package:flutter_dentist_app/screens/main/main_widget.dart';
 import 'package:flutter_dentist_app/screens/rate/components/rounded_button.dart';
-import 'package:flutter_dentist_app/screens/rate/finalPageRating.dart';
+import 'package:flutter_dentist_app/screens/rate/components/success_rating.dart';
+import 'package:flutter_dentist_app/screens/rate/constants.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({

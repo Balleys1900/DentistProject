@@ -8,16 +8,29 @@
         <div style="font-weight: bold">{{ $route.name }}</div>
         <div>
           <el-dropdown>
-            <span class="el-dropdown-link">
-              <i class="el-icon-more"></i>
-            </span>
+            <el-button type="text">
+              Welcome, {{ this.user.name }} <i class="el-icon-caret-bottom"></i>
+            </el-button>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item disabled style="font-weight: bold; color: #000"
-                >Welcome, Tai</el-dropdown-item
-              >
-              <el-dropdown-item>Signout</el-dropdown-item>
-              <el-dropdown-item>Profile</el-dropdown-item>
-              <el-dropdown-item>Settings</el-dropdown-item>
+              <el-dropdown-item>
+                <el-button type="text" style="color: black" icon="el-icon-setting"
+                  >Setting</el-button
+                >
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-button type="text" style="color: black" icon="el-icon-user-solid"
+                  >Information</el-button
+                >
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-button
+                  type="text"
+                  style="color: black"
+                  icon="el-icon-close"
+                  @click="handleSignOut"
+                  >Signout</el-button
+                >
+              </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -30,21 +43,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 // @ is an alias to /src
 import AsideComponent from '../components/AsideComponent.vue';
 export default {
   components: { AsideComponent },
   data() {
-    return { curUser: null };
+    return { user: JSON.parse(localStorage.getItem('user')) };
   },
-  computed: {
-    ...mapGetters({
-      user: 'user/user',
-    }),
-  },
-  created() {
-    this.curUser = this.user;
+  methods: {
+    handleSignOut() {
+      localStorage.removeItem('user');
+      this.$router.push({ name: 'LoginPage' });
+    },
   },
   name: 'Dashboard',
 };
@@ -69,7 +79,6 @@ export default {
 }
 
 .el-main {
-  padding: 0;
   height: calc(100vh - 50px);
   overflow: hidden;
 }

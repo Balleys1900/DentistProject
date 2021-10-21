@@ -25,7 +25,7 @@ class CancelBooking extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 140),
                     child: Text(
-                      "Xin lỗi bạn vì sự bất tiện này!",
+                      "Bạn đã hủy đặt lịch thành công!",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

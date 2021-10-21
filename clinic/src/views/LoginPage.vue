@@ -12,15 +12,15 @@
         <el-input type="password" placeholder="Input your password" v-model="user.password" />
       </el-form-item>
       <el-form-item label="Address:" v-if="!isLogin">
-        <el-input placeholder="Input your password" v-model="user.address" />
+        <el-input placeholder="Input your address" v-model="user.address" />
       </el-form-item>
       <div v-if="isLogin">
         <el-button class="btn" type="primary" @click="checkLogin(user)">Login</el-button>
         <el-button class="btn" type="primary" @click="handleSwich">Register</el-button>
       </div>
       <div v-else>
-        <el-button class="btn" type="primary" @click="handleSwich">Login</el-button>
         <el-button class="btn" type="primary" @click="registerAccount(user)">Register</el-button>
+        <el-button class="btn" type="primary" @click="handleSwich">Login</el-button>
       </div>
     </el-form>
   </el-container>

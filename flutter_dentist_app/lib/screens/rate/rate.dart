@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dentist_app/constants.dart';
-import 'package:flutter_dentist_app/proportionate.dart';
+import 'package:flutter_dentist_app/screens/rate/constants.dart';
+import 'package:flutter_dentist_app/screens/rate/proportionate.dart';
 import 'package:flutter_dentist_app/screens/rate/components/app_header.dart';
 import 'package:flutter_dentist_app/screens/rate/components/main_button.dart';
 import 'package:flutter_dentist_app/screens/rate/components/multiline_input.dart';

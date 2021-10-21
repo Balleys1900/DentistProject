@@ -5,6 +5,7 @@ exports.createNewBooking = async (req, res) => {
   const result = await Booking.findOne({
     timeAppointment: booking.timeAppointment,
     dateAppointment: booking.dateAppointment,
+    status: true,
   }).exec();
   if (!result) {
     const reception = await Booking.create({
@@ -21,9 +22,17 @@ exports.getHistoryBooking = async (req, res) => {
   });
   res.status(200).json({ status: 'success', data: result });
 };
+
+exports.getBookingByClinicID = async (req, res) => {
+  const { id } = req.params;
+  const result = await Booking.find({
+    'clinic.id': id,
+  });
+  res.status(200).json({ status: 'success', data: result });
+};
+
 exports.getAllBooking = async (req, res) => {
   const result = await Booking.find();
-
   return res.status(201).json({ status: 'success', data: result });
 };
 
@@ -31,6 +40,7 @@ exports.getTimeAvailable = async (req, res) => {
   const { date } = req.params;
   const result = await Booking.find({
     dateAppointment: date,
+    status: true,
   });
   const dates = result.map(booking => booking.timeAppointment);
 

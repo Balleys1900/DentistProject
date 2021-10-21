@@ -149,7 +149,7 @@ class DetailHistoryBooked extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue)}',
+                          '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
