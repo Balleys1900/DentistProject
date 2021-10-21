@@ -2,7 +2,7 @@ const Clinic = require('../models/Clinic');
 
 exports.getAllClinic = async (req, res) => {
   try {
-    const clinics = await Clinic.find({ status: 'approve' });
+    const clinics = await Clinic.find();
     res.status(200).json({ status: 'success', data: clinics });
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error });
@@ -10,7 +10,7 @@ exports.getAllClinic = async (req, res) => {
 };
 exports.getAllClinicActive = async (req, res) => {
   try {
-    const clinics = await Clinic.find({ isActive: true });
+    const clinics = await Clinic.find({ isActive: true, status: 'approve' });
     res.status(200).json({ status: 'success', data: clinics });
   } catch (error) {
     res.status(401).json({ status: 'fail', message: error });
@@ -38,6 +38,14 @@ exports.deleteClinic = async (req, res) => {
 
 exports.updateClinic = async (req, res) => {
   const { clinic } = req.body;
+  const result = await Clinic.findOneAndUpdate({ _id: clinic._id }, clinic);
+  res.status(200).json({
+    status: 'success',
+    data: result,
+  });
+};
+exports.updateStatus = async (req, res) => {
+  const clinic = req.body;
   const result = await Clinic.findOneAndUpdate({ _id: clinic._id }, clinic);
   res.status(200).json({
     status: 'success',

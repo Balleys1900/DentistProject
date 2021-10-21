@@ -11,6 +11,8 @@ router.get('/service/:name', Clinic.getClinicByService);
 
 // router.post('/service', Clinic.getServiceByNameAndClinicID);
 
+router.get('/request', Clinic.updateStatus);
+router.put('/status', Clinic.updateStatus);
 router.get('/active', Clinic.getAllClinicActive);
 
 router.get('/username/:id', Clinic.getClinicByUsername);

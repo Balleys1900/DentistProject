@@ -21,10 +21,10 @@
 </template>
 
 <script>
+import { addClinic, updateClinic } from '@/api/clinic.js';
 import ClinicDetail from './clinic/ClinicDetail.vue';
 import ServiceClinic from './clinic/ServiceClinic.vue';
 import { mapGetters } from 'vuex';
-// import { updateClinicService, addClinicService, deleteClinicService } from '@/api/clinic.js';
 const initClinic = {
   username: JSON.parse(localStorage.getItem('user')).username,
   name: '',
@@ -46,11 +46,30 @@ export default {
   },
   methods: {
     async handleRegisterClinic(clinic) {
-      console.log(clinic);
       clinic.status = 'pending';
+      try {
+        const res = await addClinic({ clinic: clinic });
+        if (res.status === 201)
+          this.$message({
+            message: 'Add successful',
+            type: 'success',
+          });
+      } catch (error) {
+        clinic.status = 'unregistered';
+        this.$message.error(error);
+      }
     },
     async handleUpdateClinic(clinic) {
-      console.log(clinic);
+      try {
+        const res = await updateClinic({ clinic: clinic });
+        if (res.status === 200)
+          this.$message({
+            message: 'Update successful',
+            type: 'success',
+          });
+      } catch (error) {
+        this.$message.error(error);
+      }
     },
 
     handleAddNewService(newService) {

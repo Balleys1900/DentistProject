@@ -3,7 +3,7 @@
     <el-tab-pane label="Customer">
       <CustomerRole :users="customer" />
     </el-tab-pane>
-    <el-tab-pane label="Clinic">
+    <el-tab-pane label="Clinic Owner">
       <ClinicRole :users="clinic" />
     </el-tab-pane>
   </el-tabs>

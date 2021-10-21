@@ -1,6 +1,6 @@
 <template>
   <div v-if="bookings">
-    <el-table :data="bookings" border style="width: 100%">
+    <el-table :data="bookings" border style="width: 100%" height="630px">
       <el-table-column prop="user" label="Name" width="200">
         <template #default="scope">
           <p>{{ scope.row.user.name }}</p>

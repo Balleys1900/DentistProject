@@ -14,3 +14,11 @@ export function getAllUser() {
     method: 'GET',
   });
 }
+
+export function updateStatus(data) {
+  return request({
+    url: '/users/status',
+    method: 'PUT',
+    data,
+  });
+}

@@ -26,12 +26,7 @@
           >
             Inactive
           </el-button>
-          <el-button
-            @click="handleInActive(scope.$index, users)"
-            type="primary"
-            size="medium"
-            v-else
-          >
+          <el-button @click="handleActive(scope.$index, users)" type="primary" size="medium" v-else>
             Active
           </el-button>
         </template>
@@ -41,14 +36,62 @@
 </template>
 
 <script>
+import { updateStatus } from '@/api/user.js';
 export default {
   props: ['users'],
   data() {
     return { dialogVisible: false, user: null };
   },
   methods: {
-    handleClick(index, rows) {
-      this.user = rows[index];
+    async handleActive(index, rows) {
+      try {
+        rows[index].isActive = true;
+        const res = await updateStatus(rows[index]);
+        if (res.status === 200) {
+          this.$message({
+            type: 'success',
+            message: 'Active completed',
+          });
+        }
+      } catch (e) {
+        console.log(e);
+        rows[index].isActive = false;
+        this.$message.error(e);
+      }
+    },
+    async handleInActive(index, rows) {
+      this.$confirm('This will inactive user. Continue?', 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+      })
+        .then(async () => {
+          try {
+            rows[index].isActive = false;
+            const res = await updateStatus(rows[index]);
+            if (res.status === 200) {
+              this.$message({
+                type: 'success',
+                message: 'Active completed',
+              });
+
+              this.$message({
+                type: 'success',
+                message: 'Inactive completed',
+              });
+            }
+          } catch (e) {
+            console.log(e);
+            rows[index].isActive = true;
+            this.$message.error(e);
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: 'Inactive canceled',
+          });
+        });
     },
   },
 };

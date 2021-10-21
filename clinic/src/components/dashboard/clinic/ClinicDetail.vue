@@ -15,9 +15,15 @@
           <el-tag type="danger" effect="dark" v-else-if="clinic.status === 'reject'">{{
             clinic.status
           }}</el-tag>
-          <el-tag type="warning" effect="dark" v-else-if="clinic.status === 'pending'">{{
-            clinic.status
-          }}</el-tag>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="Bạn cần phải đợi admin xét duyệt"
+            placement="top-start"
+            v-else-if="clinic.status === 'pending'"
+          >
+            <el-tag type="warning" effect="dark">{{ clinic.status }}</el-tag>
+          </el-tooltip>
           <el-tag type="info" effect="dark" v-else>Not Created</el-tag>
         </el-form-item>
       </el-col>

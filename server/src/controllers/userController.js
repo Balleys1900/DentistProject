@@ -16,6 +16,7 @@ exports.checkLoginClinic = async (req, res) => {
     username: user.username,
     role: 'clinic',
     password: user.password,
+    isActive: true,
   }).exec();
   if (result) return res.status(200).json({ status: 'success', data: result });
   else res.status(403).json({ status: 'failed', message: 'unauthenticated' });
@@ -26,6 +27,7 @@ exports.checkLoginUser = async (req, res) => {
     username: user.name,
     role: 'customer',
     password: user.password,
+    isActive: true,
   }).exec();
   if (result) return res.status(200).json({ status: 'success', data: result });
   else res.status(403).json({ status: 'failed', message: 'unauthenticated' });
@@ -42,6 +44,12 @@ exports.createNewAccount = async (req, res) => {
     });
     return res.status(201).json({ status: 'success', data: newUser });
   } else res.status(403).json({ status: 'failed', message: 'Already Exists' });
+};
+exports.updateStatus = async (req, res) => {
+  const user = req.body;
+  const result = await User.findOneAndUpdate({ _id: user._id }, user).exec();
+  if (result) return res.status(200).json({ status: 'success', data: 'Updated Successful' });
+  res.status(403).json({ status: 'failed', message: 'Update Failed, User not found' });
 };
 
 exports.getAllCustomerUser = async (req, res) => {

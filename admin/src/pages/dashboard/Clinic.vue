@@ -20,11 +20,7 @@ export default {
   data() {
     return { clinicsApprove: null, clinicsRequest: null };
   },
-  methods: {
-    handleDetail(index, rows) {
-      console.log(rows[index]);
-    },
-  },
+
   async created() {
     const res = await getClinics();
     if (res.status === 200) {

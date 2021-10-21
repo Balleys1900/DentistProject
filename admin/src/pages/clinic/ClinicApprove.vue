@@ -16,7 +16,7 @@
       </el-table-column>
       <el-table-column label="Status" width="120" align="center">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.status" type="primary">
+          <el-tag v-if="scope.row.isActive" type="primary">
             Active
           </el-tag>
           <el-tag v-else type="danger">
@@ -37,12 +37,12 @@
             @click="handleInActive(scope.$index, clinics)"
             type="danger"
             size="medium"
-            v-if="clinics[scope.$index].status"
+            v-if="clinics[scope.$index].isActive"
           >
             Inactive
           </el-button>
           <el-button
-            @click="handleInActive(scope.$index, clinics)"
+            @click="handleActive(scope.$index, clinics)"
             type="primary"
             size="medium"
             v-else
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-// import { modifyClinic } from '@/api/clinic.js';
+import { updateStatus } from '@/api/clinic.js';
 export default {
   props: ['clinics'],
   data() {
@@ -77,8 +77,55 @@ export default {
       this.dialogVisible = true;
       this.services = rows[index].services;
     },
+    async handleActive(index, rows) {
+      try {
+        rows[index].isActive = true;
+        const res = await updateStatus(rows[index]);
+        if (res.status === 200) {
+          this.$message({
+            type: 'success',
+            message: 'Active completed',
+          });
+        }
+      } catch (e) {
+        console.log(e);
+        rows[index].isActive = false;
+        this.$message.error(e);
+      }
+    },
     async handleInActive(index, rows) {
-      rows[index].status = false;
+      this.$confirm('This will inactive user. Continue?', 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+      })
+        .then(async () => {
+          try {
+            rows[index].isActive = false;
+            const res = await updateStatus(rows[index]);
+            if (res.status === 200) {
+              this.$message({
+                type: 'success',
+                message: 'Active completed',
+              });
+
+              this.$message({
+                type: 'success',
+                message: 'Inactive completed',
+              });
+            }
+          } catch (e) {
+            console.log(e);
+            rows[index].isActive = true;
+            this.$message.error(e);
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: 'Inactive canceled',
+          });
+        });
     },
   },
 };

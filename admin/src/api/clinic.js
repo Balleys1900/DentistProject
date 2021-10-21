@@ -6,6 +6,13 @@ export function getClinics() {
     method: 'GET',
   });
 }
+
+export function getClinicsRequest() {
+  return request({
+    url: '/clinics/request',
+    method: 'GET',
+  });
+}
 export function createNewClinic(data) {
   return request({
     url: '/clinics',
@@ -20,6 +27,15 @@ export function modifyClinic(data) {
     data,
   });
 }
+
+export function updateStatus(data) {
+  return request({
+    url: '/clinics/status',
+    method: 'PUT',
+    data,
+  });
+}
+
 export function deleteClinic(data) {
   return request({
     url: '/clinics',
