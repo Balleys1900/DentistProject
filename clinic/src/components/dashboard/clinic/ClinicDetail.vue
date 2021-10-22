@@ -9,12 +9,24 @@
       </el-col>
       <el-col :span="16">
         <el-form-item label="Request Status: ">
-          <el-tag type="primary" effect="dark" v-if="clinic.status === 'approve'">{{
-            clinic.status
-          }}</el-tag>
-          <el-tag type="danger" effect="dark" v-else-if="clinic.status === 'reject'">{{
-            clinic.status
-          }}</el-tag>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="Nha khoa của bạn đã được hệ thống duyệt"
+            placement="top-start"
+            v-if="clinic.status === 'approve'"
+          >
+            <el-tag type="primary" effect="dark">{{ clinic.status }}</el-tag>
+          </el-tooltip>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="Nha khoa của bạn bị từ chối, vì thông tin dịch vụ không rõ ràng"
+            placement="top-start"
+            v-else-if="clinic.status === 'reject'"
+          >
+            <el-tag type="danger" effect="dark">{{ clinic.status }}</el-tag>
+          </el-tooltip>
           <el-tooltip
             class="item"
             effect="dark"
@@ -77,6 +89,14 @@
         >
           Updated
         </el-button>
+        <el-button
+          type="info"
+          style="width: 100%"
+          @click="handleRetry(clinic)"
+          v-else-if="clinic.status === 'reject'"
+        >
+          Retry
+        </el-button>
         <el-button type="primary" style="width: 100%" @click="handleRegister(clinic)" v-else>
           Register
         </el-button>
@@ -93,6 +113,10 @@ export default {
       this.$emit('registerClinic', clinic);
     },
     handleUpdate(clinic) {
+      this.$emit('updateClinic', clinic);
+    },
+    handleRetry(clinic) {
+      clinic.status = 'pending';
       this.$emit('updateClinic', clinic);
     },
   },

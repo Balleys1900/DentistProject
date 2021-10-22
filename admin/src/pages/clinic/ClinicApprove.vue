@@ -73,7 +73,6 @@ export default {
   },
   methods: {
     handleDetail(index, rows) {
-      console.log(rows[index]);
       this.dialogVisible = true;
       this.services = rows[index].services;
     },

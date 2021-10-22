@@ -7,6 +7,7 @@ const password = 'bNuK37SbjxMSXLJD';
   await mongoose.connect(
     `mongodb+srv://sa:${password}@cluster0.5wbds.mongodb.net/dentist?retryWrites=true&w=majority`
   );
+
   console.log('connect successfully');
   app.listen(PORT, () => {
     console.log(`App start at http://localhost:${PORT}`);
