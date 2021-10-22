@@ -3,7 +3,7 @@
     <el-button type="primary" style="margin-bottom: 20px;" @click="handleOpenDialog">
       Add New Service
     </el-button>
-    <el-table :data="services" border style="width: 100%" emptyText="Danh sách dịch vụ trống">
+    <el-table :data="services" border style="width: 100%" emptyText="List of service is empty">
       <el-table-column prop="name" label="Name" width="180"> </el-table-column>
       <el-table-column prop="image" label="Image" width="350"> </el-table-column>
       <el-table-column prop="price" label="Price" width="120"> </el-table-column>

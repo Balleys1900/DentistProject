@@ -1,6 +1,6 @@
 <template>
   <div v-if="bookings">
-    <el-table :data="bookings" border style="width: 100%" height="630px">
+    <el-table :data="bookings" border style="width: 100%" height="800px">
       <el-table-column prop="user" label="Name" width="200">
         <template #default="scope">
           <p>{{ scope.row.user.name }}</p>
@@ -20,7 +20,10 @@
       <el-table-column label="Total Price" width="120">
         <template slot-scope="scope">
           {{
-            `💲${scope.row.services.reduce((acc, value) => acc + value.price * value.quantity, 0)}`
+            `💲${scope.row.services.reduce(
+              (acc, value) => acc + value.price * value.quantity,
+              0
+            )}`
           }}
         </template>
       </el-table-column>
@@ -52,10 +55,19 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog title="Details" :visible.sync="dialogVisible" width="60%" v-if="booking">
+    <el-dialog
+      title="Details"
+      :visible.sync="dialogVisible"
+      width="60%"
+      v-if="booking"
+    >
       <el-table border :data="booking.services">
         <el-table-column property="name" label="Name Service"></el-table-column>
-        <el-table-column property="discount" label="Discount(%)" width="150"></el-table-column>
+        <el-table-column
+          property="discount"
+          label="Discount(%)"
+          width="150"
+        ></el-table-column>
         <el-table-column label="Unit Price" width="200">
           <template slot-scope="scope"> 💲{{ scope.row.price }} </template>
         </el-table-column>
@@ -66,7 +78,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -77,7 +89,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      getBookings: 'booking/getBookings',
+      getBookings: "booking/getBookings",
 
       handleClick(_, index) {
         this.dialogVisible = true;

@@ -12,7 +12,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="Nha khoa của bạn đã được hệ thống duyệt"
+            content="Your clinic has been approved by the Admin"
             placement="top-start"
             v-if="clinic.status === 'approve'"
           >
@@ -21,7 +21,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="Nha khoa của bạn bị từ chối, vì thông tin dịch vụ không rõ ràng"
+            content="Your Clinic was Denied, because the information service is invalid!"
             placement="top-start"
             v-else-if="clinic.status === 'reject'"
           >
@@ -30,7 +30,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="Bạn cần phải đợi admin xét duyệt"
+            content="You must waiting for the Admin to approve!"
             placement="top-start"
             v-else-if="clinic.status === 'pending'"
           >

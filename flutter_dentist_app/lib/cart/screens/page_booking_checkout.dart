@@ -146,7 +146,7 @@ class PageCheckout extends StatelessWidget {
                                 color: Colors.orange,
                               ),
                               Text(
-                                '${e['price'] * (1 - e['discount'] / 100)}',
+                                '${(e['price'] * (1 - e['discount'] / 100)).toStringAsFixed(0)}',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 16,
