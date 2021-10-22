@@ -44,7 +44,7 @@
         show-icon
       >
       </el-alert>
-      <el-table border :data="clinic.services">
+      <el-table border :data="clinic.services" empty-text="Empty Service">
         <el-table-column property="name" label="Name Service"></el-table-column>
         <el-table-column property="discount" label="Discount(%)"></el-table-column>
         <el-table-column label="Unit Price" width="200">

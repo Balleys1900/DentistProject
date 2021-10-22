@@ -1,6 +1,14 @@
 <template>
   <el-form :model="clinic">
     <el-row>
+      <el-alert
+        title="Rejected"
+        type="error"
+        description="Nha khoa này đã bị từ chối vì thông tin dịch vụ không rõ ràng"
+        v-if="clinic.status === 'reject'"
+        show-icon
+      >
+      </el-alert>
       <el-col :span="8">
         <el-form-item label="Active Status: ">
           <el-switch v-model="clinic.isActive" active-color="#13ce66" inactive-color="#ff4949">

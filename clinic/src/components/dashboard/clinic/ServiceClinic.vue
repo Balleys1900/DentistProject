@@ -21,9 +21,9 @@
             size="medium"
             >Edit</el-button
           >
-          <el-button type="danger" size="medium" @click.native.prevent="handleDelete(scope.$index)"
+          <!-- <el-button type="danger" size="medium" @click.native.prevent="handleDelete(scope.$index)"
             >Delete</el-button
-          >
+          > -->
         </template>
       </el-table-column>
     </el-table>
