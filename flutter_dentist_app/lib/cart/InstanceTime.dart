@@ -5,16 +5,16 @@ class InstanceTime {
   late Time timeSelect;
 
   List<Time> listTime = [
-    Time(ID: 1, time: '7:00 AM', status: 'default', hour: 7),
-    Time(ID: 2, time: '8:00 AM', status: 'default', hour: 8),
-    Time(ID: 3, time: '9:00 AM', status: 'default', hour: 9),
+    Time(ID: 1, time: '07:00 AM', status: 'default', hour: 7),
+    Time(ID: 2, time: '08:00 AM', status: 'default', hour: 8),
+    Time(ID: 3, time: '09:00 AM', status: 'default', hour: 9),
     Time(ID: 4, time: '10:00 AM', status: 'default', hour: 10),
     Time(ID: 5, time: '11:00 AM', status: 'default', hour: 11),
-    Time(ID: 6, time: '1:00 PM', status: 'default', hour: 13),
-    Time(ID: 7, time: '2:00 PM', status: 'default', hour: 14),
-    Time(ID: 8, time: '3:00 PM', status: 'default', hour: 15),
-    Time(ID: 9, time: '4:00 PM', status: 'default', hour: 16),
-    Time(ID: 10, time: '5:00 PM', status: 'default', hour: 17),
+    Time(ID: 6, time: '13:00 PM', status: 'default', hour: 13),
+    Time(ID: 7, time: '14:00 PM', status: 'default', hour: 14),
+    Time(ID: 8, time: '15:00 PM', status: 'default', hour: 15),
+    Time(ID: 9, time: '16:00 PM', status: 'default', hour: 16),
+    Time(ID: 10, time: '17:00 PM', status: 'default', hour: 17),
   ];
 
   void changeStatusActive(int id) {

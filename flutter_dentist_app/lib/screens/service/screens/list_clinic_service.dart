@@ -169,35 +169,45 @@ class ListClinic extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      '💲${service['price'].toStringAsFixed(0)}',
-                      style: TextStyle(
-                        decoration: TextDecoration.lineThrough,
-                        decorationColor: Colors.black,
-                        color: Colors.grey[600],
-                        fontSize: 18,
+                clinic.voucher != null
+                    ? Row(
+                        children: [
+                          Text(
+                            '💲${service['price'].toStringAsFixed(0)}',
+                            style: TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                              decorationColor: Colors.black,
+                              color: Colors.grey[600],
+                              fontSize: 18,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_right,
+                            size: 30,
+                          ),
+                          Text(
+                            '💲${(service['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '(-${clinic.voucher!.discount}%)',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red),
+                          )
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Text(
+                            '💲${service['price']}',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                    ),
-                    Icon(
-                      Icons.arrow_right,
-                      size: 30,
-                    ),
-                    Text(
-                      '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      '(-${service['discount']}%)',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    )
-                  ],
-                ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.3,
                   child: ElevatedButton(

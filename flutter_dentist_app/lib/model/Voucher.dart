@@ -1,38 +1,40 @@
+import 'package:flutter_dentist_app/api/http_service_voucher.dart';
+
 class Voucher {
-  String code;
+  String id;
+  String name;
+  String clinic;
+  num discount;
+  List<dynamic> time;
   String description;
-  String expiredDay;
-  String expiredMonth;
-  String discount;
+  String startDate;
+  String expirationDate;
+  bool isActive;
   Voucher({
-    required this.code,
-    required this.description,
-    required this.expiredDay,
-    required this.expiredMonth,
+    required this.id,
+    required this.name,
+    required this.clinic,
     required this.discount,
+    required this.time,
+    required this.description,
+    required this.startDate,
+    required this.expirationDate,
+    required this.isActive,
   });
+  factory Voucher.fromJson(Map<dynamic, dynamic> json) {
+    return Voucher(
+      id: json['_id'],
+      name: json['name'],
+      clinic: json['clinic'],
+      discount: json['discount'],
+      time: json['time'],
+      description: json['description'],
+      startDate: json['startDate'],
+      expirationDate: json['expirationDate'],
+      isActive: json['isActive'],
+    );
+  }
 }
 
-List<Voucher> vouchers = [
-  Voucher(
-    code: 'AWS1555D',
-    description: 'Liên kết ví Momo',
-    expiredDay: '10',
-    expiredMonth: 'FEB',
-    discount: '30',
-  ),
-  Voucher(
-    code: 'ZALO321F',
-    description: 'Liên kết ví ZaloPay',
-    expiredDay: '21',
-    expiredMonth: 'FEB',
-    discount: '25',
-  ),
-  Voucher(
-    code: 'NEW0051F',
-    description: 'Lần đầu đặt lịch',
-    expiredDay: '15',
-    expiredMonth: 'FEB',
-    discount: '10',
-  ),
-];
+List<Voucher> listVoucher = [];
+List<Voucher> listVoucherSpecificTime = [];

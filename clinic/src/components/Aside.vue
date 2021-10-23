@@ -24,7 +24,7 @@ export default {
         { name: 'Home', icon: 'el-icon-s-home', path: '/dash-board' },
         { name: 'Clinic', icon: 'el-icon-s-flag', path: '/dash-board/clinic' },
         { name: 'Booking', icon: 'el-icon-shopping-cart-2', path: '/dash-board/booking' },
-        { name: 'Discount', icon: 'el-icon-s-tools', path: '/dash-board/discount' },
+        { name: 'Discount', icon: 'el-icon-discount', path: '/dash-board/discount' },
       ],
     };
   },

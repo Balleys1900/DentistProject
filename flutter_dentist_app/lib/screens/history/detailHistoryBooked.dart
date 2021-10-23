@@ -149,7 +149,8 @@ class DetailHistoryBooked extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
+                          // '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
+                          'Test',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -266,7 +267,8 @@ class ServiceBookingCart extends StatelessWidget {
                 size: 30,
               ),
               Text(
-                '💲${service['price'] * (1 - service['discount'] / 100)}',
+                // '💲${service['price'] * (1 - service['discount'] / 100)}',
+                'Test',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

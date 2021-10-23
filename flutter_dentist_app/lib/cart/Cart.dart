@@ -1,13 +1,14 @@
+import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/model/User.dart';
 
 class Cart {
   late User user;
-  String idClinic = '';
+  late Clinic? clinic = null;
   List<dynamic> cartService = [];
 
-  bool isDifferentID(String idClinic) {
-    if (this.idClinic == '' || this.idClinic == idClinic) {
-      this.idClinic = idClinic;
+  bool isDifferentID(Clinic clinic) {
+    if (this.clinic == null || this.clinic!.id == clinic.id) {
+      this.clinic = clinic;
       return false;
     }
     return true;
@@ -28,25 +29,32 @@ class Cart {
     }
   }
 
-  void changeCartItem(String idClinic, dynamic service) {
-    this.idClinic = idClinic;
+  void changeCartItem(Clinic clinic, dynamic service) {
+    this.clinic = clinic;
     this.cartService.clear();
     addToCart(service);
   }
 
   void resetCart() {
-    this.idClinic = '';
+    this.clinic = null;
     this.cartService.clear();
   }
 
   double sumTotalPrice() {
+    if (this.clinic != null) {
+      if (this.clinic!.voucher != null) {
+        return this.cartService.fold(
+                  0,
+                  (initial, service) =>
+                      (service['price'] * service['quantity']) + initial,
+                ) *
+            (1 - this.clinic!.voucher!.discount / 100);
+      }
+    }
     return this.cartService.fold(
           0,
           (initial, service) =>
-              initial +
-              (service['price'] *
-                  service['quantity'] *
-                  (1 - service['discount'] / 100)),
+              initial + (service['price'] * service['quantity']),
         );
   }
 }

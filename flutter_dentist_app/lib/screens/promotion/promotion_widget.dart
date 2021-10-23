@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dentist_app/model/Voucher.dart';
+import 'package:flutter_dentist_app/model/Discount.dart';
 
 class PromoteWidget extends StatelessWidget {
   const PromoteWidget({Key? key}) : super(key: key);
@@ -118,9 +118,9 @@ class PromoteWidget extends StatelessWidget {
               ),
               Expanded(
                 child: new ListView.builder(
-                  itemCount: vouchers.length,
+                  itemCount: dicounts.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ItemCardVoucher(voucher: vouchers[index]);
+                    return ItemCardVoucher(discount: dicounts[index]);
                   },
                 ),
               ),
@@ -133,10 +133,10 @@ class PromoteWidget extends StatelessWidget {
 }
 
 class ItemCardVoucher extends StatelessWidget {
-  final Voucher voucher;
+  final Discount discount;
   const ItemCardVoucher({
     Key? key,
-    required this.voucher,
+    required this.discount,
   }) : super(key: key);
 
   @override
@@ -157,7 +157,7 @@ class ItemCardVoucher extends StatelessWidget {
               top: 52,
               left: 25,
               child: Text(
-                '${voucher.discount}%',
+                '${discount.discount}%',
                 style: TextStyle(
                     fontSize: 35,
                     color: Colors.white,
@@ -182,7 +182,7 @@ class ItemCardVoucher extends StatelessWidget {
               left: 130,
               child: Container(
                 child: Text(
-                  '${voucher.description}',
+                  '${discount.description}',
                   style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,
@@ -210,7 +210,7 @@ class ItemCardVoucher extends StatelessWidget {
               top: 80,
               left: 115,
               child: Text(
-                voucher.code,
+                discount.code,
                 style: TextStyle(
                     fontSize: 32,
                     color: Colors.white,
@@ -234,7 +234,7 @@ class ItemCardVoucher extends StatelessWidget {
               top: 50,
               left: 330,
               child: Text(
-                voucher.expiredDay,
+                discount.expiredDay,
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -246,7 +246,7 @@ class ItemCardVoucher extends StatelessWidget {
               top: 80,
               left: 325,
               child: Text(
-                voucher.expiredMonth,
+                discount.expiredMonth,
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,

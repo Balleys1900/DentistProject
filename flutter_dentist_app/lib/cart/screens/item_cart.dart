@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/model/Clinic.dart';
 
 class ItemCardCart extends StatelessWidget {
   final dynamic service;
+  final Clinic clinic;
   final VoidCallback deleteItem;
   final VoidCallback increaseQuantity;
   final VoidCallback decreaseQuantity;
   const ItemCardCart({
     Key? key,
     required this.service,
+    required this.clinic,
     required this.deleteItem,
     required this.increaseQuantity,
     required this.decreaseQuantity,
@@ -64,29 +67,42 @@ class ItemCardCart extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Text(
-                    '💲${service["price"].toStringAsFixed(0)}',
-                    style: TextStyle(
-                      decoration: TextDecoration.lineThrough,
-                      decorationColor: Colors.black,
-                      color: Colors.grey[600],
-                      fontSize: 18,
+              clinic.voucher != null
+                  ? Row(
+                      children: [
+                        Text(
+                          '💲${service["price"].toStringAsFixed(0)}',
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            decorationColor: Colors.black,
+                            color: Colors.grey[600],
+                            fontSize: 18,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_right,
+                          size: 30,
+                        ),
+                        Text(
+                          '💲${(service["price"] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Text(
+                          '💲${service["price"]}',
+                          style: TextStyle(
+                            decorationColor: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_right,
-                    size: 30,
-                  ),
-                  Text(
-                    '💲${(service["price"] * (1 - service["discount"] / 100)).toStringAsFixed(0)}',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

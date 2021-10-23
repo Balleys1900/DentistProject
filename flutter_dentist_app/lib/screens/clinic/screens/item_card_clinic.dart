@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/model/Clinic.dart';
 
 class CardClinic extends StatelessWidget {
   final dynamic service;
+  final Clinic clinic;
   final VoidCallback press;
   const CardClinic({
     Key? key,
     required this.service,
+    required this.clinic,
     required this.press,
   }) : super(key: key);
 
@@ -29,25 +32,26 @@ class CardClinic extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.43,
                   ),
                 ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      color: Colors.redAccent,
-                      padding:
-                          EdgeInsets.only(top: 4, bottom: 4, left: 7, right: 7),
-                      child: Text(
-                        '-${service['discount']}%',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                if (clinic.voucher != null)
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      child: Container(
+                        color: Colors.redAccent,
+                        padding: EdgeInsets.only(
+                            top: 4, bottom: 4, left: 7, right: 7),
+                        child: Text(
+                          '-${clinic.voucher!.discount}%',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
             Text(
@@ -58,30 +62,38 @@ class CardClinic extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            Row(
-              children: <Widget>[
-                Text(
-                  '💲${service['price'].toStringAsFixed(0)}',
-                  style: TextStyle(
-                    decoration: TextDecoration.lineThrough,
-                    decorationColor: Colors.black,
-                    color: Colors.grey[600],
-                    fontSize: 17,
+            clinic.voucher != null
+                ? Row(
+                    children: <Widget>[
+                      Text(
+                        '💲${service['price']}',
+                        style: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          decorationColor: Colors.black,
+                          color: Colors.grey[600],
+                          fontSize: 17,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_right,
+                        size: 30,
+                      ),
+                      Text(
+                        '💲${(service['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  )
+                : Text(
+                    '💲${service['price']}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
                   ),
-                ),
-                Icon(
-                  Icons.arrow_right,
-                  size: 30,
-                ),
-                Text(
-                  '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                ),
-              ],
-            ),
             SizedBox(
               height: 10,
             )

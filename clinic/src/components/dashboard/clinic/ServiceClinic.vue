@@ -3,11 +3,10 @@
     <el-button type="primary" style="margin-bottom: 20px;" @click="handleOpenDialog">
       Add New Service
     </el-button>
-    <el-table :data="services" border style="width: 100%" emptyText="Danh sách dịch vụ trống">
+    <el-table :data="services" border style="width: 100%" emptyText="List of service is empty">
       <el-table-column prop="name" label="Name" width="180"> </el-table-column>
       <el-table-column prop="image" label="Image" width="350"> </el-table-column>
       <el-table-column prop="price" label="Price" width="120"> </el-table-column>
-      <el-table-column prop="discount" label="Discount" width="120"> </el-table-column>
       <el-table-column prop="steps" label="Steps">
         <template #default="scope">
           <p v-for="step in scope.row.steps" :key="step">{{ step }}</p>
@@ -21,25 +20,22 @@
             size="medium"
             >Edit</el-button
           >
-          <!-- <el-button type="danger" size="medium" @click.native.prevent="handleDelete(scope.$index)"
+          <el-button type="danger" size="medium" @click.native.prevent="handleDelete(scope.$index)"
             >Delete</el-button
-          > -->
+          >
         </template>
       </el-table-column>
     </el-table>
     <el-dialog :title="isAdd ? 'Add' : 'Edit'" :visible.sync="dialogVisible" width="30%">
-      <el-form :model="service">
-        <el-form-item label="Name: ">
-          <el-input v-model="service.name" />
+      <el-form :model="service" :rules="rules" ref="ruleForm">
+        <el-form-item label="Name: " prop="name">
+          <el-input v-model="service.name" placeholder="Input name service..." />
         </el-form-item>
-        <el-form-item label="Image: ">
-          <el-input v-model="service.image" />
+        <el-form-item label="Image: " prop="image">
+          <el-input v-model="service.image" placeholder="Input image service..." />
         </el-form-item>
-        <el-form-item label="Price: ">
+        <el-form-item label="Price: " prop="price">
           <el-input type="number" v-model="service.price" />
-        </el-form-item>
-        <el-form-item label="Discount: ">
-          <el-input type="number" v-model="service.discount" />
         </el-form-item>
         <el-form-item label="Steps: ">
           <el-input
@@ -78,7 +74,16 @@ const initService = { name: '', image: '', discount: '', steps: [] };
 export default {
   props: ['services'],
   data() {
-    return { dialogVisible: false, service: initService, isAdd: false };
+    return {
+      dialogVisible: false,
+      service: initService,
+      isAdd: false,
+      rules: {
+        name: [{ required: true, message: 'Please input Service name', trigger: 'blur' }],
+        image: [{ required: true, message: 'Please input Service image', trigger: 'blur' }],
+        price: [{ required: true, message: 'Please input Service price', trigger: 'blur' }],
+      },
+    };
   },
 
   methods: {
@@ -96,12 +101,24 @@ export default {
       this.service = initService;
     },
     handleAddNewService(service) {
-      this.dialogVisible = false;
-      this.$emit('addNewService', service);
+      this.$refs.ruleForm.validate(valid => {
+        if (valid) {
+          this.dialogVisible = false;
+          this.$emit('addNewService', service);
+        } else {
+          return false;
+        }
+      });
     },
     handleUpdateService(service) {
-      this.dialogVisible = false;
-      this.$emit('updateService', service);
+      this.$refs.ruleForm.validate(valid => {
+        if (valid) {
+          this.dialogVisible = false;
+          this.$emit('updateService', service);
+        } else {
+          return false;
+        }
+      });
     },
     deleteStep(index, steps) {
       steps.splice(index, 1);

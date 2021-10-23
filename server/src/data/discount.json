@@ -1,0 +1,22 @@
+[
+  {
+    "clinicName": "Nha khoa A",
+    "services": ["services"],
+    "discount": "10",
+    "time": "[7*60 + 0, 8 * 60 + 0]",
+    "description": "Giảm giá 10% toàn menu",
+    "startDate": "Today",
+    "expirationDate": "next two day",
+    "isActive": false
+  },
+  {
+    "clinicName": "Nha Khoa B",
+    "services": ["services"],
+    "discount": "20",
+    "time": "[2:00 PM]",
+    "description": "Giảm giá 50% vào khung giờ nhất định",
+    "startDate": "Today",
+    "expirationDate": "next two day",
+    "isActive": true
+  }
+]

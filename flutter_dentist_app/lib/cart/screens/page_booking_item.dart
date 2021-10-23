@@ -111,6 +111,7 @@ class _PageBookingItem extends State<PageBookingItem> {
                         ),
                         child: ItemCardCart(
                           service: cart.cartService[index],
+                          clinic: widget.clinic,
                           deleteItem: () => setState(
                             () {
                               cart.cartService.removeAt(index);

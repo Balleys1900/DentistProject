@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/api/http_service_clinic.dart';
 import 'package:flutter_dentist_app/api/http_service_service.dart';
 import 'package:flutter_dentist_app/api/http_service_user.dart';
+import 'package:flutter_dentist_app/api/http_service_voucher.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/model/Service.dart';
+import 'package:flutter_dentist_app/model/Voucher.dart';
 import 'package:flutter_dentist_app/screens/main/main_widget.dart';
 import 'package:flutter_dentist_app/screens/welcome/register.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -106,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                       HttpServiceUser()
                           .login(username, password)
                           .then(
-                            (value) => {
+                            (value) async => {
                               cart.user = value,
                               Fluttertoast.showToast(
                                 msg: 'Đăng nhập thành công',
@@ -116,26 +118,32 @@ class _LoginPageState extends State<LoginPage> {
                                 textColor: Colors.white,
                                 fontSize: 16.0,
                               ),
-                              HttpServiceClinic().getClinics().then(
-                                    (clinics) => {
-                                      listClinicsInstance = clinics,
-                                      HttpServiceListService()
-                                          .getServices()
-                                          .then(
-                                            (services) => {
-                                              listServiceInstance = services,
-                                              Navigator.pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      MainWidget(),
-                                                ),
-                                                (route) => false,
-                                              ),
-                                            },
-                                          )
-                                    },
-                                  )
+                              listClinicsInstance =
+                                  await HttpServiceClinic().getClinics(),
+                              listServiceInstance =
+                                  await HttpServiceListService().getServices(),
+                              listVoucher =
+                                  await HttpServiceVoucher().getVoucher(),
+                              if (listVoucher.length > 0)
+                                {
+                                  listVoucher.forEach((voucher) {
+                                    if (voucher.time.length == 10) {
+                                      listClinicsInstance.forEach((clinic) {
+                                        if (clinic.id == voucher.clinic)
+                                          clinic.voucher = voucher;
+                                      });
+                                    } else {
+                                      listVoucherSpecificTime.add(voucher);
+                                    }
+                                  })
+                                },
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainWidget(),
+                                ),
+                                (route) => false,
+                              ),
                             },
                           )
                           .catchError(

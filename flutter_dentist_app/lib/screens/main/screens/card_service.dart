@@ -14,7 +14,6 @@ class CardService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 500,
       width: MediaQuery.of(context).size.width * 0.87,
       margin: EdgeInsets.only(top: 10, left: 6, right: 6, bottom: 3),
       decoration: BoxDecoration(
@@ -82,28 +81,30 @@ class CardService extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                  ),
-                  child: Container(
-                    color: Colors.cyan[600],
-                    padding:
-                        EdgeInsets.only(top: 4, bottom: 4, left: 7, right: 7),
-                    child: Text(
-                      'Giảm giá ${service['discount']}%',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+              if (clinic.voucher != null)
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(10),
+                      topLeft: Radius.circular(10),
+                    ),
+                    child: Container(
+                      color: Colors.cyan[600],
+                      padding:
+                          EdgeInsets.only(top: 4, bottom: 4, left: 7, right: 7),
+                      child: Text(
+                        // 'Giảm giá ${service['discount']}%',
+                        'Giảm giá ${clinic.voucher!.discount}%',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
           Container(
@@ -165,28 +166,39 @@ class CardService extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Row(children: <Widget>[
-                  Text(
-                    '💲${service['price'].toStringAsFixed(0)}',
-                    style: TextStyle(
-                      decoration: TextDecoration.lineThrough,
-                      decorationColor: Colors.black,
-                      color: Colors.grey[600],
-                      fontSize: 18,
-                    ),
-                  ),
-                  Icon(
-                    Icons.arrow_right,
-                    size: 30,
-                  ),
-                  Text(
-                    '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ]),
+                clinic.voucher != null
+                    ? Container(
+                        child: Row(children: <Widget>[
+                          Text(
+                            '💲${service['price'].toStringAsFixed(0)}',
+                            style: TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                              decorationColor: Colors.black,
+                              color: Colors.grey[600],
+                              fontSize: 18,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_right,
+                            size: 30,
+                          ),
+                          Text(
+                            '💲${(service['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ]),
+                      )
+                    : Text(
+                        '💲${service['price'].toStringAsFixed(0)}',
+                        style: TextStyle(
+                          decorationColor: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
                 OutlinedButton(
                   onPressed: () => Navigator.push(
                     context,
@@ -194,6 +206,7 @@ class CardService extends StatelessWidget {
                       builder: (context) => ServiceDetail(
                         clinic: clinic,
                         service: service,
+                        // voucher: voucher,
                       ),
                     ),
                   ),

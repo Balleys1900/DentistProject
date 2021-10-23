@@ -1,3 +1,5 @@
+import 'package:flutter_dentist_app/model/Voucher.dart';
+
 class Clinic {
   final String id;
   final String name;
@@ -9,7 +11,7 @@ class Clinic {
   final num rating;
   final String address;
   final List<dynamic> services;
-
+  late Voucher? voucher = null;
   Clinic({
     required this.id,
     required this.name,

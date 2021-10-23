@@ -39,12 +39,12 @@
       <el-alert
         title="Rejected"
         type="error"
-        description="Nha khoa này đã bị từ chối"
+        description="This clinic was rejected"
         v-if="clinic.status === 'reject'"
         show-icon
       >
       </el-alert>
-      <el-table border :data="clinic.services" empty-text="Empty Service">
+      <el-table border :data="clinic.services" empty-text="There is no service">
         <el-table-column property="name" label="Name Service"></el-table-column>
         <el-table-column property="discount" label="Discount(%)"></el-table-column>
         <el-table-column label="Unit Price" width="200">

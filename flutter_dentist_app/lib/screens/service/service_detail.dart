@@ -37,7 +37,7 @@ class ServiceDetail extends StatelessWidget {
               TextButton(
                 child: Text('Đồng ý'),
                 onPressed: () {
-                  cart.changeCartItem(clinic.id, service);
+                  cart.changeCartItem(clinic, service);
                   Fluttertoast.showToast(msg: 'Thay đổi giỏ hàng thành công');
                   Navigator.of(context).pop();
                   Navigator.push(
@@ -103,32 +103,47 @@ class ServiceDetail extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Container(
-                        child: Row(
-                          children: [
-                            Text(
-                              '💲${service['price'].toStringAsFixed(0)}',
-                              style: TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                                decorationColor: Colors.black,
-                                color: Colors.grey[600],
-                                fontSize: 18,
+                      clinic.voucher != null
+                          ? Container(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    '💲${service['price'].toStringAsFixed(0)}',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      decorationColor: Colors.black,
+                                      color: Colors.grey[600],
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_right,
+                                    size: 30,
+                                  ),
+                                  Text(
+                                    '💲${(service['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : Container(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    '💲${service['price']}',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Icon(
-                              Icons.arrow_right,
-                              size: 30,
-                            ),
-                            Text(
-                              '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+
                       Container(
                         child: Row(
                           children: [
@@ -198,7 +213,9 @@ class ServiceDetail extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'Khuyến mãi ${service['discount']}% dành cho khách hàng',
+                              clinic.voucher != null
+                                  ? 'Khuyến mãi ${clinic.voucher!.discount}% dành cho khách hàng'
+                                  : 'Hiện tại chưa có khuyến mãi gì mới',
                               style: TextStyle(fontSize: 15),
                             ),
                           ],
@@ -287,7 +304,7 @@ class ServiceDetail extends StatelessWidget {
           color: Colors.white,
           child: OutlinedButton(
             onPressed: () => {
-              if (!cart.isDifferentID(clinic.id))
+              if (!cart.isDifferentID(clinic))
                 {
                   cart.addToCart(service),
                   Navigator.push(
@@ -359,25 +376,26 @@ class renderAnotherServices extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.7,
                   ),
                 ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      color: Colors.redAccent,
-                      padding:
-                          EdgeInsets.only(top: 4, bottom: 4, left: 7, right: 7),
-                      child: Text(
-                        '-${service['discount']}%',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                if (clinic.voucher != null)
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      child: Container(
+                        color: Colors.redAccent,
+                        padding: EdgeInsets.only(
+                            top: 4, bottom: 4, left: 7, right: 7),
+                        child: Text(
+                          '${clinic.voucher!.discount}%',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
-                ),
                 Positioned(
                   top: 0,
                   left: 0,
@@ -404,30 +422,38 @@ class renderAnotherServices extends StatelessWidget {
                     child: Container(
                       color: Colors.white,
                       padding: EdgeInsets.all(3),
-                      child: Row(
-                        children: [
-                          Text(
-                            '💲${service['price'].toStringAsFixed(0)}',
-                            style: TextStyle(
-                              decoration: TextDecoration.lineThrough,
-                              decorationColor: Colors.black,
-                              color: Colors.grey[600],
-                              fontSize: 18,
+                      child: clinic.voucher != null
+                          ? Row(
+                              children: [
+                                Text(
+                                  '💲${service['price'].toStringAsFixed(0)}',
+                                  style: TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                    decorationColor: Colors.black,
+                                    color: Colors.grey[600],
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_right,
+                                  size: 30,
+                                ),
+                                Text(
+                                  '💲${(service['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            )
+                          : Text(
+                              '💲${service['price']}',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Icon(
-                            Icons.arrow_right,
-                            size: 30,
-                          ),
-                          Text(
-                            '💲${(service['price'] * (1 - service['discount'] / 100)).toStringAsFixed(0)}',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                 ),

@@ -122,6 +122,7 @@ class ClinicPage extends StatelessWidget {
                       childAspectRatio: 0.8,
                     ),
                     itemBuilder: (context, index) => CardClinic(
+                      clinic: clinic,
                       service: clinic.services[index],
                       press: () => {
                         Navigator.push(

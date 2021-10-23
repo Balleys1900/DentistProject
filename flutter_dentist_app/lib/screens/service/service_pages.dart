@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/api/http_service_clinic.dart';
 import 'package:flutter_dentist_app/model/Service.dart';
+import 'package:flutter_dentist_app/model/Voucher.dart';
 import 'package:flutter_dentist_app/screens/service/screens/item_card_service.dart';
 import 'package:flutter_dentist_app/screens/service/screens/list_clinic_service.dart';
 
@@ -60,15 +61,28 @@ class ServicePages extends StatelessWidget {
                         HttpServiceClinic()
                             .getAllClinicByService(services[index].name)
                             .then(
-                              (clinics) => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ListClinicFromService(
-                                    service: services[index],
-                                    clinics: clinics,
+                              (clinics) => {
+                                if (listVoucher.length > 0)
+                                  {
+                                    listVoucher.forEach((voucher) {
+                                      if (voucher.time.length == 10) {
+                                        clinics.forEach((clinic) {
+                                          if (clinic.id == voucher.clinic)
+                                            clinic.voucher = voucher;
+                                        });
+                                      }
+                                    })
+                                  },
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ListClinicFromService(
+                                      service: services[index],
+                                      clinics: clinics,
+                                    ),
                                   ),
                                 ),
-                              ),
+                              },
                             )
                       },
                     ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/api/http_service_booking.dart';
+import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/InstanceTime.dart';
+import 'package:flutter_dentist_app/model/Voucher.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
@@ -19,6 +21,11 @@ class PageBookingCalendar extends StatefulWidget {
 
 class _PageBookingCalendarState extends State<PageBookingCalendar> {
   CalendarController _calendarController = CalendarController();
+  List<Voucher> listTime = listVoucherSpecificTime
+      .where((voucher) => voucher.clinic == cart.clinic!.id)
+      .toList();
+  Voucher? voucher = null;
+
   @override
   void initState() {
     super.initState();
@@ -36,6 +43,9 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
             },
           ),
         );
+    if (listTime.length > 0) {
+      voucher = listTime[0];
+    }
   }
 
   @override
@@ -140,42 +150,50 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
   }
 
   clinicTiming(time) {
+    bool isHot = false;
+    if (voucher != null) {
+      DateTime start = new DateFormat('dd-MM-yyyy').parse(voucher!.startDate);
+      DateTime end =
+          new DateFormat('dd-MM-yyyy').parse(voucher!.expirationDate);
+      print(end.difference(instanceTime.date).inDays);
+      bool isActive = start.difference(instanceTime.date).inDays <= 0 &&
+          end.difference(instanceTime.date).inDays >= 0;
+      print(isActive);
+      print(time.time);
+      isHot = voucher!.time.contains(time.time.split(' ')[0]) && isActive;
+    }
     if (time.status == 'default') {
       return new Container(
         margin: EdgeInsets.only(top: 10, right: 8, left: 8),
         decoration: BoxDecoration(
-          color: Colors.cyan[100],
+          color: isHot ? Colors.red : Colors.cyan[100],
           borderRadius: BorderRadius.circular(5),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(right: 2),
-              child: Icon(
-                Icons.access_time,
-                color: Colors.black54,
-                // size: 18,
-              ),
-            ),
-            Container(
-              child: TextButton(
-                onPressed: () => setState(() {
-                  instanceTime.timeSelect = time;
-                  instanceTime.changeStatusActive(time.ID);
-                  widget.selecte();
-                }),
-                child: Text(
-                  time.time,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 17,
-                  ),
+        child: TextButton(
+          onPressed: () => setState(() {
+            instanceTime.timeSelect = time;
+            instanceTime.changeStatusActive(time.ID);
+            widget.selecte();
+          }),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                margin: EdgeInsets.only(right: 2),
+                child: Icon(
+                  Icons.access_time,
+                  color: Colors.black54,
                 ),
               ),
-            )
-          ],
+              Text(
+                isHot ? '${time.time} (${voucher!.discount}%)' : time.time,
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 17,
+                ),
+              ),
+            ],
+          ),
         ),
       );
     } else if (time.status == 'active') {
@@ -185,35 +203,31 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
           color: Colors.cyan[600],
           borderRadius: BorderRadius.circular(5),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(right: 2),
-              child: Icon(
-                Icons.access_time,
-                color: Colors.white,
-                size: 18,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(right: 2),
-              child: TextButton(
-                onPressed: () => setState(() {
-                  instanceTime.changeStatusDefault(time.ID);
-                  widget.unselect();
-                }),
-                child: Text(
-                  time.time,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
+        child: TextButton(
+          onPressed: () => setState(() {
+            instanceTime.changeStatusDefault(time.ID);
+            widget.unselect();
+          }),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.only(right: 25),
+                child: Icon(
+                  isHot ? Icons.local_offer : Icons.access_time,
+                  color: Colors.black,
+                  size: 18,
                 ),
               ),
-            )
-          ],
+              Text(
+                time.time,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }

@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const VoucherSchema = new Schema({
-  code: String,
-  description: String,
-  expiredDay: String,
-  expiredMonth: String,
+  name: String,
+  clinic: String,
   discount: Number,
+  time: [String],
+  description: String,
+  startDate: String,
+  expirationDate: String,
   isActive: Boolean,
 });
 
