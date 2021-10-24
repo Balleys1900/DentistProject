@@ -44,63 +44,66 @@ class PageCheckout extends StatelessWidget {
                 child: Text(
                   clinic.name,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               SizedBox(
-                height: 7,
+                height: 10,
               ),
               Row(
                 children: [
                   Icon(
                     Icons.location_on_rounded,
                     color: Colors.red,
+                    size: 28,
                   ),
                   Text(
-                    clinic.address,
+                    ' ${clinic.address}',
                     style: TextStyle(
                       color: Colors.black54,
-                      fontSize: 16,
+                      fontSize: 18,
                     ),
                     overflow: TextOverflow.fade,
                   ),
                 ],
               ),
               SizedBox(
-                height: 7,
+                height: 10,
               ),
               Row(
                 children: [
                   Icon(
                     Icons.av_timer_rounded,
                     color: Colors.green,
+                    size: 28,
                   ),
                   Text(
-                    'Thời gian: ${instanceTime.timeSelect.time}',
+                    ' Thời gian: ${instanceTime.timeSelect.time}',
                     style: TextStyle(
                       color: Colors.black54,
-                      fontSize: 15,
+                      fontSize: 18,
                     ),
                     overflow: TextOverflow.fade,
                   ),
                 ],
               ),
               SizedBox(
-                height: 7,
+                height: 10,
               ),
               Row(
                 children: [
                   Icon(
                     Icons.date_range,
-                    color: Colors.green,
+                    color: Colors.yellow[600],
+                    size: 28,
                   ),
                   Text(
-                    'Ngày: ${new DateFormat('dd-MM-yyyy').format(instanceTime.date)}',
+                    ' Ngày: ${new DateFormat('dd-MM-yyyy').format(instanceTime.date)}',
                     style: TextStyle(
                       color: Colors.black54,
-                      fontSize: 15,
+                      fontSize: 18,
                     ),
                     overflow: TextOverflow.fade,
                   ),
@@ -108,22 +111,25 @@ class PageCheckout extends StatelessWidget {
               ),
               clinic.voucher != null || clinic.voucherTime != null
                   ? Container(
-                      margin: EdgeInsets.only(top: 9, bottom: 10),
+                      margin: EdgeInsets.only(top: 15),
                       alignment: Alignment.topLeft,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Khuyến mãi',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 5),
+                            child: Text(
+                              'Khuyến mãi',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           clinic.voucher != null
                               ? Row(
                                   children: [
-                                    Icon(Icons.done_outlined,
+                                    Icon(Icons.check_circle_rounded,
                                         color: Colors.green),
                                     Text('  ${clinic.voucher!.name}',
                                         style: TextStyle(fontSize: 16)),
@@ -145,7 +151,7 @@ class PageCheckout extends StatelessWidget {
                                       .split(' ')[0])
                               ? Row(
                                   children: [
-                                    Icon(Icons.done_outlined,
+                                    Icon(Icons.check_circle_rounded,
                                         color: Colors.green),
                                     Text('  ${clinic.voucherTime!.name}',
                                         style: TextStyle(fontSize: 16)),
@@ -190,12 +196,12 @@ class PageCheckout extends StatelessWidget {
                       ),
                     ),
               Container(
-                margin: EdgeInsets.only(top: 9, bottom: 10),
+                margin: EdgeInsets.only(top: 12, bottom: 10),
                 alignment: Alignment.topLeft,
                 child: Text(
                   'Dịch vụ',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -212,13 +218,13 @@ class PageCheckout extends StatelessWidget {
                                 '${e['name']} ',
                                 style: TextStyle(
                                   color: Colors.black54,
-                                  fontSize: 16,
+                                  fontSize: 18,
                                 ),
                               ),
                               Text(
                                 'x${e['quantity']}',
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -236,7 +242,7 @@ class PageCheckout extends StatelessWidget {
                                     : '${e['price']}',
                                 style: TextStyle(
                                   color: Colors.black54,
-                                  fontSize: 16,
+                                  fontSize: 18,
                                 ),
                               ),
                             ],
@@ -260,7 +266,7 @@ class PageCheckout extends StatelessWidget {
                         Text(
                           'Tổng tiền',
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -274,13 +280,13 @@ class PageCheckout extends StatelessWidget {
                                           clinic.voucherTime!.time.contains(
                                               instanceTime.timeSelect.time
                                                   .split(' ')[0])
-                                      ? '(đã giảm(${clinic.voucher!.discount + clinic.voucherTime!.discount}%))' // -> tổng 2 em trên
-                                      : '(đã giảm(${clinic.voucher!.discount}%))' // riêng voucher full có
+                                      ? ' (đã giảm(${clinic.voucher!.discount + clinic.voucherTime!.discount}%))' // -> tổng 2 em trên
+                                      : ' (đã giảm(${clinic.voucher!.discount}%))' // riêng voucher full có
                                   : // nếu voucher full không có và voucher hot có
                                   clinic.voucherTime!.time.contains(instanceTime
                                           .timeSelect.time
                                           .split(' ')[0])
-                                      ? '(đã giảm(${clinic.voucherTime!.discount}%))' // giảm mỗi em voucher
+                                      ? ' (đã giảm(${clinic.voucherTime!.discount}%))' // giảm mỗi em voucher
                                       : '', // empty vì có voucher hot nhưng user không chọn
                           style: TextStyle(
                             fontSize: 16,
@@ -302,14 +308,14 @@ class PageCheckout extends StatelessWidget {
                                 '${(cart.sumTotalPrice() * (1 - clinic.voucherTime!.discount / 100)).toStringAsFixed(0)}',
                                 style: TextStyle(
                                   color: Colors.black54,
-                                  fontSize: 16,
+                                  fontSize: 18,
                                 ),
                               )
                             : Text(
                                 '${cart.sumTotalPrice().toStringAsFixed(1)}',
                                 style: TextStyle(
                                   color: Colors.black54,
-                                  fontSize: 16,
+                                  fontSize: 18,
                                 ),
                               )
                       ],
