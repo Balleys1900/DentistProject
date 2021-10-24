@@ -121,7 +121,7 @@ class MainScreen extends StatelessWidget {
               clinics: clinics,
               services: services,
             ),
-            // MainServicePromotion(clinics: clinics),
+            MainServicePromotion(clinics: clinics),
             MainServiceLocation(clinics: clinics),
             MainServiceRating(clinics: clinics),
           ],

@@ -63,7 +63,7 @@ class PageCheckout extends StatelessWidget {
                     ' ${clinic.address}',
                     style: TextStyle(
                       color: Colors.black54,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                     overflow: TextOverflow.fade,
                   ),
@@ -145,42 +145,46 @@ class PageCheckout extends StatelessWidget {
                               : SizedBox(
                                   height: 2,
                                 ),
-                          clinic.voucherTime != null &&
-                                  clinic.voucherTime!.time.contains(instanceTime
+                          clinic.voucherTime == null
+                              ? SizedBox(
+                                  height: 2,
+                                )
+                              : clinic.voucherTime!.time.contains(instanceTime
                                       .timeSelect.time
                                       .split(' ')[0])
-                              ? Row(
-                                  children: [
-                                    Icon(Icons.check_circle_rounded,
-                                        color: Colors.green),
-                                    Text('  ${clinic.voucherTime!.name}',
-                                        style: TextStyle(fontSize: 16)),
-                                    Text(
-                                      '  (-${clinic.voucherTime!.discount}%)',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.redAccent,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              : Row(
-                                  children: [
-                                    Icon(Icons.close, color: Colors.redAccent),
-                                    Text('  ${clinic.voucherTime!.name}',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.black54,
-                                        )),
-                                    Text(
-                                      '  (-${clinic.voucherTime!.discount}%)',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.black54,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
+                                  ? Row(
+                                      children: [
+                                        Icon(Icons.check_circle_rounded,
+                                            color: Colors.green),
+                                        Text('  ${clinic.voucherTime!.name}',
+                                            style: TextStyle(fontSize: 16)),
+                                        Text(
+                                          '  (-${clinic.voucherTime!.discount}%)',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.redAccent,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    )
+                                  : Row(
+                                      children: [
+                                        Icon(Icons.close,
+                                            color: Colors.redAccent),
+                                        Text('  ${clinic.voucherTime!.name}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black54,
+                                            )),
+                                        Text(
+                                          '  (-${clinic.voucherTime!.discount}%)',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    )
                         ],
                       ),
                     )
@@ -302,22 +306,30 @@ class PageCheckout extends StatelessWidget {
                           Icons.attach_money_rounded,
                           color: Colors.orange,
                         ),
-                        clinic.voucherTime!.time.contains(
-                                instanceTime.timeSelect.time.split(' ')[0])
+                        clinic.voucherTime == null
                             ? Text(
-                                '${(cart.sumTotalPrice() * (1 - clinic.voucherTime!.discount / 100)).toStringAsFixed(0)}',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 18,
-                                ),
-                              )
-                            : Text(
                                 '${cart.sumTotalPrice().toStringAsFixed(1)}',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 18,
                                 ),
                               )
+                            : clinic.voucherTime!.time.contains(
+                                    instanceTime.timeSelect.time.split(' ')[0])
+                                ? Text(
+                                    '${(cart.sumTotalPrice() * (1 - clinic.voucherTime!.discount / 100)).toStringAsFixed(0)}',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 18,
+                                    ),
+                                  )
+                                : Text(
+                                    '${cart.sumTotalPrice().toStringAsFixed(1)}',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 18,
+                                    ),
+                                  )
                       ],
                     )
                   ],

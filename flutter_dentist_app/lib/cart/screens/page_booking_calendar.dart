@@ -33,7 +33,9 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
 
     HttpServiceBooking()
         .getTimeAvailable(
-            new DateFormat('dd-MM-yyyy').format(instanceTime.date))
+            new DateFormat('dd-MM-yyyy').format(instanceTime.date),
+            cart.clinic!.id,
+            cart.user.username)
         .then(
           (value) => setState(
             () {
@@ -94,8 +96,11 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
                   setState(() {
                     instanceTime.changeStatusDay(day);
                     HttpServiceBooking()
-                        .getTimeAvailable(new DateFormat('dd-MM-yyyy')
-                            .format(instanceTime.date))
+                        .getTimeAvailable(
+                            new DateFormat('dd-MM-yyyy')
+                                .format(instanceTime.date),
+                            cart.clinic!.id,
+                            cart.user.username)
                         .then((value) => setState(() {
                               instanceTime.changeStatusInactive(value);
                             }));

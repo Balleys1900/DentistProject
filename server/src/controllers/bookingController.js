@@ -37,13 +37,22 @@ exports.getAllBooking = async (req, res) => {
 };
 
 exports.getTimeAvailable = async (req, res) => {
-  const { date } = req.params;
+  const timeClinic = req.body;
   const result = await Booking.find({
-    dateAppointment: date,
-    status: true,
+    $or: [
+      { 'user.username': timeClinic.username },
+      {
+        'clinic.id': timeClinic.idClinic,
+      },
+    ],
+    $and: [
+      {
+        dateAppointment: timeClinic.date,
+      },
+      { status: true },
+    ],
   });
   const dates = result.map(booking => booking.timeAppointment);
-
   if (result.length > 0) {
     return res.status(200).json({ status: 'success', data: dates });
   }

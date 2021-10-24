@@ -1,71 +1,72 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_dentist_app/model/Clinic.dart';
-// import 'package:flutter_dentist_app/screens/main/screens/card_service.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dentist_app/model/Clinic.dart';
+import 'package:flutter_dentist_app/screens/main/screens/card_service.dart';
 
-// class MainServicePromotion extends StatelessWidget {
-//   final List<Clinic> clinics;
-//   const MainServicePromotion({
-//     Key? key,
-//     required this.clinics,
-//   }) : super(key: key);
+class MainServicePromotion extends StatelessWidget {
+  final List<Clinic> clinics;
+  const MainServicePromotion({
+    Key? key,
+    required this.clinics,
+  }) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     List<Clinic> listClinic = [...clinics];
+  @override
+  Widget build(BuildContext context) {
+    List<Clinic> listClinic =
+        [...clinics].where((e) => e.voucher != null).toList();
+    if (listClinic.length >= 3)
+      listClinic
+          .sort((a, b) => b.voucher!.discount.compareTo(a.voucher!.discount));
+    else
+      listClinic = [...clinics];
 
-//     listClinic.forEach((clinic) {
-//       clinic.services.sort((a, b) => b['discount'].compareTo(a['discount']));
-//     });
-//     listClinic.sort((a, b) =>
-//         b.services[0]['discount'].compareTo(a.services[0]['discount']));
-//     listClinic = listClinic.sublist(0, 4);
+    listClinic = listClinic.sublist(0, 4);
 
-//     return Column(
-//       children: [
-//         Container(
-//           margin: EdgeInsets.only(top: 15, left: 5, right: 15),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             children: [
-//               Text(
-//                 'Ưu đãi hấp dẫn',
-//                 style: TextStyle(
-//                   fontSize: 25,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//               ElevatedButton(
-//                 onPressed: () => {},
-//                 child: Text(
-//                   'Xem thêm',
-//                   style: TextStyle(
-//                     fontSize: 18,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//               )
-//             ],
-//           ),
-//         ),
-//         Container(
-//           height: 380,
-//           child: ListView(
-//             scrollDirection: Axis.horizontal,
-//             children: [
-//               ...listClinic
-//                   .map(
-//                     (clinic) => new CardService(
-//                       clinic: clinic,
-//                       service: clinic.services[0],
-//                     ),
-//                   )
-//                   .toList()
-//             ],
-//           ),
-//         ),
-//         Divider(),
-//       ],
-//     );
-//   }
-// }
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 15, left: 5, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Ưu đãi hấp dẫn',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => {},
+                child: Text(
+                  'Xem thêm',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Container(
+          height: 380,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              ...listClinic
+                  .map(
+                    (clinic) => new CardService(
+                      clinic: clinic,
+                      service: clinic.services[0],
+                    ),
+                  )
+                  .toList()
+            ],
+          ),
+        ),
+        Divider(),
+      ],
+    );
+  }
+}

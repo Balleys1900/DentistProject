@@ -62,9 +62,14 @@ class HttpServiceBooking {
 
   Future<List<String>> getTimeAvailable(
     String date,
+    String clinicID,
+    String username,
   ) async {
-    Response res = await get(
-      Uri.parse("http://10.0.2.2:3000/api/v1/order/time/${date}"),
+    Map data = {'idClinic': clinicID, 'date': date, 'username': username};
+    Response res = await post(
+      Uri.parse("http://10.0.2.2:3000/api/v1/order/time"),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(data),
     );
     Map<String, dynamic> result = jsonDecode(res.body);
     if (res.statusCode == 200) {

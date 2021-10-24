@@ -12,8 +12,8 @@ class MainServiceLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Clinic> listClinic = [...clinics];
-    // listClinic.sort((a, b) => a.distance.compareTo(b.distance));
-    // listClinic = listClinic.sublist(0, 4);
+    listClinic.sort((a, b) => a.distance.compareTo(b.distance));
+    listClinic = listClinic.sublist(0, 4);
 
     return Column(
       children: [
