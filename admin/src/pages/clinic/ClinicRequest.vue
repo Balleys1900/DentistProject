@@ -3,7 +3,7 @@
     <el-table :data="clinics" border style="width: 100%" empty-text="Empty Clinic">
       <el-table-column prop="username" label="Owner" width="120"> </el-table-column>
       <el-table-column prop="name" label="Name" width="180"> </el-table-column>
-      <el-table-column prop="address" label="Address"> </el-table-column>
+      <el-table-column prop="address" label="Address" width="350"> </el-table-column>
       <el-table-column label="Service Number" width="130" align="center">
         <template slot-scope="scope">
           {{ scope.row.services.length }}
@@ -45,8 +45,8 @@
       >
       </el-alert>
       <el-table border :data="clinic.services" empty-text="There is no service">
-        <el-table-column property="name" label="Name Service"></el-table-column>
-        <el-table-column property="discount" label="Discount(%)"></el-table-column>
+        <el-table-column property="name" label="Name Service" width="200"></el-table-column>
+        <el-table-column property="image" label="Image Service"></el-table-column>
         <el-table-column label="Unit Price" width="200">
           <template slot-scope="scope"> 💲{{ scope.row.price }} </template>
         </el-table-column>
