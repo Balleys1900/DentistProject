@@ -138,7 +138,7 @@ class _StepProgressState extends State<StepProgress> {
                 instanceTime.timeSelect.time,
                 new DateFormat('dd-MM-yyyy').format(instanceTime.date),
                 instanceTime.timeSelect.hour,
-                listVoucher,
+                vouchers,
               )
                   .then(
                 (value) {

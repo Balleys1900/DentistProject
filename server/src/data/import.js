@@ -106,7 +106,7 @@ const deleteDataVoucher = async () => {
 // importDataUser();
 // importDataClinic();
 // importDataService();
-importDataVoucher();
+// importDataVoucher();
 // importDataService();
 // importDataPeople();
 // deleteDataClinic();

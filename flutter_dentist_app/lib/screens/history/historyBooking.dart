@@ -201,6 +201,14 @@ class HistoryCartBooking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int totalDiscount = booking.vouchers.fold(
+        0, (previousValue, voucher) => voucher['discount'] + previousValue);
+
+    int discountAllTime = booking.vouchers.fold(
+        0,
+        (previousValue, voucher) => voucher['time'].length == 10
+            ? voucher['discount'] + previousValue
+            : previousValue);
     return Column(
       children: [
         Container(
@@ -284,7 +292,10 @@ class HistoryCartBooking extends StatelessWidget {
             ],
           ),
         ),
-        ...booking.services.map((s) => ServiceBookingCart(service: s)).toList(),
+        ...booking.services
+            .map((s) =>
+                ServiceBookingCart(service: s, discount: discountAllTime))
+            .toList(),
         Container(
           margin: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
           child: Divider(
@@ -314,8 +325,7 @@ class HistoryCartBooking extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    // '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
-                    'Test',
+                    '💲${(booking.services.fold(0, (previousValue, service) => service['price'] * service['quantity'] + previousValue) * (1 - totalDiscount / 100)).toStringAsFixed(0)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -371,6 +381,13 @@ class HistoryCartBooked extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int totalDiscount = booking.vouchers.fold(
+        0, (previousValue, voucher) => voucher['discount'] + previousValue);
+    int discountAllTime = booking.vouchers.fold(
+        0,
+        (previousValue, voucher) => voucher['time'].length == 10
+            ? voucher['discount'] + previousValue
+            : previousValue);
     return Column(
       children: [
         Container(
@@ -456,7 +473,10 @@ class HistoryCartBooked extends StatelessWidget {
             ],
           ),
         ),
-        ...booking.services.map((s) => ServiceBookingCart(service: s)).toList(),
+        ...booking.services
+            .map((s) =>
+                ServiceBookingCart(service: s, discount: discountAllTime))
+            .toList(),
         Container(
           margin: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
           child: Divider(
@@ -486,8 +506,7 @@ class HistoryCartBooked extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    // '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
-                    'Test',
+                    '💲${(booking.services.fold(0, (previousValue, service) => service['price'] * service['quantity'] + previousValue) * (1 - totalDiscount / 100)).toStringAsFixed(0)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -564,6 +583,7 @@ class HistoryCartBooked extends StatelessWidget {
 
 class HistoryCartCancel extends StatelessWidget {
   final Booking booking;
+
   const HistoryCartCancel({
     Key? key,
     required this.booking,
@@ -571,6 +591,13 @@ class HistoryCartCancel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int totalDiscount = booking.vouchers.fold(
+        0, (previousValue, voucher) => voucher['discount'] + previousValue);
+    int discountAllTime = booking.vouchers.fold(
+        0,
+        (previousValue, voucher) => voucher['time'].length == 10
+            ? voucher['discount'] + previousValue
+            : previousValue);
     return Column(
       children: [
         Container(
@@ -656,7 +683,10 @@ class HistoryCartCancel extends StatelessWidget {
             ],
           ),
         ),
-        ...booking.services.map((s) => ServiceBookingCart(service: s)).toList(),
+        ...booking.services
+            .map((s) =>
+                ServiceBookingCart(service: s, discount: discountAllTime))
+            .toList(),
         Container(
           margin: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
           child: Divider(
@@ -686,8 +716,7 @@ class HistoryCartCancel extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    // '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
-                    '💲Test',
+                    '💲${(booking.services.fold(0, (previousValue, service) => service['price'] * service['quantity'] + previousValue) * (1 - totalDiscount / 100)).toStringAsFixed(0)}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -731,9 +760,11 @@ class HistoryCartCancel extends StatelessWidget {
 
 class ServiceBookingCart extends StatelessWidget {
   final dynamic service;
+  final int discount;
   const ServiceBookingCart({
     Key? key,
     required this.service,
+    required this.discount,
   }) : super(key: key);
 
   @override
@@ -751,31 +782,38 @@ class ServiceBookingCart extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Row(
-            children: [
-              Text(
-                '💲${service['price']}',
-                style: TextStyle(
-                  decoration: TextDecoration.lineThrough,
-                  decorationColor: Colors.black,
-                  color: Colors.grey[600],
-                  fontSize: 18,
+          discount != 0
+              ? Row(
+                  children: [
+                    Text(
+                      '💲${service['price']}',
+                      style: TextStyle(
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: Colors.black,
+                        color: Colors.grey[600],
+                        fontSize: 18,
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_right,
+                      size: 30,
+                    ),
+                    Text(
+                      '💲${service['price'] * (1 - discount / 100)}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                )
+              : Text(
+                  '💲${service['price']}',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Icon(
-                Icons.arrow_right,
-                size: 30,
-              ),
-              Text(
-                // '💲${service['price'] * (1 - service['discount'] / 100)}',
-                '💲Test',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
         ],
       ),
     );

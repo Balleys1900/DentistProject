@@ -1,6 +1,6 @@
 <template>
   <div class="form-wrapper">
-    <h1 style="text-align: center; padding: 20px">Nha Khoa</h1>
+    <h1 style="text-align: center; padding: 20px">Clinic</h1>
     <div class="btn-clinic" v-if="this.$route.params.id">
       <el-button type="primary" class="btn" @click="editClinic">Update</el-button>
       <el-button type="danger" class="btn" @click="removeClinic($route.params.id)"

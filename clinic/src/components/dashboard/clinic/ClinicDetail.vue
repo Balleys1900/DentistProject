@@ -4,7 +4,7 @@
       <el-alert
         title="Rejected"
         type="error"
-        description="Nha khoa này đã bị từ chối vì thông tin dịch vụ không rõ ràng"
+        description="This dental clinic was rejected because the service information is not clear"
         v-if="clinic.status === 'reject'"
         show-icon
       >
@@ -157,7 +157,7 @@ export default {
       console.log(clinic);
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
-          // this.$emit('registerClinic', clinic);
+          this.$emit('registerClinic', clinic);
         } else {
           return false;
         }

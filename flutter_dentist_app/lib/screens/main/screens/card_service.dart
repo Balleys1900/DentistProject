@@ -95,7 +95,6 @@ class CardService extends StatelessWidget {
                       padding:
                           EdgeInsets.only(top: 4, bottom: 4, left: 7, right: 7),
                       child: Text(
-                        // 'Giảm giá ${service['discount']}%',
                         'Giảm giá ${clinic.voucher!.discount}%',
                         style: TextStyle(
                             fontSize: 18,

@@ -7,6 +7,7 @@ class Booking {
   final String dateAppointment;
   final String timeAppointment;
   final num hour;
+  final List<dynamic> vouchers;
   final bool status;
   final String message;
 
@@ -19,6 +20,7 @@ class Booking {
     required this.dateAppointment,
     required this.timeAppointment,
     required this.hour,
+    required this.vouchers,
     required this.status,
     required this.message,
   });
@@ -33,6 +35,7 @@ class Booking {
       dateAppointment: json['dateAppointment'],
       timeAppointment: json['timeAppointment'],
       hour: json['hour'],
+      vouchers: json['vouchers'],
       status: json['status'],
       message: json['message'],
     );

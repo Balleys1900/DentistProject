@@ -93,7 +93,7 @@ export default {
       }
     },
     async handleInActive(index, rows) {
-      this.$confirm('This will inactive user. Continue?', 'Warning', {
+      this.$confirm('This will inactive Clinic. Continue?', 'Warning', {
         confirmButtonText: 'OK',
         cancelButtonText: 'Cancel',
         type: 'warning',

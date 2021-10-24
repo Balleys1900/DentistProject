@@ -13,6 +13,13 @@ class DetailHistoryBooked extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int totalDiscount = booking.vouchers.fold(
+        0, (previousValue, voucher) => voucher['discount'] + previousValue);
+    int discountAllTime = booking.vouchers.fold(
+        0,
+        (previousValue, voucher) => voucher['time'].length == 10
+            ? voucher['discount'] + previousValue
+            : previousValue);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -129,8 +136,50 @@ class DetailHistoryBooked extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(top: 9, bottom: 5, left: 8),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Khuyến mãi: ',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  if (booking.vouchers.length > 0)
+                    ...booking.vouchers.map(
+                      (e) => Row(
+                        children: [
+                          Icon(Icons.check_circle_rounded, color: Colors.green),
+                          Text('  ${e['name']}',
+                              style: TextStyle(fontSize: 16)),
+                          Text(
+                            '  (-${e['discount']}%)',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.redAccent,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    )
+                  else
+                    Text('Không có khuyến mãi nào được áp dụng'),
+                  Container(
+                    margin: EdgeInsets.only(top: 9, bottom: 5, left: 8),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Dịch vụ: ',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   ...booking.services
-                      .map((s) => ServiceBookingCart(service: s))
+                      .map((s) => ServiceBookingCart(
+                          service: s, discount: discountAllTime))
                       .toList(),
                   Divider(
                     thickness: 1,
@@ -141,16 +190,29 @@ class DetailHistoryBooked extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Tổng tiền: ',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              'Tổng tiền',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              totalDiscount != 0
+                                  ? '(đã giảm (${totalDiscount}%)): '
+                                  : '',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         Text(
-                          // '💲${booking.services.fold(0, (previousValue, service) => (service['price'] * service['quantity'] * (1 - service['discount'] / 100)) + previousValue).toStringAsFixed(1)}',
-                          'Test',
+                          '💲${(booking.services.fold(0, (previousValue, service) => service['price'] * service['quantity'] + previousValue) * (1 - totalDiscount / 100)).toStringAsFixed(0)}',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -231,9 +293,11 @@ class DetailHistoryBooked extends StatelessWidget {
 
 class ServiceBookingCart extends StatelessWidget {
   final dynamic service;
+  final int discount;
   const ServiceBookingCart({
     Key? key,
     required this.service,
+    required this.discount,
   }) : super(key: key);
 
   @override
@@ -251,31 +315,38 @@ class ServiceBookingCart extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Row(
-            children: [
-              Text(
-                '💲${service['price']}',
-                style: TextStyle(
-                  decoration: TextDecoration.lineThrough,
-                  decorationColor: Colors.black,
-                  color: Colors.grey[600],
-                  fontSize: 18,
+          discount != 0
+              ? Row(
+                  children: [
+                    Text(
+                      '💲${service['price']}',
+                      style: TextStyle(
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: Colors.black,
+                        color: Colors.grey[600],
+                        fontSize: 18,
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_right,
+                      size: 30,
+                    ),
+                    Text(
+                      '💲${service['price'] * (1 - discount / 100)}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                )
+              : Text(
+                  '💲${service['price']}',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Icon(
-                Icons.arrow_right,
-                size: 30,
-              ),
-              Text(
-                // '💲${service['price'] * (1 - service['discount'] / 100)}',
-                'Test',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
         ],
       ),
     );

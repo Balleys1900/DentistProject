@@ -12,7 +12,7 @@ class HttpServiceBooking {
     String timeAppointment,
     String dateAppointment,
     num hour,
-    List<dynamic> voucher,
+    List<dynamic> vouchers,
   ) async {
     Map data = {
       'user': user,
@@ -22,7 +22,7 @@ class HttpServiceBooking {
       'timeAppointment': timeAppointment,
       'dateAppointment': dateAppointment,
       'hour': hour,
-      'voucher': voucher,
+      'vouchers': vouchers,
       'status': true,
       'message': 'Đặt lịch thành công',
     };
