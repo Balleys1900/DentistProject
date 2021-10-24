@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/api/http_service_booking.dart';
 import 'package:flutter_dentist_app/cart/Cart.dart';
 import 'package:flutter_dentist_app/cart/InstanceTime.dart';
+import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/model/Voucher.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
 class PageBookingCalendar extends StatefulWidget {
+  final Clinic clinic;
   final VoidCallback selecte;
   final VoidCallback unselect;
   PageBookingCalendar({
     Key? key,
+    required this.clinic,
     required this.selecte,
     required this.unselect,
   }) : super(key: key);
@@ -21,10 +24,6 @@ class PageBookingCalendar extends StatefulWidget {
 
 class _PageBookingCalendarState extends State<PageBookingCalendar> {
   CalendarController _calendarController = CalendarController();
-  List<Voucher> listTime = listVoucherSpecificTime
-      .where((voucher) => voucher.clinic == cart.clinic!.id)
-      .toList();
-  Voucher? voucher = null;
 
   @override
   void initState() {
@@ -43,9 +42,6 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
             },
           ),
         );
-    if (listTime.length > 0) {
-      voucher = listTime[0];
-    }
   }
 
   @override
@@ -151,16 +147,18 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
 
   clinicTiming(time) {
     bool isHot = false;
-    if (voucher != null) {
-      DateTime start = new DateFormat('dd-MM-yyyy').parse(voucher!.startDate);
-      DateTime end =
-          new DateFormat('dd-MM-yyyy').parse(voucher!.expirationDate);
-      print(end.difference(instanceTime.date).inDays);
+    if (widget.clinic.voucherTime != null) {
+      DateTime start = new DateFormat('dd-MM-yyyy')
+          .parse(widget.clinic.voucherTime!.startDate);
+      DateTime end = new DateFormat('dd-MM-yyyy')
+          .parse(widget.clinic.voucherTime!.expirationDate);
+
       bool isActive = start.difference(instanceTime.date).inDays <= 0 &&
           end.difference(instanceTime.date).inDays >= 0;
-      print(isActive);
-      print(time.time);
-      isHot = voucher!.time.contains(time.time.split(' ')[0]) && isActive;
+
+      isHot =
+          widget.clinic.voucherTime!.time.contains(time.time.split(' ')[0]) &&
+              isActive;
     }
     if (time.status == 'default') {
       return new Container(
@@ -186,7 +184,9 @@ class _PageBookingCalendarState extends State<PageBookingCalendar> {
                 ),
               ),
               Text(
-                isHot ? '${time.time} (${voucher!.discount}%)' : time.time,
+                isHot
+                    ? '${time.time} (${widget.clinic.voucherTime!.discount}%)'
+                    : time.time,
                 style: TextStyle(
                   color: Colors.black54,
                   fontSize: 17,

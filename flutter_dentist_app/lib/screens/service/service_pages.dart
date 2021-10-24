@@ -70,6 +70,11 @@ class ServicePages extends StatelessWidget {
                                           if (clinic.id == voucher.clinic)
                                             clinic.voucher = voucher;
                                         });
+                                      } else {
+                                        clinics.forEach((clinic) {
+                                          if (clinic.id == voucher.clinic)
+                                            clinic.voucherTime = voucher;
+                                        });
                                       }
                                     })
                                   },

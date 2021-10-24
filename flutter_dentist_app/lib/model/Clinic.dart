@@ -12,6 +12,7 @@ class Clinic {
   final String address;
   final List<dynamic> services;
   late Voucher? voucher = null;
+  late Voucher? voucherTime = null;
   Clinic({
     required this.id,
     required this.name,

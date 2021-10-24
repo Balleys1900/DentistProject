@@ -44,12 +44,14 @@ exports.createNewVoucher = async (req, res) => {
   }
 };
 
-// exports.updateStatusVoucher = async (req, res) => {
-//   try {
-//     const { voucherID, isActive } = req.body;
-//     const result = await Voucher.create(voucher);
-//     res.status(201).json({ status: 'success', data: result });
-//   } catch (error) {
-//     res.status(401).json({ status: 'fail', message: error });
-//   }
-// };
+exports.updateStatusVoucher = async (req, res) => {
+  const { voucherID, isActive } = req.body;
+  const result = await Voucher.findOneAndUpdate(
+    { _id: voucherID },
+    {
+      $set: { isActive: isActive },
+    }
+  );
+  if (result) res.status(200).json({ status: 'success', data: result });
+  else res.status(400).json({ status: 'fail', message: 'Cannot found voucherID' });
+};

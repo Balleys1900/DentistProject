@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_dentist_app/model/Booking.dart';
+import 'package:flutter_dentist_app/model/Voucher.dart';
 import 'package:http/http.dart';
 
 class HttpServiceBooking {
@@ -11,6 +12,7 @@ class HttpServiceBooking {
     String timeAppointment,
     String dateAppointment,
     num hour,
+    List<dynamic> voucher,
   ) async {
     Map data = {
       'user': user,
@@ -20,6 +22,7 @@ class HttpServiceBooking {
       'timeAppointment': timeAppointment,
       'dateAppointment': dateAppointment,
       'hour': hour,
+      'voucher': voucher,
       'status': true,
       'message': 'Đặt lịch thành công',
     };

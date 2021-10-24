@@ -172,7 +172,7 @@
         </el-row>
         <el-row :gutter="30">
           <el-col :span="6">
-            <el-form-item label="Discount">
+            <el-form-item label="Discount(%)">
               <el-input v-model="voucher.discount" type="number" readonly />
             </el-form-item>
           </el-col>
@@ -216,14 +216,15 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisibleDetail = false">Cancel</el-button>
-        <el-button type="primary" @click="updateStatusVoucher(voucher)">Inactive</el-button>
+        <el-button type="danger" @click="updateStatusVoucher(voucher)">Update</el-button>
       </span>
     </el-dialog>
   </el-tabs>
 </template>
 
 <script>
-import { getAllVoucherByClinicID, createNewVoucher } from '@/api/voucher.js';
+import { getAllVoucherByClinicID, createNewVoucher, updateVoucher } from '@/api/voucher.js';
+
 import { mapGetters } from 'vuex';
 const timeOption = [
   '07:00',
@@ -401,8 +402,20 @@ export default {
         .replace(/\//g, '-');
       return date;
     },
-    updateStatusVoucher() {
+    async updateStatusVoucher(voucher) {
       this.dialogVisibleDetail = false;
+      try {
+        const res = await updateVoucher({ voucherID: voucher._id, isActive: voucher.isActive });
+        if (res.status === 200) {
+          this.$message({
+            message: 'Update status successful',
+            type: 'success',
+          });
+        }
+      } catch (error) {
+        this.$message.error('Updated Failed');
+        console.log(error);
+      }
     },
     handleOpenDetailVoucher(index, rows) {
       this.dialogVisibleDetail = true;

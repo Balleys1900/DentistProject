@@ -5,6 +5,7 @@ import 'package:flutter_dentist_app/cart/InstanceTime.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_calendar.dart';
 import 'package:flutter_dentist_app/cart/screens/page_booking_checkout.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
+import 'package:flutter_dentist_app/model/Voucher.dart';
 import 'package:flutter_dentist_app/screens/finalPage/cancel_Booking.dart';
 import 'package:flutter_dentist_app/screens/finalPage/success_Booking.dart';
 import 'package:intl/intl.dart';
@@ -32,6 +33,7 @@ class _StepProgressState extends State<StepProgress> {
           isActive: currentStep >= 1,
           title: Text("Thời gian"),
           content: PageBookingCalendar(
+            clinic: widget.clinic,
             selecte: () => setState(
               () {
                 isSelected = true;
@@ -102,6 +104,31 @@ class _StepProgressState extends State<StepProgress> {
                 'address': cart.user.address,
                 'avatar': cart.user.avatar,
               };
+              List<dynamic> vouchers = [];
+              if (widget.clinic.voucher != null) {
+                dynamic voucher = {
+                  'id': widget.clinic.voucher!.id,
+                  'name': widget.clinic.voucher!.name,
+                  'discount': widget.clinic.voucher!.discount,
+                  'time': widget.clinic.voucher!.time,
+                  'description': widget.clinic.voucher!.description,
+                  'startDate': widget.clinic.voucher!.startDate,
+                  'expirationDate': widget.clinic.voucher!.expirationDate,
+                };
+                vouchers.add(voucher);
+              }
+              if (widget.clinic.voucherTime != null) {
+                dynamic voucher = {
+                  'id': widget.clinic.voucherTime!.id,
+                  'name': widget.clinic.voucherTime!.name,
+                  'discount': widget.clinic.voucherTime!.discount,
+                  'time': widget.clinic.voucherTime!.time,
+                  'description': widget.clinic.voucherTime!.description,
+                  'startDate': widget.clinic.voucherTime!.startDate,
+                  'expirationDate': widget.clinic.voucherTime!.expirationDate,
+                };
+                vouchers.add(voucher);
+              }
               HttpServiceBooking()
                   .createNewBooking(
                 userBooking,
@@ -111,6 +138,7 @@ class _StepProgressState extends State<StepProgress> {
                 instanceTime.timeSelect.time,
                 new DateFormat('dd-MM-yyyy').format(instanceTime.date),
                 instanceTime.timeSelect.hour,
+                listVoucher,
               )
                   .then(
                 (value) {

@@ -133,7 +133,10 @@ class _LoginPageState extends State<LoginPage> {
                                           clinic.voucher = voucher;
                                       });
                                     } else {
-                                      listVoucherSpecificTime.add(voucher);
+                                      listClinicsInstance.forEach((clinic) {
+                                        if (clinic.id == voucher.clinic)
+                                          clinic.voucherTime = voucher;
+                                      });
                                     }
                                   })
                                 },

@@ -37,4 +37,3 @@ class Voucher {
 }
 
 List<Voucher> listVoucher = [];
-List<Voucher> listVoucherSpecificTime = [];

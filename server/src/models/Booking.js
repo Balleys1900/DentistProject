@@ -29,6 +29,17 @@ const BookingSchema = new Schema({
   dateAppointment: String,
   timeAppointment: String,
   hour: Number,
+  vouchers: [
+    {
+      id: String,
+      name: String,
+      discount: Number,
+      time: [Array],
+      description: String,
+      startDate: String,
+      expirationDate: String,
+    },
+  ],
   status: Boolean,
   message: String,
 });

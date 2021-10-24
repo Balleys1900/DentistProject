@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -104,6 +106,89 @@ class PageCheckout extends StatelessWidget {
                   ),
                 ],
               ),
+              clinic.voucher != null || clinic.voucherTime != null
+                  ? Container(
+                      margin: EdgeInsets.only(top: 9, bottom: 10),
+                      alignment: Alignment.topLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Khuyến mãi',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          clinic.voucher != null
+                              ? Row(
+                                  children: [
+                                    Icon(Icons.done_outlined,
+                                        color: Colors.green),
+                                    Text('  ${clinic.voucher!.name}',
+                                        style: TextStyle(fontSize: 16)),
+                                    Text(
+                                      '  (-${clinic.voucher!.discount}%)',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.redAccent,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                              : SizedBox(
+                                  height: 2,
+                                ),
+                          clinic.voucherTime != null &&
+                                  clinic.voucherTime!.time.contains(instanceTime
+                                      .timeSelect.time
+                                      .split(' ')[0])
+                              ? Row(
+                                  children: [
+                                    Icon(Icons.done_outlined,
+                                        color: Colors.green),
+                                    Text('  ${clinic.voucherTime!.name}',
+                                        style: TextStyle(fontSize: 16)),
+                                    Text(
+                                      '  (-${clinic.voucherTime!.discount}%)',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.redAccent,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                              : Row(
+                                  children: [
+                                    Icon(Icons.close, color: Colors.redAccent),
+                                    Text('  ${clinic.voucherTime!.name}',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black54,
+                                        )),
+                                    Text(
+                                      '  (-${clinic.voucherTime!.discount}%)',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                        ],
+                      ),
+                    )
+                  : Container(
+                      margin: EdgeInsets.only(top: 9, bottom: 10),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Không khuyến mãi',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
               Container(
                 margin: EdgeInsets.only(top: 9, bottom: 10),
                 alignment: Alignment.topLeft,
@@ -146,7 +231,9 @@ class PageCheckout extends StatelessWidget {
                                 color: Colors.orange,
                               ),
                               Text(
-                                '${(e['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}',
+                                clinic.voucher != null
+                                    ? '${(e['price'] * (1 - clinic.voucher!.discount / 100)).toStringAsFixed(0)}'
+                                    : '${e['price']}',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 16,
@@ -168,12 +255,40 @@ class PageCheckout extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Tổng tiền',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          'Tổng tiền',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          clinic.voucher == null &&
+                                  clinic.voucherTime == null //cả 2 bằng null
+                              ? '' // empty với cả 2 bằng null
+                              : clinic.voucher != null // nếu voucher full có
+                                  ? clinic.voucherTime !=
+                                              null && // check tiếp nếu thêm voucher hot có
+                                          clinic.voucherTime!.time.contains(
+                                              instanceTime.timeSelect.time
+                                                  .split(' ')[0])
+                                      ? '(đã giảm(${clinic.voucher!.discount + clinic.voucherTime!.discount}%))' // -> tổng 2 em trên
+                                      : '(đã giảm(${clinic.voucher!.discount}%))' // riêng voucher full có
+                                  : // nếu voucher full không có và voucher hot có
+                                  clinic.voucherTime!.time.contains(instanceTime
+                                          .timeSelect.time
+                                          .split(' ')[0])
+                                      ? '(đã giảm(${clinic.voucherTime!.discount}%))' // giảm mỗi em voucher
+                                      : '', // empty vì có voucher hot nhưng user không chọn
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                     Row(
                       children: [
@@ -181,13 +296,22 @@ class PageCheckout extends StatelessWidget {
                           Icons.attach_money_rounded,
                           color: Colors.orange,
                         ),
-                        Text(
-                          '${cart.sumTotalPrice().toStringAsFixed(1)}',
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 16,
-                          ),
-                        ),
+                        clinic.voucherTime!.time.contains(
+                                instanceTime.timeSelect.time.split(' ')[0])
+                            ? Text(
+                                '${(cart.sumTotalPrice() * (1 - clinic.voucherTime!.discount / 100)).toStringAsFixed(0)}',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 16,
+                                ),
+                              )
+                            : Text(
+                                '${cart.sumTotalPrice().toStringAsFixed(1)}',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 16,
+                                ),
+                              )
                       ],
                     )
                   ],

@@ -1,0 +1,250 @@
+[
+  {
+    "name": "Khuyến mãi halloween",
+    "clinic": "6173ca5da511d34158b0270c",
+    "discount": 10,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 10%",
+    "startDate": "22-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b0270c",
+    "discount": 20,
+    "time": ["07:00", "13:00"],
+    "description": "Khuyến mãi 20%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khuyến mãi lễ",
+    "clinic": "6173ca5da511d34158b0270c",
+    "discount": 50,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 50%",
+    "startDate": "14-10-2021",
+    "expirationDate": "21-10-2021",
+    "isActive": false
+  },
+  {
+    "name": "Khuyến mãi halloween",
+    "clinic": "6173ca5da511d34158b02719",
+    "discount": 15,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 15%",
+    "startDate": "22-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b02719",
+    "discount": 10,
+    "time": ["08:00", "14:00"],
+    "description": "Khuyến mãi 10%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khuyến mãi lễ",
+    "clinic": "6173ca5da511d34158b02719",
+    "discount": 50,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 50%",
+    "startDate": "14-10-2021",
+    "expirationDate": "21-10-2021",
+    "isActive": false
+  },
+  {
+    "name": "Khuyến mãi halloween",
+    "clinic": "6173ca5da511d34158b02726",
+    "discount": 15,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 15%",
+    "startDate": "22-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b02726",
+    "discount": 10,
+    "time": ["07:00", "13:00"],
+    "description": "Khuyến mãi 10%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khuyến mãi lễ",
+    "clinic": "6173ca5da511d34158b02726",
+    "discount": 35,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 35%",
+    "startDate": "12-10-2021",
+    "expirationDate": "23-10-2021",
+    "isActive": false
+  },
+  {
+    "name": "Khuyến mãi halloween",
+    "clinic": "6173ca5da511d34158b02726",
+    "discount": 10,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 10%",
+    "startDate": "22-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b02726",
+    "discount": 10,
+    "time": ["07:00", "13:00"],
+    "description": "Khuyến mãi 10%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khuyến mãi lễ",
+    "clinic": "6173ca5da511d34158b02726",
+    "discount": 35,
+    "time": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    "description": "Khuyến mãi 35%",
+    "startDate": "12-10-2021",
+    "expirationDate": "23-10-2021",
+    "isActive": false
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b02733",
+    "discount": 15,
+    "time": ["07:00", "13:00"],
+    "description": "Khuyến mãi 15%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b02740",
+    "discount": 10,
+    "time": ["10:00"],
+    "description": "Khuyến mãi 10%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b0274d",
+    "discount": 10,
+    "time": ["10:00"],
+    "description": "Khuyến mãi 10%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  },
+  {
+    "name": "Khung giờ hot",
+    "clinic": "6173ca5da511d34158b0275a",
+    "discount": 20,
+    "time": ["10:00", "11:00", "13:00"],
+    "description": "Khuyến mãi 20%",
+    "startDate": "21-10-2021",
+    "expirationDate": "31-10-2021",
+    "isActive": true
+  }
+]

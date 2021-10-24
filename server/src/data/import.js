@@ -26,7 +26,7 @@ const importDataClinic = async () => {
   process.exit();
 };
 const importDataVoucher = async () => {
-  const vouchers = JSON.parse(fs.readFileSync(`${__dirname}/voucher.json`, 'utf-8'));
+  const vouchers = JSON.parse(fs.readFileSync(`${__dirname}/vouchers.json`, 'utf-8'));
   try {
     await Voucher.insertMany(vouchers);
     console.log('Import Data Voucher Success');
@@ -94,12 +94,22 @@ const deleteDataBooking = async () => {
   }
   process.exit();
 };
+const deleteDataVoucher = async () => {
+  try {
+    await Voucher.deleteMany();
+    console.log('Delete Data Booking successful');
+  } catch (error) {
+    console.log(error);
+  }
+  process.exit();
+};
 // importDataUser();
-importDataClinic();
+// importDataClinic();
 // importDataService();
-// importDataVoucher();
+importDataVoucher();
 // importDataService();
 // importDataPeople();
 // deleteDataClinic();
 // deleteDataUser();
 // deleteDataBooking();
+// deleteDataVoucher();

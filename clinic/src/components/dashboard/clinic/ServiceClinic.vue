@@ -4,15 +4,15 @@
       Add New Service
     </el-button>
     <el-table :data="services" border style="width: 100%" emptyText="List of service is empty">
-      <el-table-column prop="name" label="Name" width="180"> </el-table-column>
-      <el-table-column prop="image" label="Image" width="350"> </el-table-column>
-      <el-table-column prop="price" label="Price" width="120"> </el-table-column>
+      <el-table-column prop="name" label="Name" width="200"> </el-table-column>
+      <el-table-column prop="image" label="Image"> </el-table-column>
+      <el-table-column prop="price" label="Price(💲)" width="200"> </el-table-column>
       <el-table-column prop="steps" label="Steps">
         <template #default="scope">
           <p v-for="step in scope.row.steps" :key="step">{{ step }}</p>
         </template>
       </el-table-column>
-      <el-table-column label="Operations" width="200">
+      <el-table-column label="Operations" width="150">
         <template slot-scope="scope">
           <el-button
             @click.native.prevent="handleClick(scope.$index, services)"
@@ -20,9 +20,9 @@
             size="medium"
             >Edit</el-button
           >
-          <el-button type="danger" size="medium" @click.native.prevent="handleDelete(scope.$index)"
+          <!-- <el-button type="danger" size="medium" @click.native.prevent="handleDelete(scope.$index)"
             >Delete</el-button
-          >
+          > -->
         </template>
       </el-table-column>
     </el-table>
