@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/screens/main/screens/card_service.dart';
+import 'dart:math';
 
 class MainServiceLocation extends StatelessWidget {
   final List<Clinic> clinics;
@@ -14,6 +15,9 @@ class MainServiceLocation extends StatelessWidget {
     List<Clinic> listClinic = [...clinics];
     listClinic.sort((a, b) => a.distance.compareTo(b.distance));
     listClinic = listClinic.sublist(0, 4);
+
+    Random random = new Random();
+    int randomNumber = random.nextInt(listClinic[0].services.length - 1);
 
     return Column(
       children: [
@@ -45,7 +49,6 @@ class MainServiceLocation extends StatelessWidget {
         ),
         Container(
           height: 380,
-
           // margin: EdgeInsets.only(left: 20, top: 20, right: 20),
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -53,7 +56,7 @@ class MainServiceLocation extends StatelessWidget {
               ...listClinic
                   .map((clinic) => new CardService(
                         clinic: clinic,
-                        service: clinic.services[0],
+                        service: clinic.services[randomNumber],
                       ))
                   .toList()
             ],

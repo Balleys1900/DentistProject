@@ -79,7 +79,7 @@
             </el-form-item>
           </el-col>
 
-          <el-col :span="7">
+          <el-col :span="8">
             <el-form-item label="Start Date" prop="startDate">
               <el-date-picker
                 v-model="voucher.startDate"
@@ -91,7 +91,7 @@
               </el-date-picker>
             </el-form-item>
           </el-col>
-          <el-col :span="7">
+          <el-col :span="8">
             <el-form-item label="Expiration Date" prop="expirationDate">
               <el-date-picker
                 v-model="voucher.expirationDate"

@@ -55,7 +55,7 @@
     <el-dialog title="Services" :visible.sync="dialogVisible" width="60%" v-if="services">
       <el-table border :data="services">
         <el-table-column property="name" label="Name Service"></el-table-column>
-        <el-table-column property="discount" label="Discount(%)"></el-table-column>
+        <el-table-column property="image" label="Image Service"></el-table-column>
         <el-table-column label="Unit Price" width="200">
           <template slot-scope="scope"> 💲{{ scope.row.price }} </template>
         </el-table-column>
