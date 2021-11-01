@@ -7,6 +7,7 @@ import 'package:flutter_dentist_app/screens/main/home/main_menu.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_service_location.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_service_promotion.dart';
 import 'package:flutter_dentist_app/screens/main/home/main_service_rating.dart';
+import 'package:flutter_dentist_app/screens/main/logout_widget.dart';
 
 class MainWidget extends StatefulWidget {
   const MainWidget({
@@ -21,10 +22,8 @@ class _MainWidgetState extends State<MainWidget> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     MainScreen(clinics: listClinicsInstance, services: listServiceInstance),
-    Text(
-      'Index 1: Business',
-    ),
     HistoryBooking(),
+    LogoutPageWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -44,12 +43,12 @@ class _MainWidgetState extends State<MainWidget> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.history),
               label: 'History',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_box_rounded),
+              label: 'Account',
             ),
           ],
           currentIndex: _selectedIndex,
