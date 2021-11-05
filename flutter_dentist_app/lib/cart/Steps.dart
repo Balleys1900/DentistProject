@@ -99,10 +99,10 @@ class _StepProgressState extends State<StepProgress> {
                 'address': widget.clinic.address,
               };
               dynamic userBooking = {
-                'username': cart.user.username,
-                'name': cart.user.name,
-                'address': cart.user.address,
-                'avatar': cart.user.avatar,
+                'username': cart.user!.username,
+                'name': cart.user!.name,
+                'address': cart.user!.address,
+                'avatar': cart.user!.avatar,
               };
               List<dynamic> vouchers = [];
               if (widget.clinic.voucher != null) {

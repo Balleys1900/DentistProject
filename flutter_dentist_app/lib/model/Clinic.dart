@@ -10,6 +10,7 @@ class Clinic {
   final num distance;
   final num rating;
   final String address;
+
   final List<dynamic> services;
   late Voucher? voucher = null;
   late Voucher? voucherTime = null;

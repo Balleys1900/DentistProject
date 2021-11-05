@@ -2,7 +2,7 @@ import 'package:flutter_dentist_app/model/Clinic.dart';
 import 'package:flutter_dentist_app/model/User.dart';
 
 class Cart {
-  late User user;
+  late User? user;
   late Clinic? clinic = null;
   List<dynamic> cartService = [];
 
@@ -37,6 +37,7 @@ class Cart {
 
   void resetCart() {
     this.clinic = null;
+    this.user = null;
     this.cartService.clear();
   }
 

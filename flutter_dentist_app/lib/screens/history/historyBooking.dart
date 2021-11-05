@@ -22,7 +22,7 @@ class _HistoryBookingState extends State<HistoryBooking> {
   void initState() {
     super.initState();
 
-    HttpServiceBooking().getAllBookingByUsername(cart.user.username).then(
+    HttpServiceBooking().getAllBookingByUsername(cart.user!.username).then(
           (value) => setState(
             () {
               listBooking = value;

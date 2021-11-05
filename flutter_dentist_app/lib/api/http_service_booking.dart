@@ -89,7 +89,6 @@ class HttpServiceBooking {
       List<dynamic> body = result["data"];
       List<Booking> bookings =
           body.map((dynamic item) => Booking.fromJson(item)).toList();
-
       return bookings;
     } else {
       throw "Cannot get Booking";
