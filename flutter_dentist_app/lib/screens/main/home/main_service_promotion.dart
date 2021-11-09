@@ -15,14 +15,13 @@ class MainServicePromotion extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Clinic> listClinic =
         [...clinics].where((e) => e.voucher != null).toList();
-    if (listClinic.length >= 3)
+    if (listClinic.length > 3)
       listClinic
           .sort((a, b) => b.voucher!.discount.compareTo(a.voucher!.discount));
     else
       listClinic = [...clinics];
 
     Random random = new Random();
-    int randomNumber = random.nextInt(listClinic[0].services.length - 1);
 
     listClinic = listClinic.sublist(0, 4);
 
@@ -59,14 +58,13 @@ class MainServicePromotion extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              ...listClinic
-                  .map(
-                    (clinic) => new CardService(
-                      clinic: clinic,
-                      service: clinic.services[randomNumber],
-                    ),
-                  )
-                  .toList()
+              ...listClinic.map((clinic) {
+                int randomNumber = random.nextInt(clinic.services.length - 1);
+                return new CardService(
+                  clinic: clinic,
+                  service: clinic.services[randomNumber],
+                );
+              }).toList()
             ],
           ),
         ),

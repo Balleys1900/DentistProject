@@ -37,7 +37,6 @@ class Cart {
 
   void resetCart() {
     this.clinic = null;
-    this.user = null;
     this.cartService.clear();
   }
 

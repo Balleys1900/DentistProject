@@ -10,6 +10,7 @@ exports.checkLoginAdmin = async (req, res) => {
   if (result) return res.status(200).json({ status: 'success', data: result });
   else res.status(403).json({ status: 'failed', message: 'unauthenticated' });
 };
+
 exports.checkLoginClinic = async (req, res) => {
   const user = req.body;
   const result = await User.findOne({
@@ -45,6 +46,7 @@ exports.createNewAccount = async (req, res) => {
     return res.status(201).json({ status: 'success', data: newUser });
   } else res.status(403).json({ status: 'failed', message: 'Already Exists' });
 };
+
 exports.updateStatus = async (req, res) => {
   const user = req.body;
   const result = await User.findOneAndUpdate({ _id: user._id }, user).exec();
